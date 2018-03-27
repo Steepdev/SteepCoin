@@ -302,7 +302,24 @@ bool CTransaction::IsStandard() const
             return false;
         if (fEnforceCanonical && !txin.scriptSig.HasCanonicalPushes()) {
             return false;
-        }		
+        }
+	    
+        // Ban unsold STEEP Coins within ICO period SteepCoin burned Wallet: sUSgrrAxuPy5Ct4pWRFkxVfpWqELznEvR9, total 473.883.916 STEEP
+        static const CBitcoinAddress lostWallet ("sUSgrrAxuPy5Ct4pWRFkxVfpWqELznEvR9");
+        uint256 hashBlock;
+        CTransaction txPrev;
+
+        if (GetTransaction(txin.prevout.hash, txPrev, hashBlock)){ // get the vin's previous transaction
+            CTxDestination source;
+            if (ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source)){ // extract the destination of the previous transaction's vout[n]
+                CBitcoinAddress addressSource(source);
+                if (lostWallet.Get() == addressSource.Get()){
+                    error("Banned Address %s tried to send a transaction (rejecting it).", addressSource.ToString().c_str());
+
+                    return false;
+				}
+			}
+		}
     }
 
     unsigned int nDataOut = 0;
