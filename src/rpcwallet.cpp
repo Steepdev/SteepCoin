@@ -103,7 +103,10 @@ Value getinfo(const Array& params, bool fHelp)
     timestamping.push_back(Pair("p2poffset", nP2POffset != INT64_MAX ? nP2POffset : Value::null));
 
     obj.push_back(Pair("timestamping", timestamping));
-    obj.push_back(Pair("moneysupply",   ValueFromAmount(pindexBest->nMoneySupply)));
+    
+    // moneysupply: 473883916 STEEP was burned after ICO:
+    // sUSgrrAxuPy5Ct4pWRFkxVfpWqELznEvR9
+    obj.push_back(Pair("moneysupply",   ValueFromAmount(pindexBest->nMoneySupply - 473883916 * COIN)));
 
     obj.push_back(Pair("connections",   (int)vNodes.size()));
     obj.push_back(Pair("proxy",         (proxy.first.IsValid() ? proxy.first.ToStringIPPort() : string())));
