@@ -104,7 +104,7 @@ xCXXFLAGS=-O2 $(EXT_OPTIONS) -pthread -Wall -Wextra -Wformat -Wformat-security -
 xLDFLAGS=$(LDHARDENING) $(LDFLAGS)
 
 OBJS= \
-   obj/groestl.o \
+    obj/groestl.o \
     obj/blake.o \
     obj/bmw.o \
     obj/skein.o \
@@ -149,13 +149,16 @@ OBJS= \
     obj/scrypt.o \
     obj/scrypt-arm.o \
     obj/scrypt-x86.o \
-    obj/scrypt-x86_64.o 
+    obj/scrypt-x86_64.o \
+    obj/leveldbwrapper.o \
+    obj/txdb.o
 
 all: SteepCoind
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
+DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers/memenv)
 OBJS += obj/txdb-leveldb.o
 leveldb/libleveldb.a:
 	@echo "Building LevelDB ..."; cd leveldb; make libleveldb.a libmemenv.a; cd ..;

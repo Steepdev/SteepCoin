@@ -84,6 +84,15 @@ void Shutdown(void* parg)
 //        CTxDB().Close();
         bitdb.Flush(false);
         StopNode();
+        {
+            LOCK(cs_main);
+
+            if (pblocktree)
+                pblocktree->Flush();
+            // delete pcoinsdbview; pcoinsdbview = NULL;
+            delete pblocktree; pblocktree = NULL;
+        }
+
         bitdb.Flush(true);
         boost::filesystem::remove(GetPidFile());
         UnregisterWallet(pwalletMain);
@@ -300,7 +309,11 @@ std::string HelpMessage()
         "  -salvagewallet         " + _("Attempt to recover private keys from a corrupt wallet.dat") + "\n" +
         "  -checkblocks=<n>       " + _("How many blocks to check at startup (default: 2500, 0 = all)") + "\n" +
         "  -checklevel=<n>        " + _("How thorough the block verification is (0-6, default: 1)") + "\n" +
+        "  -txindex               " + _("Maintain a full transaction index (default: 0)") + "\n" +
         "  -loadblock=<file>      " + _("Imports blocks from external blk000?.dat file") + "\n" +
+
+        // "  -reindex               " + _("Rebuild block chain index from current blk000??.dat files") + "\n" +
+        "  -par=<n>               " + _("Set the number of script verification threads (up to 16, 0 = auto, <0 = leave that many cores free, default: 0)") + 
 
         "\n" + _("Block creation options:") + "\n" +
         "  -blockminsize=<n>      "   + _("Set minimum block size in bytes (default: 0)") + "\n" +
@@ -315,6 +328,8 @@ std::string HelpMessage()
 
     return strUsage;
 }
+
+
 
 /** Initialize bitcoin.
  *  @pre Parameters should be parsed and config file should be read.
@@ -685,6 +700,22 @@ bool AppInit2()
         AddOneShot(strDest);
 
     // ********************************************************* Step 7: load blockchain
+/*My New Impovements*/
+    // cache size calculations
+    size_t nTotalCache = GetArg("-dbcache", 25) << 20;
+    if (nTotalCache < (1 << 22))
+        nTotalCache = (1 << 22); // total cache cannot be less than 4 MiB
+    size_t nBlockTreeDBCache = nTotalCache / 8;
+    if (nBlockTreeDBCache > (1 << 21) && !GetBoolArg("-txindex", false))
+        nBlockTreeDBCache = (1 << 21); // block tree db cache shouldn't be larger than 2 MiB
+    nTotalCache -= nBlockTreeDBCache;
+    size_t nCoinDBCache = nTotalCache / 2; // use half of the remaining cache for coindb cache
+    nTotalCache -= nCoinDBCache;
+    nCoinCacheSize = nTotalCache / 300; // coins in memory require around 300 bytes
+
+
+/*My New Improvemnts*/
+
 
     if (!bitdb.Open(GetDataDir()))
     {
@@ -705,10 +736,18 @@ bool AppInit2()
     uiInterface.InitMessage(_("Loading block index...          "));
     printf("Loading block index...\n");
     nStart = GetTimeMillis();
+/*My New Impovements*/
+    delete pblocktree;
+    pblocktree = new CBlockTreeDB(nBlockTreeDBCache, false, false/*fReindex*/);
+/*My New Improvemnts*/
+
     if (!LoadBlockIndex())
         return InitError(_("Error loading blkindex.dat"));
 
 
+/*My New Impovements*/
+    if (mapArgs.count("-txindex") && fTxIndex != GetBoolArg("-txindex", false))
+        return InitError(_("You need to rebuild the databases using -reindex to change -txindex"));
     // as LoadBlockIndex can take several minutes, it's possible the user
     // requested to kill bitcoin-qt during the last operation. If so, exit.
     // As the program has not fully started yet, Shutdown() is possibly overkill.

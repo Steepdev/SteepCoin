@@ -62,6 +62,11 @@ uint256 hashBestChain = 0;
 CBlockIndex* pindexBest = NULL;
 int64_t nTimeBestReceived = 0;
 
+/*My New Impovements*/
+unsigned int nCoinCacheSize = 5000;
+bool fTxIndex = false;
+/*My New Improvemnts*/
+
 CMedianFilter<int> cPeerBlockCounts(5, 0); // Amount of blocks that other nodes claim to have
 
 map<uint256, CBlock*> mapOrphanBlocks;
@@ -187,6 +192,9 @@ void ResendWalletTransactions(bool fForce)
         pwallet->ResendWalletTransactions(fForce);
 }
 
+
+CBlockTreeDB *pblocktree = NULL;
+
 //////////////////////////////////////////////////////////////////////////////
 //
 // mapOrphanTransactions
@@ -257,6 +265,16 @@ unsigned int LimitOrphanTxSize(unsigned int nMaxOrphans)
 //
 // CTransaction and CTxIndex
 //
+
+bool CTransaction::ReadFromDisk(CTxDB& txdb, const uint256& hash, CTxIndex& txindexRet)
+{
+    SetNull();
+    if (!txdb.ReadTxIndex(hash, txindexRet))
+         return false;
+    if (!ReadFromDisk(txindexRet.pos))
+         return false;
+    return true;
+}
 
 bool CTransaction::ReadFromDisk(CTxDB& txdb, COutPoint prevout, CTxIndex& txindexRet)
 {
@@ -885,7 +903,7 @@ int CTxIndex::GetDepthInMainChain() const
     return 1 + nBestHeight - pindex->nHeight;
 }
 
-// Return transaction in tx, and if it was found inside a block, its hash is placed in hashBlock
+/*// Return transaction in tx, and if it was found inside a block, its hash is placed in hashBlock
 bool GetTransaction(const uint256 &hash, CTransaction &tx, uint256 &hashBlock)
 {
     {
@@ -900,14 +918,72 @@ bool GetTransaction(const uint256 &hash, CTransaction &tx, uint256 &hashBlock)
         }
         CTxDB txdb("r");
         CTxIndex txindex;
-        if (tx.ReadFromDisk(txdb, COutPoint(hash, 0), txindex))
+        // if (tx.ReadFromDisk(txdb, COutPoint(hash, 0), txindex))
+        if (tx.ReadFromDisk(txdb, hash, txindex))
         {
             CBlock block;
             if (block.ReadFromDisk(txindex.pos.nFile, txindex.pos.nBlockPos, false))
                 hashBlock = block.GetHash();
             return true;
         }
+
+        // look for transaction in disconnected blocks to find orphaned CoinBase and CoinStake transactions
+        BOOST_FOREACH(PAIRTYPE(const uint256, CBlockIndex*)& item, mapBlockIndex)
+        {
+            CBlockIndex* pindex = item.second;
+            if (pindex == pindexBest || pindex->pnext != 0)
+                continue;
+            CBlock block;
+            if (!block.ReadFromDisk(pindex))
+                continue;
+            BOOST_FOREACH(const CTransaction& txOrphan, block.vtx)
+            {
+                if (txOrphan.GetHash() == hash)
+                {
+                    tx = txOrphan;
+                    return true;
+                }
+            }
+        }
     }
+    return false;
+}*/
+
+bool GetTransaction(const uint256 &hash, CTransaction &tx, uint256 &hashBlock)
+{
+    {
+        LOCK(cs_main);
+        {
+            LOCK(mempool.cs);
+            if (mempool.exists(hash))
+            {
+                tx = mempool.lookup(hash);
+                return true;
+            }
+        }
+
+        if (fTxIndex) {
+            CDiskTxPosrr postx;
+            if (pblocktree->ReadTxIndex(hash, postx)) {
+                CAutoFile file(OpenBlockFile2(postx, true), SER_DISK, CLIENT_VERSION);
+                CBlockHeader header;
+                try {
+                    file >> header;
+                    fseek(file, postx.nTxOffset, SEEK_CUR);
+                    file >> tx;
+                } catch (std::exception &e) {
+                    return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
+                }
+                hashBlock = header.GetHash();
+                if (tx.GetHash() != hash)
+                    return error("%s() : txid mismatch", __PRETTY_FUNCTION__);
+                return true;
+            }
+        }
+
+
+    }
+
     return false;
 }
 
@@ -1759,8 +1835,20 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     int64_t nValueOut = 0;
     int64_t nStakeReward = 0;
     unsigned int nSigOps = 0;
+
+    
+//
+    CDiskBlockPosvvv mydata(pindex->nFile,pindex->nBlockPos);
+//
+    CDiskTxPosrr posThisTx_(mydata, GetSizeOfCompactSize(vtx.size()));
+    // CDiskTxPos posThisTx(pindex->nFile, pindex->nBlockPos, nTxPos);
+    std::vector<std::pair<uint256, CDiskTxPosrr> > vPos;
+    vPos.reserve(vtx.size());
+
+    int i_ = 0;
     BOOST_FOREACH(CTransaction& tx, vtx)
     {
+        i_++;
         uint256 hashTx = tx.GetHash();
 
         // Do not allow blocks that contain transactions which 'overwrite' older transactions,
@@ -1820,6 +1908,9 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
         }
 
         mapQueuedChanges[hashTx] = CTxIndex(posThisTx, tx.vout.size());
+
+        vPos.push_back(std::make_pair(GetTxHash(i_), posThisTx_));
+        posThisTx_.nTxOffset += ::GetSerializeSize(tx, SER_DISK, CLIENT_VERSION);
     }
 
     if (IsProofOfWork())
@@ -1869,6 +1960,12 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
         if (!txdb.WriteBlockIndex(blockindexPrev))
             return error("ConnectBlock() : WriteBlockIndex failed");
     }
+
+    if (fTxIndex)
+        if (!pblocktree->WriteTxIndex(vPos)) {
+            //return state.Abort(_("Failed to write transaction index"));
+            return error("Failed to write transaction index");
+        }
 
     // Watch for transactions paying to me
     BOOST_FOREACH(CTransaction& tx, vtx)
@@ -2069,6 +2166,8 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
     bool fIsInitialDownload = IsInitialBlockDownload();
     if (!fIsInitialDownload)
     {
+        pblocktree->Sync();
+
         const CBlockLocator locator(pindexNew);
         ::SetBestChain(locator);
     }
@@ -2139,6 +2238,12 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, uint64_t& nCoinAge) const
         // First try finding the previous transaction in database
         CTransaction txPrev;
         CTxIndex txindex;
+
+        // Transaction index is required to get to block header
+        if (!fTxIndex)
+            return false;  // Transaction index not available
+
+
         if (!txPrev.ReadFromDisk(txdb, txin.prevout, txindex))
             continue;  // previous transaction not in main chain
         if (nTime < txPrev.nTime)
@@ -2252,6 +2357,11 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos, const u
         UpdatedTransaction(hashPrevBestCoinBase);
         hashPrevBestCoinBase = vtx[0].GetHash();
     }
+    if (!pblocktree->Flush()) {
+        // return state.Abort(_("Failed to sync block index"));
+        return error("Failed to sync block index");
+    }
+        
 
     uiInterface.NotifyBlocksChanged();
     return true;
@@ -2675,6 +2785,69 @@ static filesystem::path BlockFilePath(unsigned int nFile)
     return GetDataDir() / strBlockFn;
 }
 
+FILE* OpenDiskFile2(const CDiskBlockPosvvv &pos, const char *prefix, bool fReadOnly)
+{
+    if (pos.IsNull())
+        return NULL;
+    // boost::filesystem::path path = GetDataDir() / "blocks" / strprintf("%s%05u.dat", prefix, pos.nFile);
+    // boost::filesystem::path path = GetDataDir() / strprintf("%s%05u.dat", prefix, pos.nFile);
+    boost::filesystem::path path = GetDataDir() / strprintf("%s%04u.dat", prefix, pos.nFile);
+    boost::filesystem::create_directories(path.parent_path());
+    FILE* file = fopen(path.string().c_str(), "rb+");
+    if (!file && !fReadOnly)
+        file = fopen(path.string().c_str(), "wb+");
+    if (!file) {
+        printf("Unable to open file %s\n", path.string().c_str());
+        return NULL;
+    }
+    if (pos.nPos) {
+        if (fseek(file, pos.nPos, SEEK_SET)) {
+            printf("Unable to seek to position %u of %s\n", pos.nPos, path.string().c_str());
+            fclose(file);
+            return NULL;
+        }
+    }
+    return file;
+}
+
+FILE* OpenBlockFile2(const CDiskBlockPosvvv &pos, bool fReadOnly) {
+    return OpenDiskFile2(pos, "blk", fReadOnly);
+}
+
+CBlockIndexversion * InsertBlockIndexverrr(uint256 hash)
+{
+    if (hash == 0)
+        return NULL;
+
+    CBlockIndexversion* pindexNew_second = new CBlockIndexversion();
+    if (!pindexNew_second) {
+        throw runtime_error("LoadBlockIndex() : new CBlockIndex1 failed");
+    }
+    // Return existing  
+    map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.find(hash);
+    if (mi != mapBlockIndex.end()) {
+        pindexNew_second->phashBlock = (*mi).second->phashBlock;
+        return pindexNew_second;
+        // return (*mi).second;
+    }
+
+    // Create new
+    CBlockIndex* pindexNew = new CBlockIndex();
+    CBlockIndexversion* pindexNew_txindex = new CBlockIndexversion();
+    if (!pindexNew_txindex) {
+        throw runtime_error("LoadBlockIndex() : new CBlockIndexv failed");
+    }
+    if (!pindexNew) {
+        throw runtime_error("LoadBlockIndex() : new CBlockIndexversion failed");
+    }
+    mi = mapBlockIndex.insert(make_pair(hash, pindexNew)).first;
+    pindexNew->phashBlock = &((*mi).first);
+    pindexNew_txindex->phashBlock = &((*mi).first);
+
+    //return pindexNew;
+    return pindexNew_txindex;
+}
+
 FILE* OpenBlockFile(unsigned int nFile, unsigned int nBlockPos, const char* pszMode)
 {
     if ((nFile < 1) || (nFile == (unsigned int) -1))
@@ -2719,6 +2892,8 @@ FILE* AppendBlockFile(unsigned int& nFileRet)
 bool LoadBlockIndex(bool fAllowNew)
 
 {
+    /*if (!pblocktree->LoadBlockIndexGuts())
+        return false;*/
     CBigNum bnTrustedModulus;
 
     if (fTestNet)
@@ -2736,12 +2911,18 @@ bool LoadBlockIndex(bool fAllowNew)
     
     }
 	
+    
+    // Use the provided setting for -txindex in the new database
+    fTxIndex = true; 
+    // txindex is enabled
+    pblocktree->WriteFlag("txindex", fTxIndex);
     //
     // Load block index
     //
     CTxDB txdb("cr+");
     if (!txdb.LoadBlockIndex())
         return false;
+
 
     //
     // Init with genesis block
@@ -2830,6 +3011,10 @@ bool LoadBlockIndex(bool fAllowNew)
         if ((!fTestNet) && !Checkpoints::ResetSyncCheckpoint())
             return error("LoadBlockIndex() : failed to reset sync-checkpoint");
     }
+
+    // Check whether we have a transaction index
+    pblocktree->ReadFlag("txindex", fTxIndex);
+    printf("LoadBlockIndexDB(): transaction index %s\n", fTxIndex ? "enabled" : "disabled");
 
     return true;
 }
