@@ -34,9 +34,9 @@ QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("STEEP");
-    case mBTC: return QString("mSTEEP");
-    case uBTC: return QString::fromUtf8("μSTEEP");
+    case BTC: return QString("PPC");
+    case mBTC: return QString("mPPC");
+    case uBTC: return QString::fromUtf8("μPPC");
     default: return QString("???");
     }
 }
@@ -45,9 +45,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("STEEPS");
-    case mBTC: return QString("MILLI-STEEPS (1 / 1,000)");
-    case uBTC: return QString("MICRO-STEEPS (1 / 1,000,000)");
+    case BTC: return QString("Peercoins");
+    case mBTC: return QString("Milli-Peercoins (1 / 1,000)");
+    case uBTC: return QString("Micro-Peercoins (1 / 1,000,000)");
     default: return QString("???");
     }
 }
@@ -56,10 +56,10 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case BTC:  return 100000000;
-    case mBTC: return 100000;
-    case uBTC: return 100;
-    default:   return 100000000;
+    case BTC:  return 1000000;
+    case mBTC: return 1000;
+    case uBTC: return 1;
+    default:   return 1000000;
     }
 }
 
@@ -67,9 +67,9 @@ int BitcoinUnits::amountDigits(int unit)
 {
     switch(unit)
     {
-    case BTC: return 10; // 1,500,000,000 (# digits, without commas)
-    case mBTC: return 13; // 1,500,000,000,000
-    case uBTC: return 16; // 1,500,000,000,000,000
+    case BTC: return 10; // 21,000,000 (# digits, without commas)
+    case mBTC: return 13; // 21,000,000,000
+    case uBTC: return 16; // 21,000,000,000,000
     default: return 0;
     }
 }
@@ -78,14 +78,14 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case BTC: return 8;
-    case mBTC: return 5;
-    case uBTC: return 2;
+    case BTC: return 6;
+    case mBTC: return 3;
+    case uBTC: return 0;
     default: return 0;
     }
 }
 
-QString BitcoinUnits::format(int unit, qint64 n, bool fPlus)
+QString BitcoinUnits::format(int unit, qint64 n, bool fPlus, bool trimzeros)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
@@ -99,11 +99,14 @@ QString BitcoinUnits::format(int unit, qint64 n, bool fPlus)
     QString quotient_str = QString::number(quotient);
     QString remainder_str = QString::number(remainder).rightJustified(num_decimals, '0');
 
-    // Right-trim excess zeros after the decimal point
-    int nTrim = 0;
-    for (int i = remainder_str.size()-1; i>=2 && (remainder_str.at(i) == '0'); --i)
-        ++nTrim;
-    remainder_str.chop(nTrim);
+    if (trimzeros)
+    {
+        // Right-trim excess zeros after the decimal point
+        int nTrim = 0;
+        for (int i = remainder_str.size()-1; i>=2 && (remainder_str.at(i) == '0'); --i)
+            ++nTrim;
+        remainder_str.chop(nTrim);
+    }
 
     if (n < 0)
         quotient_str.insert(0, '-');
@@ -112,9 +115,9 @@ QString BitcoinUnits::format(int unit, qint64 n, bool fPlus)
     return quotient_str + QString(".") + remainder_str;
 }
 
-QString BitcoinUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
+QString BitcoinUnits::formatWithUnit(int unit, qint64 amount, bool plussign, bool trimzeros)
 {
-    return format(unit, amount, plussign) + QString(" ") + name(unit);
+    return format(unit, amount, plussign, trimzeros) + QString(" ") + name(unit);
 }
 
 bool BitcoinUnits::parse(int unit, const QString &value, qint64 *val_out)

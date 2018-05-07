@@ -1,34 +1,36 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ca_ES" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ca_ES" version="2.0">
+<defaultcodec>UTF-8</defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About SteepCoin</source>
-        <translation>Sobre SteepCoin</translation>
+        <source>About Peercoin</source>
+        <translation>Sobre Peercoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;SteepCoin&lt;/b&gt; version</source>
-        <translation>versió &lt;b&gt;SteepCoin&lt;/b&gt;</translation>
+        <source>&lt;b&gt;Peercoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Peercoin&lt;/b&gt; versió</translation>
     </message>
     <message>
-        <location line="+41"/>
-        <source>Copyright © 2009-2014 The Bitcoin developers
-Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2017 The SteepCoin developers</source>
-        <translation>Copyright © 2009-2014 The Bitcoin developers
-Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2017 The SteepCoin developers</translation>
-    </message>
-    <message>
-        <location line="+15"/>
+        <location line="+57"/>
         <source>
 This is experimental software.
 
 Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/) and cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.</source>
-        <translation>\n Aquest és software experimental.\n\n Distribuït sota llicència de software MIT/11, veure l&apos;arxiu COPYING o http://www.opensource.org/licenses/mit-license.php.\n\nAquest producte inclou software desarrollat pel projecte OpenSSL per a l&apos;ús de OppenSSL Toolkit (http://www.openssl.org/) i de software criptogr� fic escrit per l&apos;Eric Young (eay@cryptsoft.com) i software UPnP escrit per en Thomas Bernard.</translation>
+        <translation>\n Aquest és software experimental.\n\n Distribuït sota llicència de software MIT/11, veure l&apos;arxiu COPYING o http://www.opensource.org/licenses/mit-license.php.\n\nAquest producte inclou software desarrollat pel projecte OpenSSL per a l&apos;ús de OppenSSL Toolkit (http://www.openssl.org/) i de softwqre criptogràfic escrit per l&apos;Eric Young (eay@cryptsoft.com) i software UPnP escrit per en Thomas Bernard.</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="+14"/>
+        <source>Copyright</source>
+        <translation>Copyright</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The Peercoin developers</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -39,7 +41,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Llibreta d&apos;adreces</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+19"/>
         <source>Double-click to edit address or label</source>
         <translation>Feu doble clic per editar l&apos;adreça o l&apos;etiqueta</translation>
     </message>
@@ -59,29 +61,29 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>&amp;Nova adreça</translation>
     </message>
     <message>
-        <location line="-46"/>
-        <source>These are your SteepCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Aquestes són les teves adreces de SteepCoin per rebre els pagaments. És possible que vulgueu donar una diferent a cada remitent per a poder realitzar un seguiment de qui li está pagant.</translation>
+        <location filename="../addressbookpage.cpp" line="+63"/>
+        <source>These are your Peercoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Aquestes són les teves adreces Peercoin per a rebre pagaments. Pot interesar-te proveïr diferents adreces a cadascun dels enviadors així pots identificar qui et va pagant.</translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location filename="../forms/addressbookpage.ui" line="+14"/>
         <source>&amp;Copy Address</source>
         <translation>&amp;Copiar adreça</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Show &amp;QR Code</source>
-        <translation>Mostra el códi &amp;QR</translation>
+        <translation>Mostrar codi &amp;QR</translation>
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a SteepCoin address</source>
-        <translation>Signar un missatge per demostrar que és propietari d&apos;una adreça SteepCoin</translation>
+        <source>Sign a message to prove you own a Peercoin address</source>
+        <translation>Signa el missatge per provar que ets propietari de l&apos;adreça Peercoin</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Sign &amp;Message</source>
-        <translation>Signar &amp;Message</translation>
+        <translation>Signar &amp;Missatge</translation>
     </message>
     <message>
         <location line="+25"/>
@@ -89,9 +91,19 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Esborrar l&apos;adreça sel·leccionada</translation>
     </message>
     <message>
-        <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified SteepCoin address</source>
-        <translation>Comproveu el missatge per assegurar-se que es va signar amb una adreça SteepCoin especificada.</translation>
+        <location line="+27"/>
+        <source>Export the data in the current tab to a file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Export</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="-44"/>
+        <source>Verify a message to ensure it was signed with a specified Peercoin address</source>
+        <translation>Verificar un missatge per asegurar-se que ha estat signat amb una adreça Peercoin específica</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -104,19 +116,29 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>&amp;Esborrar</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="+65"/>
+        <location filename="../addressbookpage.cpp" line="-5"/>
+        <source>These are your Peercoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Aquestes són la seva adreça de Peercoin per enviar els pagaments. Sempre revisi la quantitat i l&apos;adreça del destinatari abans transferència de monedes.</translation>
+    </message>
+    <message>
+        <location line="+13"/>
         <source>Copy &amp;Label</source>
         <translation>Copiar &amp;Etiqueta</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location line="+250"/>
+        <location line="+1"/>
+        <source>Send &amp;Coins</source>
+        <translation>Enviar &amp;Monedes</translation>
+    </message>
+    <message>
+        <location line="+260"/>
         <source>Export Address Book Data</source>
-        <translation>Exportar dades de la llibreta d&apos;adreces </translation>
+        <translation>Exporta llibreta d&apos;adreces</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -126,12 +148,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+13"/>
         <source>Error exporting</source>
-        <translation>Error a l&apos;exportar</translation>
+        <translation>Error en l&apos;exportació</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Could not write to file %1.</source>
-        <translation>No s&apos;ha pogut escriure al fitxer %1.</translation>
+        <translation>No s&apos;ha pogut escriure a l&apos;arxiu %1.</translation>
     </message>
 </context>
 <context>
@@ -175,17 +197,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Repeteix la nova contrasenya</translation>
     </message>
     <message>
-        <location line="+33"/>
-        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation>Serveix per desactivar l&apos;enviament trivial de diners quan el compte del sistema operatiu ha estat compromès. No ofereix seguretat real.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>For staking only</source>
-        <translation>Només per a fer &quot;stake&quot;</translation>
-    </message>
-    <message>
-        <location filename="../askpassphrasedialog.cpp" line="+35"/>
+        <location filename="../askpassphrasedialog.cpp" line="+33"/>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;10 or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
         <translation>Introdueixi la nova contrasenya al moneder&lt;br/&gt;Si us plau useu una contrasenya de &lt;b&gt;10 o més caracters aleatoris&lt;/b&gt;, o &lt;b&gt;vuit o més paraules&lt;/b&gt;.</translation>
     </message>
@@ -195,7 +207,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Xifrar la cartera</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+3"/>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
         <translation>Aquesta operació requereix la seva contrasenya del moneder per a desbloquejar-lo.</translation>
     </message>
@@ -231,8 +243,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR COINS&lt;/b&gt;!</source>
-        <translation>Avís: Si xifra la seva cartera i perd la contrasenya, podr�  &lt;b&gt; PERDRE TOTES LES SEVES MONEDES &lt;/ b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PEERCOINS&lt;/b&gt;!</source>
+        <translation>Advertència: Si encripteu el vostre moneder i perdeu la constrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES PEERCOINS&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -245,49 +257,49 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>IMPORTANT: Tota copia de seguretat que hagis realitzat hauria de ser reemplaçada pel, recentment generat, arxiu encriptat del moneder.</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+100"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
-        <translation>Advertència: Les lletres majúscules est� n activades!</translation>
+        <translation>Advertència: Les lletres majúscules estàn activades!</translation>
     </message>
     <message>
-        <location line="-133"/>
-        <location line="+60"/>
+        <location line="-130"/>
+        <location line="+58"/>
         <source>Wallet encrypted</source>
         <translation>Moneder encriptat</translation>
     </message>
     <message>
-        <location line="-58"/>
-        <source>SteepCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>SteepCoin tancar�  ara per acabar el procés de xifrat. Recordeu que l&apos;encriptació de la seva cartera no pot protegir completament les seves monedes de ser robades pel malware que pugui infectar al seu equip.</translation>
+        <location line="-56"/>
+        <source>Peercoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your peercoins from being stolen by malware infecting your computer.</source>
+        <translation>Peercoin es tancarà ara per acabar el procés d&apos;encriptació. Recorda que encriptar el teu moneder no protegeix completament els teus peercoins de ser robades per programari maliciós instal·lat al teu ordinador.</translation>
     </message>
     <message>
         <location line="+13"/>
         <location line="+7"/>
-        <location line="+44"/>
+        <location line="+42"/>
         <location line="+6"/>
         <source>Wallet encryption failed</source>
         <translation>L&apos;encriptació del moneder ha fallat</translation>
     </message>
     <message>
-        <location line="-56"/>
+        <location line="-54"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>L&apos;encriptació del moneder ha fallat per un error intern. El seu moneder no ha estat encriptat.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location line="+50"/>
+        <location line="+48"/>
         <source>The supplied passphrases do not match.</source>
         <translation>La contrasenya introduïda no coincideix.</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-37"/>
         <source>Wallet unlock failed</source>
         <translation>El desbloqueig del moneder ha fallat</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+12"/>
+        <location line="+11"/>
         <location line="+19"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>La contrasenya introduïda per a desencriptar el moneder és incorrecte.</translation>
@@ -306,17 +318,17 @@ This product includes software developed by the OpenSSL Project for use in the O
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="+282"/>
+        <location filename="../bitcoingui.cpp" line="+233"/>
         <source>Sign &amp;message...</source>
         <translation>Signar &amp;missatge...</translation>
     </message>
     <message>
-        <location line="+251"/>
+        <location line="+280"/>
         <source>Synchronizing with network...</source>
         <translation>Sincronitzant amb la xarxa ...</translation>
     </message>
     <message>
-        <location line="-319"/>
+        <location line="-349"/>
         <source>&amp;Overview</source>
         <translation>&amp;Panorama general</translation>
     </message>
@@ -326,7 +338,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Mostra panorama general del moneder</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+20"/>
         <source>&amp;Transactions</source>
         <translation>&amp;Transaccions</translation>
     </message>
@@ -336,32 +348,17 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Cerca a l&apos;historial de transaccions</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <source>&amp;Address Book</source>
-        <translation>&amp;Llibreta d&apos;adreces</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+7"/>
         <source>Edit the list of stored addresses and labels</source>
-        <translation>Edició de la llista d&apos;adreces i etiquetes emmagatzemades</translation>
+        <translation>Edita la llista d&apos;adreces emmagatzemada i etiquetes</translation>
     </message>
     <message>
-        <location line="-13"/>
-        <source>&amp;Receive coins</source>
-        <translation>&amp;Rebre monedes</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="-14"/>
         <source>Show the list of addresses for receiving payments</source>
-        <translation>Mostra la llista d&apos;adreces per rebre pagaments</translation>
+        <translation>Mostra el llistat d&apos;adreces per rebre pagaments</translation>
     </message>
     <message>
-        <location line="-7"/>
-        <source>&amp;Send coins</source>
-        <translation>&amp;Enviar monedes</translation>
-    </message>
-    <message>
-        <location line="+35"/>
+        <location line="+31"/>
         <source>E&amp;xit</source>
         <translation>S&amp;ortir</translation>
     </message>
@@ -371,9 +368,9 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Sortir de l&apos;aplicació</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Show information about SteepCoin</source>
-        <translation>Mostra informació sobre SteepCoin</translation>
+        <location line="+4"/>
+        <source>Show information about Peercoin</source>
+        <translation>Mostra informació sobre Peercoin</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -391,7 +388,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>&amp;Opcions...</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>&amp;Encrypt Wallet...</source>
         <translation>&amp;Xifrar moneder</translation>
     </message>
@@ -405,43 +402,28 @@ This product includes software developed by the OpenSSL Project for use in the O
         <source>&amp;Change Passphrase...</source>
         <translation>&amp;Canviar contrasenya...</translation>
     </message>
-    <message numerus="yes">
-        <location line="+259"/>
-        <source>~%n block(s) remaining</source>
-        <translation><numerusform>~%n bloc restant</numerusform><numerusform>~%n blocs restants</numerusform></translation>
-    </message>
     <message>
-        <location line="+6"/>
-        <source>Downloaded %1 of %2 blocks of transaction history (%3% done).</source>
-        <translation>Descarregats %1 de %2 blocs d&apos;historial de transaccions (%3% completat).</translation>
-    </message>
-    <message>
-        <location line="-256"/>
-        <source>&amp;Export...</source>
-        <translation>&amp;Exportar...</translation>
-    </message>
-    <message>
-        <location line="-64"/>
-        <source>Send coins to a SteepCoin address</source>
-        <translation>Enviar monedes a una adreça SteepCoin</translation>
-    </message>
-    <message>
-        <location line="+47"/>
-        <source>Modify configuration options for SteepCoin</source>
-        <translation>Modificar les opcions de configuració per a SteepCoin</translation>
-    </message>
-    <message>
-        <location line="+18"/>
-        <source>Export the data in the current tab to a file</source>
-        <translation>Exportar les dades de la pestanya actual a un arxiu</translation>
-    </message>
-    <message>
-        <location line="-14"/>
-        <source>Encrypt or decrypt wallet</source>
-        <translation>Xifrar o desxifrar cartera</translation>
+        <location line="+285"/>
+        <source>Importing blocks from disk...</source>
+        <translation>Important blocs del disc..</translation>
     </message>
     <message>
         <location line="+3"/>
+        <source>Reindexing blocks on disk...</source>
+        <translation>Re-indexant blocs al disc...</translation>
+    </message>
+    <message>
+        <location line="-347"/>
+        <source>Send coins to a Peercoin address</source>
+        <translation>Enviar monedes a una adreça Peercoin</translation>
+    </message>
+    <message>
+        <location line="+49"/>
+        <source>Modify configuration options for Peercoin</source>
+        <translation>Modificar les opcions de configuració per peercoin</translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <source>Backup wallet to another location</source>
         <translation>Realitzar còpia de seguretat del moneder a un altre directori</translation>
     </message>
@@ -451,7 +433,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Canviar la constrasenya d&apos;encriptació del moneder</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+6"/>
         <source>&amp;Debug window</source>
         <translation>&amp;Finestra de debug</translation>
     </message>
@@ -461,24 +443,40 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Obrir la consola de diagnòstic i debugging</translation>
     </message>
     <message>
-        <location line="-5"/>
+        <location line="-4"/>
         <source>&amp;Verify message...</source>
         <translation>&amp;Verifica el missatge..</translation>
     </message>
     <message>
-        <location line="-202"/>
-        <source>SteepCoin</source>
-        <translation>SteepCoin</translation>
+        <location line="-165"/>
+        <location line="+530"/>
+        <source>Peercoin</source>
+        <translation>Peercoin</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="-530"/>
         <source>Wallet</source>
         <translation>Moneder</translation>
     </message>
     <message>
-        <location line="+180"/>
-        <source>&amp;About SteepCoin</source>
-        <translation>&amp;Sobre SteepCoin</translation>
+        <location line="+101"/>
+        <source>&amp;Send</source>
+        <translation>&amp;Enviar</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>&amp;Receive</source>
+        <translation>&amp;Rebre</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>&amp;Addresses</source>
+        <translation>&amp;Adreces</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>&amp;About Peercoin</source>
+        <translation>&amp;Sobre Peercoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -486,159 +484,148 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>&amp;Mostrar / Amagar</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Unlock wallet</source>
-        <translation>Desbloquejar la cartera</translation>
-    </message>
-    <message>
         <location line="+1"/>
-        <source>&amp;Lock Wallet</source>
-        <translation>&amp;Bloquejar cartera</translation>
+        <source>Show or hide the main Window</source>
+        <translation>Mostrar o amagar la finestra principal</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Lock wallet</source>
-        <translation>Bloquejar cartera</translation>
+        <location line="+3"/>
+        <source>Encrypt the private keys that belong to your wallet</source>
+        <translation>Xifrar les claus privades pertanyents al seu moneder</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+7"/>
+        <source>Sign messages with your Peercoin addresses to prove you own them</source>
+        <translation>Signa el missatges amb la seva adreça de Peercoin per provar que les poseeixes</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Verify messages to ensure they were signed with specified Peercoin addresses</source>
+        <translation>Verificar els missatges per assegurar-te que han estat signades amb una adreça Peercoin específica.</translation>
+    </message>
+    <message>
+        <location line="+28"/>
         <source>&amp;File</source>
         <translation>&amp;Arxiu</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>&amp;Settings</source>
         <translation>&amp;Configuració</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+6"/>
         <source>&amp;Help</source>
         <translation>&amp;Ajuda</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+9"/>
         <source>Tabs toolbar</source>
         <translation>Barra d&apos;eines de seccions</translation>
     </message>
     <message>
-        <location line="+8"/>
-        <source>Actions toolbar</source>
-        <translation>Barra d&apos;eines d&apos;accions</translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <location line="+9"/>
+        <location line="+17"/>
+        <location line="+10"/>
         <source>[testnet]</source>
         <translation>[testnet]</translation>
     </message>
     <message>
-        <location line="+0"/>
-        <location line="+60"/>
-        <source>SteepCoin client</source>
-        <translation>Client SteepCoin</translation>
+        <location line="+47"/>
+        <source>Peercoin client</source>
+        <translation>Client Peercoin</translation>
     </message>
     <message numerus="yes">
-        <location line="+75"/>
-        <source>%n active connection(s) to SteepCoin network</source>
-        <translation><numerusform>%n conexió activa a la xarxa SteepCoin</numerusform><numerusform>%n conexions actives a la xarxa SteepCoin</numerusform></translation>
+        <location line="+141"/>
+        <source>%n active connection(s) to Peercoin network</source>
+        <translation><numerusform>%n connexió activa a la xarxa Peercoin</numerusform><numerusform>%n connexions actives a la xarxa Peercoin</numerusform></translation>
     </message>
     <message>
-        <location line="+40"/>
-        <source>Downloaded %1 blocks of transaction history.</source>
-        <translation>Descarregats %1 blocs d&apos;historial de transaccions</translation>
+        <location line="+22"/>
+        <source>No block source available...</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location line="+413"/>
-        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
-        <translation>Fent &quot;stake&quot;.&lt;br&gt;El teu pes és %1&lt;br&gt;El pes de la xarxa és %2&lt;br&gt;El temps estimat per a guanyar una recompensa és 3%</translation>
+        <location line="+12"/>
+        <source>Processed %1 of %2 (estimated) blocks of transaction history.</source>
+        <translation>Processat el %1 de %2 (estimat) dels blocs del històric de transaccions.</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Not staking because wallet is locked</source>
-        <translation>No s&apos;est�  fent &quot;stake&quot; perquè la cartera esa bloquejada</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Not staking because wallet is offline</source>
-        <translation>No s&apos;est�  fent &quot;stake&quot; perquè la cartera est�  fora de línia</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Not staking because wallet is syncing</source>
-        <translation>No s&apos;est�  fent &quot;stake&quot; perquè la cartera est�  sincronitzant</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Not staking because you don&apos;t have mature coins</source>
-        <translation>No s&apos;est�  fent &quot;stake&quot; perquè no tens monedes madures</translation>
+        <location line="+4"/>
+        <source>Processed %1 blocks of transaction history.</source>
+        <translation>Proccessats %1 blocs del històric de transaccions.</translation>
     </message>
     <message numerus="yes">
-        <location line="-403"/>
-        <source>%n second(s) ago</source>
-        <translation><numerusform>fa %n segon</numerusform><numerusform>fa %n segons</numerusform></translation>
-    </message>
-    <message>
-        <location line="-312"/>
-        <source>About SteepCoin card</source>
-        <translation>Sobre la tarjeta SteepCoin</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Show information about SteepCoin card</source>
-        <translation>Mostra informació sobre la tarjeta SteepCoin</translation>
-    </message>
-    <message>
-        <location line="+18"/>
-        <source>&amp;Unlock Wallet...</source>
-        <translation>&amp;Desbloquejar cartera</translation>
-    </message>
-    <message numerus="yes">
-        <location line="+297"/>
-        <source>%n minute(s) ago</source>
-        <translation><numerusform>fa %n minut</numerusform><numerusform>fa %n minuts</numerusform></translation>
+        <location line="+20"/>
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n hora</numerusform><numerusform>%n hores</numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
-        <source>%n hour(s) ago</source>
-        <translation><numerusform>fa %n hora</numerusform><numerusform>fa %n hores</numerusform></translation>
+        <source>%n day(s)</source>
+        <translation><numerusform>%n dia</numerusform><numerusform>%n dies</numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
-        <source>%n day(s) ago</source>
-        <translation><numerusform>fa %n dia</numerusform><numerusform>fa %n dies</numerusform></translation>
+        <source>%n week(s)</source>
+        <translation><numerusform>%n setmana</numerusform><numerusform>%n setmanes</numerusform></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+4"/>
+        <source>%1 behind</source>
+        <translation>%1 radera</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Last received block was generated %1 ago.</source>
+        <translation>Lúltim bloc rebut ha estat generat fa %1.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Transactions after this will not yet be visible.</source>
+        <translation>Les transaccions a partir d&apos;això no seràn visibles.</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Error</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning</source>
+        <translation>Avís</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Information</source>
+        <translation>Informació</translation>
+    </message>
+    <message>
+        <location line="+70"/>
+        <source>You can send this transaction for a fee of %1, which is burned and prevents spamming of the network. Do you want to pay the fee?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="-140"/>
         <source>Up to date</source>
         <translation>Al dia</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+31"/>
         <source>Catching up...</source>
         <translation>Posar-se al dia ...</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>Last received block was generated %1.</source>
-        <translation>El darrer bloc rebut s&apos;ha generat %1.</translation>
-    </message>
-    <message>
-        <location line="+59"/>
-        <source>This transaction is over the size limit.  You can still send it for a fee of %1, which goes to the nodes that process your transaction and helps to support the network.  Do you want to pay the fee?</source>
-        <translation>Aquesta transacció es troba sobre el límit de mida. Encara pot enviar-la amb una comisió de 1%, aquesta va als nodes que processen la seva transacció i ajuda a mantenir la xarxa. Vol pagar la quota?</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+113"/>
         <source>Confirm transaction fee</source>
-        <translation>Confirmeu comisió</translation>
+        <translation>Confirmar comisió de transacció</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+8"/>
         <source>Sent transaction</source>
         <translation>Transacció enviada</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+0"/>
         <source>Incoming transaction</source>
         <translation>Transacció entrant</translation>
     </message>
@@ -652,352 +639,39 @@ Address: %4
         <translation>Data: %1\nQuantitat %2\n Tipus: %3\n Adreça: %4\n</translation>
     </message>
     <message>
-        <location line="+100"/>
-        <location line="+15"/>
+        <location line="+33"/>
+        <location line="+23"/>
         <source>URI handling</source>
         <translation>Manejant URI</translation>
     </message>
     <message>
-        <location line="-15"/>
-        <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid SteepCoin address or malformed URI parameters.</source>
-        <translation>l&apos;URI no es pot analitzar! Això pot ser causat per una adreça SteepCoin no v� lida o par� metres URI malformats.</translation>
+        <location line="-23"/>
+        <location line="+23"/>
+        <source>URI can not be parsed! This can be caused by an invalid Peercoin address or malformed URI parameters.</source>
+        <translation>la URI no pot ser processada! Això es pot ser causat per una adreça Peercoin invalida o paràmetres URI malformats.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+17"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
-        <translation>El moneder est�  &lt;b&gt;encriptat&lt;/b&gt; i actualment &lt;b&gt;desbloquejat&lt;/b&gt;</translation>
+        <translation>El moneder està &lt;b&gt;encriptat&lt;/b&gt; i actualment &lt;b&gt;desbloquejat&lt;/b&gt;</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+8"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
-        <translation>El moneder est�  &lt;b&gt;encriptat&lt;/b&gt; i actualment &lt;b&gt;bloquejat&lt;/b&gt;</translation>
+        <translation>El moneder està &lt;b&gt;encriptat&lt;/b&gt; i actualment &lt;b&gt;bloquejat&lt;/b&gt;</translation>
     </message>
     <message>
-        <location line="+25"/>
-        <source>Backup Wallet</source>
-        <translation>Realitzar còpia de seguretat del moneder</translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>Wallet Data (*.dat)</source>
-        <translation>Dades del moneder (*.dat)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Backup Failed</source>
-        <translation>Còpia de seguretat fallida</translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>There was an error trying to save the wallet data to the new location.</source>
-        <translation>Hi ha un error al tractar de salvar les dades de la seva cartera a la nova ubicació.</translation>
-    </message>
-    <message numerus="yes">
-        <location line="+76"/>
-        <source>%n second(s)</source>
-        <translation><numerusform>%n segon</numerusform><numerusform>%n segons</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location line="+4"/>
-        <source>%n minute(s)</source>
-        <translation><numerusform>%n minut</numerusform><numerusform>%n minuts</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location line="+4"/>
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n hora</numerusform><numerusform>%n hores</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location line="+4"/>
-        <source>%n day(s)</source>
-        <translation><numerusform>%n dia</numerusform><numerusform>%n dies</numerusform></translation>
-    </message>
-    <message>
-        <location line="+18"/>
-        <source>Not staking</source>
-        <translation>No s&apos;est�  fent &quot;stake&quot; </translation>
-    </message>
-    <message>
-        <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. SteepCoin can no longer continue safely and will quit.</source>
-        <translation>S&apos;ha produït un error fatal. SteepCoin ja no pot continuar de forma segura i es tancar� .</translation>
+        <location filename="../bitcoin.cpp" line="+111"/>
+        <source>A fatal error occurred. Peercoin can no longer continue safely and will quit.</source>
+        <translation>Ha tingut lloc un error fatal. Peercoin no pot continuar executant-se de manera segura i es tancará.</translation>
     </message>
 </context>
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+90"/>
+        <location filename="../clientmodel.cpp" line="+104"/>
         <source>Network Alert</source>
         <translation>Alerta de xarxa</translation>
-    </message>
-</context>
-<context>
-    <name>CoinControlDialog</name>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="+14"/>
-        <source>Coin Control</source>
-        <translation>Opcions del control de monedes</translation>
-    </message>
-    <message>
-        <location line="+31"/>
-        <source>Quantity:</source>
-        <translation>Quantitat:</translation>
-    </message>
-    <message>
-        <location line="+32"/>
-        <source>Bytes:</source>
-        <translation>Bytes:</translation>
-    </message>
-    <message>
-        <location line="+48"/>
-        <source>Amount:</source>
-        <translation>Quantitat:</translation>
-    </message>
-    <message>
-        <location line="+32"/>
-        <source>Priority:</source>
-        <translation>Prioritat:</translation>
-    </message>
-    <message>
-        <location line="+48"/>
-        <source>Fee:</source>
-        <translation>Quota:</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>Low Output:</source>
-        <translation>Sortida baixa:</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="+551"/>
-        <source>no</source>
-        <translation>no</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="+51"/>
-        <source>After Fee:</source>
-        <translation>Quota posterior:</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>Change:</source>
-        <translation>Canvi:</translation>
-    </message>
-    <message>
-        <location line="+69"/>
-        <source>(un)select all</source>
-        <translation>(de)seleccionar tot</translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>Tree mode</source>
-        <translation>Mode arbre</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>List mode</source>
-        <translation>Mode llista</translation>
-    </message>
-    <message>
-        <location line="+45"/>
-        <source>Amount</source>
-        <translation>Quantitat</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Label</source>
-        <translation>Etiqueta</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Address</source>
-        <translation>Adreça</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Date</source>
-        <translation>Data</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Confirmations</source>
-        <translation>Confirmacions</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Confirmed</source>
-        <translation>Confirmat</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Priority</source>
-        <translation>Prioritat</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="-515"/>
-        <source>Copy address</source>
-        <translation>Copiar adreça </translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy label</source>
-        <translation>Copiar etiqueta</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <location line="+26"/>
-        <source>Copy amount</source>
-        <translation>Copiar quantitat</translation>
-    </message>
-    <message>
-        <location line="-25"/>
-        <source>Copy transaction ID</source>
-        <translation>Copiar ID de transacció</translation>
-    </message>
-    <message>
-        <location line="+24"/>
-        <source>Copy quantity</source>
-        <translation>Copiar quantitat</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Copy fee</source>
-        <translation>Copiar comisió</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy after fee</source>
-        <translation>Copiar després de comisió</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy bytes</source>
-        <translation>Copiar bytes</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy priority</source>
-        <translation>Copiar prioritat</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy low output</source>
-        <translation>Copiar sortida baixa</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy change</source>
-        <translation>Copiar canvi</translation>
-    </message>
-    <message>
-        <location line="+317"/>
-        <source>highest</source>
-        <translation>El més alt</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>high</source>
-        <translation>Alt</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>medium-high</source>
-        <translation>mig-alt</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>medium</source>
-        <translation>mig</translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <source>low-medium</source>
-        <translation>baix-mig</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>low</source>
-        <translation>baix</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>lowest</source>
-        <translation>el més baix</translation>
-    </message>
-    <message>
-        <location line="+155"/>
-        <source>DUST</source>
-        <translation>POLS</translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>yes</source>
-        <translation>si</translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>This label turns red, if the transaction size is bigger than 10000 bytes.
-
- This means a fee of at least %1 per kb is required.
-
- Can vary +/- 1 Byte per input.</source>
-        <translation>Aquesta etiqueta es tornar�  vermell, si la mida de la transacció és més gran que 10000 bytes.
-
-En aquest cas es requereix una comisió d&apos;almenys el 1% per kb. 
-
-Pot variar + / - 1 Byte per entrada.</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Transactions with higher priority get more likely into a block.
-
-This label turns red, if the priority is smaller than &quot;medium&quot;.
-
- This means a fee of at least %1 per kb is required.</source>
-        <translation>Les operacions amb més prioritat entren mes facilment a un bloc. 
-
-Aquesta etiqueta es torna vermella, si la prioritat és menor que &quot;mitja&quot;.
-
-En aquest cas es requereix una comisió d&apos;almenys el 1% per kb.</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>This label turns red, if any recipient receives an amount smaller than %1.
-
- This means a fee of at least %2 is required. 
-
- Amounts below 0.546 times the minimum relay fee are shown as DUST.</source>
-        <translation>Aquesta etiqueta es torna vermella, si qualsevol beneficiari rep una quantitat inferior a 1%.
-
-En aquest cas es requereix una comisió d&apos;almenys 2%.
-
-Les quantitats inferiors a 0.546 vegades la quota mínima del relé es mostren com a POLS.</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>This label turns red, if the change is smaller than %1.
-
- This means a fee of at least %2 is required.</source>
-        <translation>Aquesta etiqueta es torna vermella, si el canvi és menor que 1%.
-
-En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
-    </message>
-    <message>
-        <location line="+37"/>
-        <location line="+66"/>
-        <source>(no label)</source>
-        <translation>(sense etiqueta)</translation>
-    </message>
-    <message>
-        <location line="-9"/>
-        <source>change from %1 (%2)</source>
-        <translation>canvi desde %1 (%2)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>(change)</source>
-        <translation>(canviar)</translation>
     </message>
 </context>
 <context>
@@ -1015,7 +689,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+10"/>
         <source>The label associated with this address book entry</source>
-        <translation>L&apos;etiqueta associada amb aquesta entrada de la llibreta d&apos;adreces</translation>
+        <translation>Etiqueta associada amb aquesta entrada de la llibreta d&apos;adreces</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1025,10 +699,10 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+10"/>
         <source>The address associated with this address book entry. This can only be modified for sending addresses.</source>
-        <translation>La direcció associada amb aquesta entrada de la llibreta d&apos;adreces. Només pot ser modificada per a l&apos;enviament d&apos;adreces.</translation>
+        <translation>Adreça associada amb aquesta entrada de la llibreta d&apos;adreces. Només pot ser modificat per a enviar adreces.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="+20"/>
+        <location filename="../editaddressdialog.cpp" line="+21"/>
         <source>New receiving address</source>
         <translation>Nova adreça de recepció.</translation>
     </message>
@@ -1054,8 +728,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid SteepCoin address.</source>
-        <translation>La direcció introduïda &quot;%1&quot; no és una adreça SteepCoin v� lida.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Peercoin address.</source>
+        <translation>L&apos;adreça introduida &quot;%1&quot; no és una adreça Peercoin valida.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1071,10 +745,10 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
 <context>
     <name>GUIUtil::HelpMessageBox</name>
     <message>
-        <location filename="../guiutil.cpp" line="+420"/>
+        <location filename="../guiutil.cpp" line="+424"/>
         <location line="+12"/>
-        <source>SteepCoin-Qt</source>
-        <translation>SteepCoin-Qt</translation>
+        <source>Peercoin-Qt</source>
+        <translation>Peercoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1126,53 +800,43 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.</source>
-        <translation>Comisió opcional per kB que ajuda a assegurar-se que les seves transaccions es processen r� pidament. La majoria de les transaccions són 1 kB. Comisió d&apos;0.01 recomenada.</translation>
+        <source>Mandatory network transaction fee per kB transferred. Most transactions are 1 kB and incur a 0.01 PPC fee. Note: transfer size may increase depending on the number of input transactions required to be added together to fund the payment.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+15"/>
-        <source>Pay transaction &amp;fee</source>
-        <translation>Pagar &amp;comisió de transacció</translation>
+        <source>Additional network &amp;fee</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+31"/>
-        <source>Reserved amount does not participate in staking and is therefore spendable at any time.</source>
-        <translation>La quantitat reservada no participa en fer &quot;stake&quot; i per tant es pot gastar en qualsevol moment.</translation>
-    </message>
-    <message>
-        <location line="+15"/>
-        <source>Reserve</source>
-        <translation>Reserva</translation>
-    </message>
-    <message>
-        <location line="+31"/>
-        <source>Automatically start SteepCoin after logging in to the system.</source>
-        <translation>Inicia autom� ticament SteepCoin després d&apos;entrar en el sistema.</translation>
+        <source>Automatically start Peercoin after logging in to the system.</source>
+        <translation>Iniciar automàticament Peercoin després de l&apos;inici de sessió del sistema.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start SteepCoin on system login</source>
-        <translation>&amp;Iniciar SteepCoin amb l&apos;inici de sessió</translation>
+        <source>&amp;Start Peercoin on system login</source>
+        <translation>&amp;Iniciar Peercoin al inici de sessió del sistema.</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>Detach block and address databases at shutdown. This means they can be moved to another data directory, but it slows down shutdown. The wallet is always detached.</source>
-        <translation>Separeu el bloc i les bases de dades d&apos;adreces en apagar l&apos;equip. En aquest cas es pot moure a un altre directori de dades, però alenteix l&apos;apagada. La cartera est�  sempre separada.</translation>
+        <location line="+35"/>
+        <source>Reset all client options to default.</source>
+        <translation>Reestablir totes les opcions del client.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Detach databases at shutdown</source>
-        <translation>&amp;Separar bases de dades a l&apos;apagar l&apos;equip</translation>
+        <source>&amp;Reset Options</source>
+        <translation>&amp;Reestablir Opcions</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+13"/>
         <source>&amp;Network</source>
         <translation>&amp;Xarxa</translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the SteepCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Obrir autom� ticament el port de client SteepCoin en el router. Això només funciona quan el router és compatible amb UPnP i est�  habilitat.</translation>
+        <source>Automatically open the Peercoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Obrir el port del client de Peercoin al router de forma automàtica. Això només funciona quan el teu router implementa UPnP i l&apos;opció està activada.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1181,13 +845,13 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the SteepCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Connecteu-vos a la xarxa SteepCoin través d&apos;un proxy SOCKS (per exemple, quan es connecta a través de Tor).</translation>
+        <source>Connect to the Peercoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Connectar a la xarxa Peercoin a través de un SOCKS proxy (per exemple connectant a través de Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Connect through SOCKS proxy:</source>
-        <translation>&amp;Conectar a través d&apos;un proxy SOCKS:</translation>
+        <translation>&amp;Connecta a través de un proxy SOCKS:</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -1197,7 +861,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+19"/>
         <source>IP address of the proxy (e.g. 127.0.0.1)</source>
-        <translation>Adreça IP del servidor proxy (per exemple, 127.0.0.1)</translation>
+        <translation>Adreça IP del proxy (per exemple 127.0.0.1)</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1237,7 +901,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+7"/>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation>Minimitza en comptes de sortir de la aplicació al tancar la finestra. Quan aquesta opció est�  activa, la aplicació només es tancar�  al seleccionar Sortir al menú.</translation>
+        <translation>Minimitza en comptes de sortir de la aplicació al tancar la finestra. Quan aquesta opció està activa, la aplicació només es tancarà al seleccionar Sortir al menú.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1256,8 +920,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting SteepCoin.</source>
-        <translation>L&apos;idioma de la interfície d&apos;usuari es pot configurar aquí. Aquesta configuració s&apos;aplicar�  després de reiniciar SteepCoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Peercoin.</source>
+        <translation>Aquí pots definir el llenguatge de l&apos;aplicatiu. Aquesta configuració tindrà efecte un cop es reiniciï Peercoin.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1271,23 +935,13 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show SteepCoin addresses in the transaction list or not.</source>
-        <translation>Per mostrar SteepCoin adreces a la llista de transaccions o no.</translation>
+        <source>Whether to show Peercoin addresses in the transaction list or not.</source>
+        <translation>Mostrar adreces Peercoin als llistats de transaccions o no.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Display addresses in transaction list</source>
         <translation>&amp;Mostrar adreces al llistat de transaccions</translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>Whether to show coin control features or not.</source>
-        <translation>Per mostrar les característiques de control de la moneda o no.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Display coin &amp;control features (experts only!)</source>
-        <translation>Mostrar controls i característiques de la moneda (només per a experts!)</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1305,12 +959,27 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>&amp;Aplicar</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="+55"/>
+        <location filename="../optionsdialog.cpp" line="+53"/>
         <source>default</source>
         <translation>Per defecte</translation>
     </message>
     <message>
-        <location line="+149"/>
+        <location line="+130"/>
+        <source>Confirm options reset</source>
+        <translation>Confirmi el reestabliment de les opcions</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Some settings may require a client restart to take effect.</source>
+        <translation>Algunes configuracions poden requerir reiniciar el client per a que tinguin efecte.</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Do you want to proceed?</source>
+        <translation>Vols procedir?</translation>
+    </message>
+    <message>
+        <location line="+42"/>
         <location line="+9"/>
         <source>Warning</source>
         <translation>Avís</translation>
@@ -1318,8 +987,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting SteepCoin.</source>
-        <translation>Aquesta configuració s&apos;aplicar�  després de reiniciar SteepCoin.</translation>
+        <source>This setting will take effect after restarting Peercoin.</source>
+        <translation>Aquesta configuració tindrà efecte un cop es reiniciï Peercoin.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1335,15 +1004,15 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Formulari</translation>
     </message>
     <message>
-        <location line="+33"/>
-        <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the SteepCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>La informació mostrada pot estar fora de data. La seva cartera es sincronitza autom� ticament amb la xarxa SteepCoin després d&apos;establir una connexió, però aquest procés no s&apos;ha completat encara.</translation>
+        <location line="+50"/>
+        <location line="+166"/>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Peercoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>La informació mostrada pot no estar al día. El teu moneder es sincronitza automàticament amb la xarxa Peercoin un cop s&apos;ha establert connexió, però aquest proces no s&apos;ha completat encara.</translation>
     </message>
     <message>
-        <location line="-160"/>
-        <source>Stake:</source>
-        <translation>En &quot;stake&quot;:</translation>
+        <location line="-124"/>
+        <source>Balance:</source>
+        <translation>Balanç:</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1351,22 +1020,12 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Sense confirmar:</translation>
     </message>
     <message>
-        <location line="-107"/>
+        <location line="-78"/>
         <source>Wallet</source>
         <translation>Moneder</translation>
     </message>
     <message>
-        <location line="+49"/>
-        <source>Spendable:</source>
-        <translation>Pot gastar-se:</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>Your current spendable balance</source>
-        <translation>El balanç de saldo actual que pot gastar-se</translation>
-    </message>
-    <message>
-        <location line="+71"/>
+        <location line="+107"/>
         <source>Immature:</source>
         <translation>Immatur:</translation>
     </message>
@@ -1376,35 +1035,33 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Balanç minat que encara no ha madurat</translation>
     </message>
     <message>
-        <location line="+20"/>
-        <source>Total:</source>
-        <translation>Total:</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>Your current total balance</source>
-        <translation>El seu balanç total</translation>
-    </message>
-    <message>
         <location line="+46"/>
         <source>&lt;b&gt;Recent transactions&lt;/b&gt;</source>
         <translation>&lt;b&gt;Transaccions recents&lt;/b&gt;</translation>
     </message>
     <message>
-        <location line="-108"/>
+        <location line="-101"/>
+        <source>Your current balance</source>
+        <translation>El seu balanç actual</translation>
+    </message>
+    <message>
+        <location line="+29"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the current balance</source>
-        <translation>Total de transaccions que encara no s&apos;han confirmat, i encara no compten per al balanç actual</translation>
+        <translation>Total de transaccions encara sense confirmar, que encara no es content en el balanç actual</translation>
     </message>
     <message>
-        <location line="-29"/>
-        <source>Total of coins that was staked, and do not yet count toward the current balance</source>
-        <translation>Total de les monedes que s&apos;han posat a fer &quot;stake&quot; (en joc, aposta), i encara no compten per al balanç actual</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="+113"/>
+        <location filename="../overviewpage.cpp" line="+116"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>Fora de sincronia</translation>
+    </message>
+</context>
+<context>
+    <name>PaymentServer</name>
+    <message>
+        <location filename="../paymentserver.cpp" line="+107"/>
+        <source>Cannot start peercoin: click-to-pay handler</source>
+        <translation>No es pot iniciar peercoin: manejador clicla-per-pagar</translation>
     </message>
 </context>
 <context>
@@ -1412,12 +1069,12 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location filename="../forms/qrcodedialog.ui" line="+14"/>
         <source>QR Code Dialog</source>
-        <translation>Di� leg de codi QR</translation>
+        <translation>Dialeg del codi QR</translation>
     </message>
     <message>
         <location line="+59"/>
         <source>Request Payment</source>
-        <translation>Sol·licitud de pagament</translation>
+        <translation>Reclamar pagament</translation>
     </message>
     <message>
         <location line="+56"/>
@@ -1437,7 +1094,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+71"/>
         <source>&amp;Save As...</source>
-        <translation>&amp;Desa com ...</translation>
+        <translation>&amp;Desar com...</translation>
     </message>
     <message>
         <location filename="../qrcodedialog.cpp" line="+62"/>
@@ -1447,7 +1104,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+40"/>
         <source>The entered amount is invalid, please check.</source>
-        <translation>La quantitat introduïda no és v� lida, comproveu-ho si us plau.</translation>
+        <translation>La quantitat introduïda és invalida, si us plau comprovi-la.</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -1482,7 +1139,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <location line="+53"/>
         <location line="+23"/>
         <location line="+23"/>
-        <location filename="../rpcconsole.cpp" line="+348"/>
+        <location filename="../rpcconsole.cpp" line="+339"/>
         <source>N/A</source>
         <translation>N/A</translation>
     </message>
@@ -1549,17 +1206,17 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+16"/>
         <source>Command-line options</source>
-        <translation>Opcions de la línia d&apos;ordres</translation>
+        <translation>Opcions de línia d&apos;ordres</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the SteepCoin-Qt  help message message to get a list with possible SteepCoin command-line options.</source>
-        <translation>Mostra el missatge d&apos;ajuda de SteepCoin-Qt per obtenir una llista amb les possibles opcions de línia d&apos;ordres SteepCoin.</translation>
+        <source>Show the Peercoin-Qt help message to get a list with possible Peercoin command-line options.</source>
+        <translation>Mostrar el missatge d&apos;ajuda de Peercoin-Qt per a obtenir un llistat de possibles ordres per a la línia d&apos;ordres de Peercoin.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Show</source>
-        <translation>&amp;Mostra</translation>
+        <translation>&amp;Mostrar</translation>
     </message>
     <message>
         <location line="+24"/>
@@ -1573,23 +1230,23 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="-104"/>
-        <source>SteepCoin - Debug window</source>
-        <translation>SteepCoin - Finestra Depuració</translation>
+        <source>Peercoin - Debug window</source>
+        <translation>Peercoin -Finestra de debug</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>SteepCoin Core</source>
-        <translation>Nucli SteepCoin</translation>
+        <source>Peercoin Core</source>
+        <translation>Nucli de Peercoin</translation>
     </message>
     <message>
         <location line="+279"/>
         <source>Debug log file</source>
-        <translation>Diet� ri de debug</translation>
+        <translation>Dietàri de debug</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the SteepCoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Obriu el fitxer de registre de depuració SteepCoin des del directori de dades actual. Això pot trigar uns segons en els arxius de registre de grans dimensions.</translation>
+        <source>Open the Peercoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Obrir el dietari de debug de Peercoin del directori de dades actual. Aixó pot trigar uns quants segons per a dietàris grossos.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1597,9 +1254,9 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Netejar consola</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the SteepCoin RPC console.</source>
-        <translation>Benvingut a la consola RPC de SteepCoin.</translation>
+        <location filename="../rpcconsole.cpp" line="-30"/>
+        <source>Welcome to the Peercoin RPC console.</source>
+        <translation>Benvingut a la consola RPC de Peercoin</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1616,7 +1273,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+182"/>
+        <location filename="../sendcoinsdialog.cpp" line="+124"/>
         <location line="+5"/>
         <location line="+5"/>
         <location line="+5"/>
@@ -1627,96 +1284,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Enviar monedes</translation>
     </message>
     <message>
-        <location line="+76"/>
-        <source>Coin Control Features</source>
-        <translation>(Opcions del control del Coin)</translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Inputs...</source>
-        <translation>Entrades</translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>automatically selected</source>
-        <translation>Seleccionat autom� ticament</translation>
-    </message>
-    <message>
-        <location line="+19"/>
-        <source>Insufficient funds!</source>
-        <translation>Fons insuficient</translation>
-    </message>
-    <message>
-        <location line="+77"/>
-        <source>Quantity:</source>
-        <translation>Quantitat:</translation>
-    </message>
-    <message>
-        <location line="+22"/>
-        <location line="+35"/>
-        <source>0</source>
-        <translation>0</translation>
-    </message>
-    <message>
-        <location line="-19"/>
-        <source>Bytes:</source>
-        <translation>Bytes:</translation>
-    </message>
-    <message>
-        <location line="+51"/>
-        <source>Amount:</source>
-        <translation>Quantitat:</translation>
-    </message>
-    <message>
-        <location line="+22"/>
-        <location line="+86"/>
-        <location line="+86"/>
-        <location line="+32"/>
-        <source>0.00 hack</source>
-        <translation>123.456 hack {0.00 ?}</translation>
-    </message>
-    <message>
-        <location line="-191"/>
-        <source>Priority:</source>
-        <translation>Prioritat:</translation>
-    </message>
-    <message>
-        <location line="+19"/>
-        <source>medium</source>
-        <translation>mig</translation>
-    </message>
-    <message>
-        <location line="+32"/>
-        <source>Fee:</source>
-        <translation>Quota:</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>Low Output:</source>
-        <translation>Sortida baixa:</translation>
-    </message>
-    <message>
-        <location line="+19"/>
-        <source>no</source>
-        <translation>no</translation>
-    </message>
-    <message>
-        <location line="+32"/>
-        <source>After Fee:</source>
-        <translation>Quota posterior:</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>Change</source>
-        <translation>Canvi</translation>
-    </message>
-    <message>
         <location line="+50"/>
-        <source>custom change address</source>
-        <translation>Adreça de canvi pròpia</translation>
-    </message>
-    <message>
-        <location line="+106"/>
         <source>Send to multiple recipients at once</source>
         <translation>Enviar a multiples destinataris al mateix temps</translation>
     </message>
@@ -1728,7 +1296,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+20"/>
         <source>Remove all transaction fields</source>
-        <translation>Traieu tots els camps de transacció</translation>
+        <translation>Netejar tots els camps de la transacció</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1736,14 +1304,14 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Esborrar &amp;Tot</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+22"/>
         <source>Balance:</source>
         <translation>Balanç:</translation>
     </message>
     <message>
-        <location line="+16"/>
-        <source>123.456 hack</source>
-        <translation>123.456 hack</translation>
+        <location line="+10"/>
+        <source>123.456 BTC</source>
+        <translation>123.456 BTC</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -1756,54 +1324,9 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>E&amp;nviar</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a SteepCoin address (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>Introdueix una adreça SteepCoin (p.ex. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
-    </message>
-    <message>
-        <location line="+15"/>
-        <source>Copy quantity</source>
-        <translation>Copiar quantitat</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy amount</source>
-        <translation>Copiar quantitat</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy fee</source>
-        <translation>Copiar comisió</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy after fee</source>
-        <translation>Copiar després de comisió</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy bytes</source>
-        <translation>Copiar bytes</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy priority</source>
-        <translation>Copiar prioritat</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy low output</source>
-        <translation>Copiar sortida baixa</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy change</source>
-        <translation>Copiar canvi</translation>
-    </message>
-    <message>
-        <location line="+86"/>
+        <location filename="../sendcoinsdialog.cpp" line="-59"/>
         <source>&lt;b&gt;%1&lt;/b&gt; to %2 (%3)</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt; a %2 (%3)</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; to %2 (%3)</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1813,7 +1336,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+1"/>
         <source>Are you sure you want to send %1?</source>
-        <translation>Esteu segur que voleu enviar %1?</translation>
+        <translation>Estas segur que vols enviar %1?</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -1821,9 +1344,9 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>i</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+23"/>
         <source>The recipient address is not valid, please recheck.</source>
-        <translation>L&apos;adreça remetent no és v� lida, si us plau comprovi-la.</translation>
+        <translation>L&apos;adreça remetent no és vàlida, si us plau comprovi-la.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1847,28 +1370,13 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>Error: Transaction creation failed.</source>
-        <translation>Error: La creació de transacció ha fallat.</translation>
+        <source>Error: Transaction creation failed!</source>
+        <translation>Error: La ceació de la transacció ha fallat!</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Error: The transaction was rejected. This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Error: La transacció ha sigut rebutjada. Això pot passar si algunes de les monedes a la cartera ja s&apos;han gastat, per exemple, si vostè utilitza una còpia del wallet.dat i les monedes han estat gastades a la cópia pero no s&apos;han marcat com a gastades aqui.</translation>
-    </message>
-    <message>
-        <location line="+251"/>
-        <source>WARNING: Invalid SteepCoin address</source>
-        <translation>ADVERTÈNCIA: Direcció SteepCoin inv� lida</translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>(no label)</source>
-        <translation>(sense etiqueta)</translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <source>WARNING: unknown change address</source>
-        <translation>ADVERTÈNCIA: direcció de canvi desconeguda</translation>
+        <translation>Error: La transacció ha estat rebutjada. Això pot passar si alguna de les monedes del teu moneder ja s&apos;han gastat, com si haguesis usat una copia de l&apos;arxiu wallet.dat i s&apos;haguessin gastat monedes de la copia però sense marcar com gastades en aquest.</translation>
     </message>
 </context>
 <context>
@@ -1889,25 +1397,25 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Pagar &amp;A:</translation>
     </message>
     <message>
-        <location line="+24"/>
-        <location filename="../sendcoinsentry.cpp" line="+25"/>
+        <location line="+34"/>
+        <source>The address to send the payment to (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>La adreça a on envia el pagament (per exemple: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+    </message>
+    <message>
+        <location line="+60"/>
+        <location filename="../sendcoinsentry.cpp" line="+26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Introdueixi una etiquera per a aquesta adreça per afegir-la a la llibreta d&apos;adreces</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="-78"/>
         <source>&amp;Label:</source>
         <translation>&amp;Etiqueta:</translation>
     </message>
     <message>
-        <location line="+18"/>
-        <source>The address to send the payment to  (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>L&apos;adreça per a enviar el pagament (per exemple: SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
-    </message>
-    <message>
-        <location line="+10"/>
+        <location line="+28"/>
         <source>Choose address from address book</source>
-        <translation>Trieu la direcció de la llibreta d&apos;adreces</translation>
+        <translation>Escollir adreça del llibre d&apos;adreces</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1931,8 +1439,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a SteepCoin address (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>Introdueix una adreça SteepCoin (p.ex. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
+        <source>Enter a Peercoin address</source>
+        <translation>Introdueixi una adreça de Peercoin</translation>
     </message>
 </context>
 <context>
@@ -1944,34 +1452,33 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location line="+124"/>
         <source>&amp;Sign Message</source>
         <translation>&amp;Signar Missatge</translation>
     </message>
     <message>
-        <location line="-118"/>
+        <location line="+6"/>
         <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Pots signar missatges amb la teva adreça per provar que són teus. Sigues cautelòs al signar qualsevol cosa, ja que els atacs phising poden intentar confondre&apos;t per a que els hi signis amb la teva identitat. Tan sols signa als documents completament detallats amb els que hi est� s d&apos;acord.</translation>
+        <translation>Pots signar missatges amb la teva adreça per provar que són teus. Sigues cautelòs al signar qualsevol cosa, ja que els atacs phising poden intentar confondre&apos;t per a que els hi signis amb la teva identitat. Tan sols signa als documents completament detallats amb els que hi estàs d&apos;acord.</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>L&apos;adreça per a signar el missatge (per exemple SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
+        <source>The address to sign the message with (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>La adreça amb la que signat els missatges (per exemple 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location line="+203"/>
+        <location line="+213"/>
         <source>Choose an address from the address book</source>
-        <translation>Trieu una adreça de la llibreta d&apos;adreces</translation>
+        <translation>Escollir una adreça de la llibreta de direccions</translation>
     </message>
     <message>
-        <location line="-193"/>
-        <location line="+203"/>
+        <location line="-203"/>
+        <location line="+213"/>
         <source>Alt+A</source>
         <translation>Alta+A</translation>
     </message>
     <message>
-        <location line="-193"/>
+        <location line="-203"/>
         <source>Paste address from clipboard</source>
         <translation>Enganxar adreça del porta-retalls</translation>
     </message>
@@ -1986,17 +1493,27 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Introdueix aqui el missatge que vols signar</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+7"/>
+        <source>Signature</source>
+        <translation>Signatura</translation>
+    </message>
+    <message>
+        <location line="+27"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>Copiar la signatura actual al porta-retalls del sistema</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this SteepCoin address</source>
-        <translation>Signar un missatge per demostrar que és propietari d&apos;aquesta adreça SteepCoin</translation>
+        <source>Sign the message to prove you own this Peercoin address</source>
+        <translation>Signa el missatge per provar que ets propietari d&apos;aquesta adreça Peercoin</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+3"/>
+        <source>Sign &amp;Message</source>
+        <translation>Signar &amp;Missatge</translation>
+    </message>
+    <message>
+        <location line="+14"/>
         <source>Reset all sign message fields</source>
         <translation>Neteja tots els camps de clau</translation>
     </message>
@@ -2008,35 +1525,39 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="-87"/>
-        <location line="+70"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Verificar el missatge</translation>
     </message>
     <message>
-        <location line="-64"/>
+        <location line="+6"/>
         <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
         <translation>Introdueixi l&apos;adreça signant, missatge (assegura&apos;t que copies salts de línia, espais, tabuladors, etc excactament tot el text) i la signatura a sota per verificar el missatge. Per evitar ser enganyat per un atac home-entre-mig, vés amb compte de no llegir més en la signatura del que hi ha al missatge signat mateix.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>La direcció que va ser signada amb un missatge (per exemple SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
+        <source>The address the message was signed with (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>La adreça amb el que el missatge va ser signat (per exemple 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified SteepCoin address</source>
-        <translation>Comproveu el missatge per assegurar-se que es va signar amb l&apos;adreça SteepCoin especificada.</translation>
+        <source>Verify the message to ensure it was signed with the specified Peercoin address</source>
+        <translation>Verificar el missatge per assegurar-se que ha estat signat amb una adreça Peercoin específica</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+3"/>
+        <source>Verify &amp;Message</source>
+        <translation>Verificar &amp;Missatge</translation>
+    </message>
+    <message>
+        <location line="+14"/>
         <source>Reset all verify message fields</source>
         <translation>Neteja tots els camps de verificació de missatge</translation>
     </message>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a SteepCoin address (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>Introdueix una adreça SteepCoin (p.ex. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
+        <source>Enter a Peercoin address</source>
+        <translation>Introdueixi una adreça de Peercoin (per exemple 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2045,14 +1566,14 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter SteepCoin signature</source>
-        <translation>Introduïu la signatura SteepCoin</translation>
+        <source>Enter Peercoin signature</source>
+        <translation>Introduïr una clau Peercoin</translation>
     </message>
     <message>
         <location line="+82"/>
         <location line="+81"/>
         <source>The entered address is invalid.</source>
-        <translation>L&apos;adreça intoduïda és inv� lida.</translation>
+        <translation>L&apos;adreça intoduïda és invàlida.</translation>
     </message>
     <message>
         <location line="-81"/>
@@ -2076,7 +1597,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+8"/>
         <source>Private key for the entered address is not available.</source>
-        <translation>La clau privada per a la adreça introduïda no est�  disponible.</translation>
+        <translation>La clau privada per a la adreça introduïda no està disponible.</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -2116,24 +1637,27 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
 </context>
 <context>
+    <name>SplashScreen</name>
+    <message>
+        <location filename="../splashscreen.cpp" line="+22"/>
+        <source>The Peercoin developers</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>[testnet]</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>TransactionDesc</name>
     <message>
-        <location filename="../transactiondesc.cpp" line="+19"/>
+        <location filename="../transactiondesc.cpp" line="+20"/>
         <source>Open until %1</source>
         <translation>Obert fins %1</translation>
     </message>
-    <message numerus="yes">
-        <location line="-2"/>
-        <source>Open for %n block(s)</source>
-        <translation><numerusform>Obert per a %n bloc</numerusform><numerusform>Obert per a %n blocs</numerusform></translation>
-    </message>
     <message>
-        <location line="+8"/>
-        <source>conflicted</source>
-        <translation>conflicte</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+6"/>
         <source>%1/offline</source>
         <translation>%1/offline</translation>
     </message>
@@ -2155,7 +1679,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message numerus="yes">
         <location line="+7"/>
         <source>, broadcast through %n node(s)</source>
-        <translation><numerusform>, transmès a través de %n node</numerusform><numerusform>, transmès a través de %n nodes</numerusform></translation>
+        <translation><numerusform>, difusió a través de %n node</numerusform><numerusform>, difusió a través de %n nodes</numerusform></translation>
     </message>
     <message>
         <location line="+4"/>
@@ -2208,7 +1732,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message numerus="yes">
         <location line="-102"/>
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>madura en %n bloc més</numerusform><numerusform>madura en %n blocs més</numerusform></translation>
+        <translation><numerusform>disponible en %n bloc més</numerusform><numerusform>disponibles en %n blocs més</numerusform></translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2250,8 +1774,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Generated coins must mature 510 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Les monedes generades han de madurar 510 blocs abans de poder-se gastar. En generar aquest bloc, que va ser transmès a la xarxa per ser afegit a la cadena de bloc. Si no aconsegueix entrar a la cadena, el seu estat canviar�  a &quot;no acceptat&quot; i no es podr�  gastar. Això pot succeir de tant en tant si un altre node genera un bloc a pocs segons del seu.</translation>
+        <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Les monedes generades han de madurar 120 blocs abans de poder ser gastades. Quan has generat aquest bloc, aquest ha estat transmés a la xarxa per a ser afegit a la cadena de blocs. Si no arriba a ser acceptat a la cadena, el seu estat passará a &quot;no acceptat&quot; i no podrá ser gastat. Això pot ocòrrer ocasionalment si un altre node genera un bloc a pocs segons del teu.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2264,7 +1788,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Transacció</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Inputs</source>
         <translation>Entrades</translation>
     </message>
@@ -2284,12 +1808,17 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>fals</translation>
     </message>
     <message>
-        <location line="-211"/>
+        <location line="-209"/>
         <source>, has not been successfully broadcast yet</source>
         <translation>, encara no ha estat emès correctement</translation>
     </message>
+    <message numerus="yes">
+        <location line="-35"/>
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Obre per %n bloc més</numerusform><numerusform>Obre per %n blocs més</numerusform></translation>
+    </message>
     <message>
-        <location line="+35"/>
+        <location line="+70"/>
         <source>unknown</source>
         <translation>desconegut</translation>
     </message>
@@ -2310,7 +1839,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
 <context>
     <name>TransactionTableModel</name>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="+226"/>
+        <location filename="../transactiontablemodel.cpp" line="+225"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
@@ -2329,50 +1858,40 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <source>Amount</source>
         <translation>Quantitat</translation>
     </message>
+    <message numerus="yes">
+        <location line="+57"/>
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Obre per %n bloc més</numerusform><numerusform>Obre per %n blocs més</numerusform></translation>
+    </message>
     <message>
-        <location line="+60"/>
+        <location line="+3"/>
         <source>Open until %1</source>
         <translation>Obert fins %1</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+3"/>
+        <source>Offline (%1 confirmations)</source>
+        <translation>Sense connexió (%1 confirmacions)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Unconfirmed (%1 of %2 confirmations)</source>
+        <translation>Sense confirmar (%1 de %2 confirmacions)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Confirmed (%1 confirmations)</source>
         <translation>Confirmat (%1 confirmacions)</translation>
     </message>
     <message numerus="yes">
-        <location line="-15"/>
-        <source>Open for %n more block(s)</source>
-        <translation><numerusform>Obert per a %n bloc més</numerusform><numerusform>Obert per a %n blocs més</numerusform></translation>
+        <location line="+8"/>
+        <source>Mined balance will be available when it matures in %n more block(s)</source>
+        <translation><numerusform>El saldo recent minat estarà disponible quan venci el termini en %n bloc més</numerusform><numerusform>El saldo recent minat estarà disponible quan venci el termini en %n blocs més</numerusform></translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Offline</source>
-        <translation>Desconnectat</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Unconfirmed</source>
-        <translation>Sense confirmar</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Confirming (%1 of %2 recommended confirmations)</source>
-        <translation>Confirmant (%1 de %2 confirmacions recomanat)</translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Conflicted</source>
-        <translation>Conflicte</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Immature (%1 confirmations, will be available after %2)</source>
-        <translation>Immadurs (%1 confirmacions, estaran disponibles després de %2)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+5"/>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation>Aquest bloc no ha estat rebut per cap altre node i probablement no ser�  acceptat!</translation>
+        <translation>Aquest bloc no ha estat rebut per cap altre node i probablement no serà acceptat!</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2380,7 +1899,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Generat però no acceptat</translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+43"/>
         <source>Received with</source>
         <translation>Rebut amb</translation>
     </message>
@@ -2410,7 +1929,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>(n/a)</translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+199"/>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
         <translation>Estat de la transacció. Desplaça&apos;t per aquí sobre per mostrar el nombre de confirmacions.</translation>
     </message>
@@ -2438,7 +1957,7 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
 <context>
     <name>TransactionView</name>
     <message>
-        <location filename="../transactionview.cpp" line="+55"/>
+        <location filename="../transactionview.cpp" line="+52"/>
         <location line="+16"/>
         <source>All</source>
         <translation>Tot</translation>
@@ -2539,9 +2058,9 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Mostra detalls de la transacció</translation>
     </message>
     <message>
-        <location line="+144"/>
+        <location line="+139"/>
         <source>Export Transaction Data</source>
-        <translation>Exportació de dades de transaccions</translation>
+        <translation>Exportar detalls de la transacció </translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2586,12 +2105,12 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+4"/>
         <source>Error exporting</source>
-        <translation>Error a l&apos;exportar</translation>
+        <translation>Error en l&apos;exportació</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Could not write to file %1.</source>
-        <translation>No s&apos;ha pogut escriure al fitxer %1.</translation>
+        <translation>No s&apos;ha pogut escriure a l&apos;arxiu %1.</translation>
     </message>
     <message>
         <location line="+100"/>
@@ -2607,57 +2126,95 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
 <context>
     <name>WalletModel</name>
     <message>
-        <location filename="../walletmodel.cpp" line="+206"/>
-        <source>Sending...</source>
-        <translation>Enviant...</translation>
+        <location filename="../walletmodel.cpp" line="+193"/>
+        <source>Send Coins</source>
+        <translation>Enviar monedes</translation>
+    </message>
+</context>
+<context>
+    <name>WalletView</name>
+    <message>
+        <location filename="../walletview.cpp" line="+42"/>
+        <source>&amp;Export</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Export the data in the current tab to a file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+193"/>
+        <source>Backup Wallet</source>
+        <translation>Realitzar còpia de seguretat del moneder</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Wallet Data (*.dat)</source>
+        <translation>Dades del moneder (*.dat)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Backup Failed</source>
+        <translation>Còpia de seguretat faillida</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>There was an error trying to save the wallet data to the new location.</source>
+        <translation>Hi ha hagut un error intentant desar les dades del moneder al nou directori</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Backup Successful</source>
+        <translation>Copia de seguretat realitzada correctament</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The wallet data was successfully saved to the new location.</source>
+        <translation>Les dades del moneder han estat desades cirrectament al nou emplaçament.</translation>
     </message>
 </context>
 <context>
     <name>bitcoin-core</name>
     <message>
-        <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>SteepCoin version</source>
-        <translation>versió SteepCoin</translation>
+        <location filename="../bitcoinstrings.cpp" line="+94"/>
+        <source>Peercoin version</source>
+        <translation>Versió de Peercoin</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+102"/>
         <source>Usage:</source>
         <translation>Ús:</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Send command to -server or SteepCoind</source>
-        <translation>Enviar comandes a -server o SteepCoind</translation>
+        <location line="-29"/>
+        <source>Send command to -server or peercoind</source>
+        <translation>Enviar comanda a -servidor o peercoind</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-23"/>
         <source>List commands</source>
         <translation>Llista d&apos;ordres</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-12"/>
         <source>Get help for a command</source>
         <translation>Obtenir ajuda per a un ordre.</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+24"/>
         <source>Options:</source>
         <translation>Opcions:</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Specify configuration file (default: SteepCoin.conf)</source>
-        <translation>Especifiqueu el fitxer de configuració (per defecte: SteepCoin.conf)</translation>
+        <location line="+24"/>
+        <source>Specify configuration file (default: peercoin.conf)</source>
+        <translation>Especificat arxiu de configuració (per defecte: peercoin.conf)</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Specify pid file (default: SteepCoind.pid)</source>
-        <translation>Especificar arxiu pid (per defecte: SteepCoind.pid)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Specify wallet file (within data directory)</source>
-        <translation>Especifica un arxiu de moneder (dintre del directori de les dades)</translation>
+        <location line="+3"/>
+        <source>Specify pid file (default: peercoind.pid)</source>
+        <translation>Especificar arxiu pid (per defecte: peercoind.pid)</translation>
     </message>
     <message>
         <location line="-1"/>
@@ -2665,381 +2222,114 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Especificar directori de dades</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-9"/>
         <source>Set database cache size in megabytes (default: 25)</source>
         <translation>Establir tamany de la memoria cau en megabytes (per defecte: 25)</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Set database disk log size in megabytes (default: 100)</source>
-        <translation>Configurar la mida del registre en disc de la base de dades en megabytes (per defecte: 100)</translation>
+        <location line="-28"/>
+        <source>Listen for connections on &lt;port&gt; (default: 8333 or testnet: 18333)</source>
+        <translation>Escoltar connexions a &lt;port&gt; (per defecte: 8333 o testnet: 18333)</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Listen for connections on &lt;port&gt; (default: 15714 or testnet: 25714)</source>
-        <translation>Escoltar connexions en &lt;port&gt; (per defecte: 15714 o testnet: 25714)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+5"/>
         <source>Maintain at most &lt;n&gt; connections to peers (default: 125)</source>
         <translation>Mantenir com a molt &lt;n&gt; connexions a peers (per defecte: 125)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-48"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>Connectar al node per obtenir les adreces de les connexions, i desconectar</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+82"/>
         <source>Specify your own public address</source>
         <translation>Especificar la teva adreça pública</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <source>Bind to given address. Use [host]:port notation for IPv6</source>
-        <translation>Enllaçar a l&apos;adreça donada. Utilitzeu la notació [host]:port per a IPv6</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Stake your coins to support network and gain reward (default: 1)</source>
-        <translation>Posa les teves monedes a fer &quot;stake&quot; per donar suport a la xarxa i obtenir una recompensa (per defecte: 1)</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
         <translation>Límit per a desconectar connexions errònies (per defecte: 100)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-134"/>
         <source>Number of seconds to keep misbehaving peers from reconnecting (default: 86400)</source>
         <translation>Nombre de segons abans de reconectar amb connexions errònies (per defecte: 86400)</translation>
     </message>
     <message>
-        <location line="-44"/>
+        <location line="-29"/>
         <source>An error occurred while setting up the RPC port %u for listening on IPv4: %s</source>
         <translation>Ha sorgit un error al configurar el port RPC %u escoltant a IPv4: %s</translation>
     </message>
     <message>
-        <location line="+51"/>
-        <source>Detach block and address databases. Increases shutdown time (default: 0)</source>
-        <translation>Separeu el bloc i les bases de dades d&apos;adreces. Augmenta el temps d&apos;apagada (per defecte: 0)</translation>
+        <location line="+27"/>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 8332 or testnet: 18332)</source>
+        <translation>Escoltar connexions JSON-RPC al port &lt;port&gt; (per defecte: 8332 o testnet:18332)</translation>
     </message>
     <message>
-        <location line="+109"/>
-        <source>Error: The transaction was rejected.  This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Error: La transacció ha sigut rebutjada. Això pot passar si algunes de les monedes a la cartera ja s&apos;han gastat, per exemple, si vostè utilitza una còpia del wallet.dat i les monedes han estat gastades a la cópia pero no s&apos;han marcat com a gastades aqui.</translation>
-    </message>
-    <message>
-        <location line="-5"/>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds  </source>
-        <translation>Error: Aquesta transacció requereix una comisió d&apos;almenys %s degut a la seva quantitat, complexitat, o l&apos;ús dels fons rebuts recentment</translation>
-    </message>
-    <message>
-        <location line="-87"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 15715 or testnet: 25715)</source>
-        <translation>Escoltar connexions JSON-RPC al port &lt;port&gt; (per defecte: 15715 o testnet: 25715)</translation>
-    </message>
-    <message>
-        <location line="-11"/>
+        <location line="+37"/>
         <source>Accept command line and JSON-RPC commands</source>
         <translation>Acceptar línia d&apos;ordres i ordres JSON-RPC </translation>
     </message>
     <message>
-        <location line="+101"/>
-        <source>Error: Transaction creation failed  </source>
-        <translation>Error: La creació de transacció ha fallat.</translation>
-    </message>
-    <message>
-        <location line="-5"/>
-        <source>Error: Wallet locked, unable to create transaction  </source>
-        <translation>Error: Cartera bloquejada, no es pot de crear la transacció</translation>
-    </message>
-    <message>
-        <location line="-8"/>
-        <source>Importing blockchain data file.</source>
-        <translation>Important fitxer de dades de la cadena de blocs</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Importing bootstrap blockchain data file.</source>
-        <translation>Important fitxer de dades d&apos;arrencada de la cadena de blocs</translation>
-    </message>
-    <message>
-        <location line="-88"/>
+        <location line="+76"/>
         <source>Run in the background as a daemon and accept commands</source>
         <translation>Executar en segon pla com a programa dimoni i acceptar ordres</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+37"/>
         <source>Use the test network</source>
         <translation>Usar la xarxa de prova</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="-112"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
         <translation>Aceptar connexions d&apos;afora (per defecte: 1 si no -proxy o -connect)</translation>
     </message>
     <message>
-        <location line="-38"/>
-        <source>An error occurred while setting up the RPC port %u for listening on IPv6, falling back to IPv4: %s</source>
-        <translation>Ha sorgit un error al configurar el port RPC %u escoltant a IPv6, retrocedint a IPv4: %s</translation>
-    </message>
-    <message>
-        <location line="+117"/>
-        <source>Error initializing database environment %s! To recover, BACKUP THAT DIRECTORY, then remove everything from it except for wallet.dat.</source>
-        <translation>Error en inicialitzar l&apos;entorn de base de dades %s! Per recuperar, FACI UNA COPIA DE SEGURETAT D&apos;AQUEST DIRECTORI, a continuació, retiri tot d&apos;ella excepte l&apos;arxiu wallet.dat.</translation>
-    </message>
-    <message>
-        <location line="-20"/>
-        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: 27000)</source>
-        <translation>Establir la grand� ria m� xima de les transaccions alta-prioritat/baixa-comisió en bytes (per defecte: 27000)</translation>
-    </message>
-    <message>
-        <location line="+11"/>
-        <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>Advertència: el -paytxfee és molt elevat! Aquesta és la comissió de transacció que pagar� s quan enviis una transacció.</translation>
-    </message>
-    <message>
-        <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong SteepCoin will not work properly.</source>
-        <translation>Avís: Comproveu que la data i hora de l&apos;equip siguin correctes! Si el seu rellotge és erroni SteepCoin no funcionar�  correctament.</translation>
-    </message>
-    <message>
-        <location line="-31"/>
-        <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Advertència: Error llegint l&apos;arxiu wallet.dat!! Totes les claus es llegeixen correctament, però hi ha dades de transaccions o entrades del llibre d&apos;adreces absents o bé son incorrectes.</translation>
-    </message>
-    <message>
-        <location line="-18"/>
-        <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Advertència: L&apos;arxiu wallet.dat és corrupte, dades rescatades! L&apos;arxiu wallet.dat original ha estat desat com wallet.{estampa_temporal}.bak al directori %s; si el teu balanç o transaccions son incorrectes hauries de restaurar-lo de un backup.</translation>
-    </message>
-    <message>
-        <location line="-30"/>
-        <source>Attempt to recover private keys from a corrupt wallet.dat</source>
-        <translation>Intentar recuperar les claus privades d&apos;un arxiu wallet.dat corrupte</translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <source>Block creation options:</source>
-        <translation>Opcions de la creació de blocs:</translation>
-    </message>
-    <message>
-        <location line="-62"/>
-        <source>Connect only to the specified node(s)</source>
-        <translation>Connectar només al(s) node(s) especificats</translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
-        <translation>Descobrir la pròpia adreça IP (per defecte: 1 quan escoltant i no -externalip)</translation>
-    </message>
-    <message>
-        <location line="+94"/>
-        <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>Error al escoltar a qualsevol port. Utilitza -listen=0 si vols això.</translation>
-    </message>
-    <message>
-        <location line="-90"/>
-        <source>Find peers using DNS lookup (default: 1)</source>
-        <translation>Trobar companys utilitzant la recerca de DNS (per defecte: 1)</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Sync checkpoints policy (default: strict)</source>
-        <translation>Política dels punts de control de sincronització (per defecte: estricta)</translation>
-    </message>
-    <message>
-        <location line="+83"/>
-        <source>Invalid -tor address: &apos;%s&apos;</source>
-        <translation>Adreça -tor invalida: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <source>Invalid amount for -reservebalance=&lt;amount&gt;</source>
-        <translation>Quantitat invalida per a -reservebalance=&lt;amount&gt;</translation>
-    </message>
-    <message>
-        <location line="-82"/>
-        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
-        <translation>Mida m� xima del buffer de recepció per a cada connexió, &lt;n&gt;*1000 bytes (default: 5000)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: 1000)</source>
-        <translation>Mida m� xima del buffer d&apos;enviament per a cada connexió, &lt;n&gt;*1000 bytes (default: 5000)</translation>
-    </message>
-    <message>
-        <location line="-16"/>
-        <source>Only connect to nodes in network &lt;net&gt; (IPv4, IPv6 or Tor)</source>
-        <translation>Només connectar als nodes de la xarxa &lt;net&gt; (IPv4, IPv6 o Tor)</translation>
-    </message>
-    <message>
-        <location line="+28"/>
-        <source>Output extra debugging information. Implies all other -debug* options</source>
-        <translation>Sortida d&apos;informació de depuració extra. Implica totes les opcions de depuracó -debug*</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Output extra network debugging information</source>
-        <translation>Sortida d&apos;informació de depuració de xarxa addicional</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Prepend debug output with timestamp</source>
-        <translation>Anteposar marca de temps a la sortida de depuració</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>Opcions SSL: (veure la Wiki de Bitcoin per a instruccions de configuració SSL)</translation>
-    </message>
-    <message>
-        <location line="-74"/>
-        <source>Select the version of socks proxy to use (4-5, default: 5)</source>
-        <translation>Seleccioneu la versió de proxy socks per utilitzar (4-5, per defecte: 5)</translation>
-    </message>
-    <message>
-        <location line="+41"/>
-        <source>Send trace/debug info to console instead of debug.log file</source>
-        <translation>Enviar informació de traça/debug a la consola en comptes del arxiu debug.log</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Send trace/debug info to debugger</source>
-        <translation>Enviar informació de traça/depuració al depurador</translation>
-    </message>
-    <message>
-        <location line="+28"/>
-        <source>Set maximum block size in bytes (default: 250000)</source>
-        <translation>Establir una mida máxima de bloc en bytes (per defecte: 250000)</translation>
-    </message>
-    <message>
-        <location line="-1"/>
-        <source>Set minimum block size in bytes (default: 0)</source>
-        <translation>Establir una mida mínima de bloc en bytes (per defecte: 0)</translation>
-    </message>
-    <message>
-        <location line="-29"/>
-        <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
-        <translation>Reduir l&apos;arxiu debug.log al iniciar el client (per defecte 1 quan no -debug)</translation>
-    </message>
-    <message>
-        <location line="-42"/>
-        <source>Specify connection timeout in milliseconds (default: 5000)</source>
-        <translation>Especificar el temps limit per a un intent de connexió en milisegons (per defecte: 5000)</translation>
-    </message>
-    <message>
-        <location line="+109"/>
-        <source>Unable to sign checkpoint, wrong checkpointkey?
-</source>
-        <translation>No es pot signar el punt de control, la clau del punt de control esta malament?
-</translation>
-    </message>
-    <message>
         <location line="-80"/>
-        <source>Use UPnP to map the listening port (default: 0)</source>
-        <translation>Utilitza UPnP per a mapejar els ports d&apos;escolta (per defecte: 0)</translation>
-    </message>
-    <message>
-        <location line="-1"/>
-        <source>Use UPnP to map the listening port (default: 1 when listening)</source>
-        <translation>Utilitza UPnP per a mapejar els ports d&apos;escolta (per defecte: 1 quan s&apos;escolta)</translation>
-    </message>
-    <message>
-        <location line="-25"/>
-        <source>Use proxy to reach tor hidden services (default: same as -proxy)</source>
-        <translation>Utilitza proxy per arribar als serveis ocults de Tor (per defecte: la mateixa que -proxy)</translation>
-    </message>
-    <message>
-        <location line="+42"/>
-        <source>Username for JSON-RPC connections</source>
-        <translation>Nom d&apos;usuari per a connexions JSON-RPC</translation>
-    </message>
-    <message>
-        <location line="+47"/>
-        <source>Verifying database integrity...</source>
-        <translation>Comprovant la integritat de la base de dades ...</translation>
-    </message>
-    <message>
-        <location line="+57"/>
-        <source>WARNING: syncronized checkpoint violation detected, but skipped!</source>
-        <translation>ADVERTÈNCIA: violació de punt de control sincronitzat detectada, es saltar� !</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Warning: Disk space is low!</source>
-        <translation>Avís: L&apos;espai en disc és baix!</translation>
-    </message>
-    <message>
-        <location line="-2"/>
-        <source>Warning: This version is obsolete, upgrade required!</source>
-        <translation>Advertència: Aquetsa versió est�  obsoleta, és necessari actualitzar!</translation>
-    </message>
-    <message>
-        <location line="-48"/>
-        <source>wallet.dat corrupt, salvage failed</source>
-        <translation>L&apos;arxiu wallet.data és corrupte, el rescat de les dades ha fallat</translation>
-    </message>
-    <message>
-        <location line="-54"/>
-        <source>Password for JSON-RPC connections</source>
-        <translation>Contrasenya per a connexions JSON-RPC</translation>
-    </message>
-    <message>
-        <location line="-84"/>
         <source>%s, you must set a rpcpassword in the configuration file:
- %s
+%s
 It is recommended you use the following random password:
-rpcuser=SteepCoinrpc
+rpcuser=peercoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;SteepCoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Peercoin Alert&quot; admin@foo.com
 </source>
-        <translation>%s, ha d&apos;establir un rpcpassword al fitxer de configuració:
-%s
-Es recomana utilitzar la següent contrasenya aleatòria:
-rpcuser=SteepCoinrpc
-rpcpassword=%s
-(No cal recordar aquesta contrasenya)
-El nom d&apos;usuari i contrasenya NO HA DE SER el mateix.
-Si no hi ha l&apos;arxiu, s&apos;ha de crear amb els permisos de només lectura per al propietari.
-També es recomana establir alertnotify per a que se li notifiquin els problemes;
-per exemple: alertnotify=echo %%s | mail -s &quot;SteepCoin Alert&quot; admin@foo.com
-</translation>
+        <translation>%s has de establir una contrasenya RPC a l&apos;arxiu de configuració:\n%s\nEs recomana que useu la següent constrasenya aleatòria:\nrpcuser=peercoinrpc\nrpcpassword=%s\n(no necesiteu recordar aquesta contrsenya)\nEl nom d&apos;usuari i contrasenya NO HAN de ser els mateixos.\nSi l&apos;arxiu no existeix, crea&apos;l amb els permisos d&apos;arxiu de només lectura per al propietari.\nTambé es recomana establir la notificació d&apos;alertes i així seràs notificat de les incidències;\nper exemple: alertnotify=echo %%s | mail -s &quot;Peercoin Alert&quot; admin@foo.com</translation>
     </message>
     <message>
-        <location line="+51"/>
-        <source>Find peers using internet relay chat (default: 0)</source>
-        <translation>Trobar companys utilitzant l&apos;IRC (per defecte: 1) {0)?}</translation>
+        <location line="+17"/>
+        <source>An error occurred while setting up the RPC port %u for listening on IPv6, falling back to IPv4: %s</source>
+        <translation>Ha sorgit un error al configurar el port RPC %u escoltant a IPv6, retrocedint a IPv4: %s</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <source>Sync time with other nodes. Disable if time on your system is precise e.g. syncing with NTP (default: 1)</source>
-        <translation>Sincronitzar el temps amb altres nodes. Desactivar si el temps al seu sistema és precís, per exemple, si fa ús de sincronització amb NTP (per defecte: 1)</translation>
+        <location line="+3"/>
+        <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
+        <translation>Vincular a una adreça específica i sempre escoltar-hi. Utilitza la notació [host]:port per IPv6</translation>
     </message>
     <message>
-        <location line="+15"/>
-        <source>When creating transactions, ignore inputs with value less than this (default: 0.01)</source>
-        <translation>En crear transaccions, ignorar les entrades amb valor inferior a aquesta (per defecte: 0.01)</translation>
+        <location line="+3"/>
+        <source>Cannot obtain a lock on data directory %s. Peercoin is probably already running.</source>
+        <translation>No es pot bloquejar el directori de dades %s. Probablement Peercoin ja estigui en execució.</translation>
     </message>
     <message>
-        <location line="+16"/>
-        <source>Allow JSON-RPC connections from specified IP address</source>
-        <translation>Permetre connexions JSON-RPC d&apos;adreces IP específiques</translation>
+        <location line="+3"/>
+        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
+        <translation>Error: La transacció ha estat rebutjada. Això pot passar si alguna de les monedes del teu moneder ja s&apos;han gastat, com si haguesis usat una copia de l&apos;arxiu wallet.dat i s&apos;haguessin gastat monedes de la copia però sense marcar com gastades en aquest.</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
-        <translation>Enviar ordre al node en execució a &lt;ip&gt; (per defecte: 127.0.0.1)</translation>
+        <location line="+4"/>
+        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
+        <translation>Error: Aquesta transacció requereix una comissió d&apos;almenys %s degut al seu import, complexitat o per l&apos;ús de fons recentment rebuts!</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>Executar orde quan el millor bloc canviï (%s al cmd es reemplaça per un bloc de hash)</translation>
+        <location line="+3"/>
+        <source>Execute command when a relevant alert is received (%s in cmd is replaced by message)</source>
+        <translation>Executar ordre al rebre una alerta rellevant (%s al cmd es reemplaça per message)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3047,58 +2337,422 @@ per exemple: alertnotify=echo %%s | mail -s &quot;SteepCoin Alert&quot; admin@fo
         <translation>Executar una ordre quan una transacció del moneder canviï (%s in cmd es canvia per TxID)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Require a confirmations for change (default: 0)</source>
-        <translation>Requerir les confirmacions de canvi (per defecte: 0)</translation>
+        <location line="+11"/>
+        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: 27000)</source>
+        <translation>Establir una mida màxima de transaccions d&apos;alta prioritat/baixa comisió en bytes (per defecte: 27000)</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Enforce transaction scripts to use canonical PUSH operators (default: 1)</source>
-        <translation>Fer complir als scripts de transaccions d&apos;utilitzar operadors PUSH canòniques (per defecte: 1)</translation>
+        <location line="+6"/>
+        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
+        <translation>Aquesta és una versió de pre-llançament - utilitza-la sota la teva responsabilitat - No usar per a minería o aplicacions de compra-venda</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
+        <translation>Advertència: el -paytxfee és molt elevat! Aquesta és la comissió de transacció que pagaràs quan enviis una transacció.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: Displayed transactions may not be correct! You may need to upgrade, or other nodes may need to upgrade.</source>
+        <translation>Advertència: Les transaccions mostrades poden no ser correctes! Pot esser que necessitis actualitzar, o bé que altres nodes ho necessitin.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Peercoin will not work properly.</source>
+        <translation>Advertència: Si us plau comprovi que la data i hora del seu computador siguin correctes! Si el seu rellotge està mal configurat, Peercoin no funcionará de manera apropiada.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
+        <translation>Advertència: Error llegint l&apos;arxiu wallet.dat!! Totes les claus es llegeixen correctament, però hi ha dades de transaccions o entrades del llibre d&apos;adreces absents o bé son incorrectes.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
+        <translation>Advertència: L&apos;arxiu wallet.dat és corrupte, dades rescatades! L&apos;arxiu wallet.dat original ha estat desat com wallet.{estampa_temporal}.bak al directori %s; si el teu balanç o transaccions son incorrectes hauries de restaurar-lo de un backup.</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Attempt to recover private keys from a corrupt wallet.dat</source>
+        <translation>Intentar recuperar les claus privades d&apos;un arxiu wallet.dat corrupte</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Execute command when a relevant alert is received (%s in cmd is replaced by message)</source>
-        <translation>
-Executar una ordre quan es rep un avís rellevant (%s en cmd es substitueix per missatge)</translation>
+        <source>Block creation options:</source>
+        <translation>Opcions de la creació de blocs:</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Connect only to the specified node(s)</source>
+        <translation>Connectar només al(s) node(s) especificats</translation>
     </message>
     <message>
         <location line="+3"/>
+        <source>Corrupted block database detected</source>
+        <translation>S&apos;ha detectat una base de dades de blocs corrupta</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
+        <translation>Descobrir la pròpia adreça IP (per defecte: 1 quan escoltant i no -externalip)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Do you want to rebuild the block database now?</source>
+        <translation>Vols reconstruir la base de dades de blocs ara?</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Error initializing block database</source>
+        <translation>Error carregant la base de dades de blocs</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error initializing wallet database environment %s!</source>
+        <translation>Error inicialitzant l&apos;entorn de la base de dades del moneder %s!</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error loading block database</source>
+        <translation>Error carregant la base de dades del bloc</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error opening block database</source>
+        <translation>Error obrint la base de dades de blocs</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Error: Disk space is low!</source>
+        <translation>Error: Espai al disc baix!</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error: Wallet locked, unable to create transaction!</source>
+        <translation>Error: El moneder està blocat, no és possible crear la transacció!</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error: system error: </source>
+        <translation>Error: error de sistema:</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
+        <translation>Error al escoltar a qualsevol port. Utilitza -listen=0 si vols això.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to read block info</source>
+        <translation>Ha fallat la lectura de la informació del bloc</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to read block</source>
+        <translation>Ha fallat la lectura del bloc</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to sync block index</source>
+        <translation>Ha fallat la sincronització de l&apos;índex de bloc</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write block index</source>
+        <translation>Ha fallat la escriptura de l&apos;índex de blocs</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write block info</source>
+        <translation>Ha fallat la escriptura de la informació de bloc</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write block</source>
+        <translation>Ha fallat l&apos;escriptura del bloc</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write file info</source>
+        <translation>Ha fallat l&apos;escriptura de l&apos;arxiu info</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write to coin database</source>
+        <translation>Ha fallat l&apos;escriptura de la basse de dades de monedes</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write transaction index</source>
+        <translation>Ha fallat l&apos;escriptura de l&apos;índex de transaccions</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write undo data</source>
+        <translation>Ha fallat el desfer de dades</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Find peers using DNS lookup (default: 1 unless -connect)</source>
+        <translation>Cerca punts de connexió usant rastreig de DNS (per defecte: 1 tret d&apos;usar -connect)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Generate coins (default: 0)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>How many blocks to check at startup (default: 288, 0 = all)</source>
+        <translation>Quants blocs s&apos;han de confirmar a l&apos;inici (per defecte: 288, 0 = tots)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>How thorough the block verification is (0-4, default: 3)</source>
+        <translation>Com verificar el bloc (0-4, per defecte 3)</translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Not enough file descriptors available.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Rebuild block chain index from current blk000??.dat files</source>
+        <translation>Reconstruir l&apos;índex de la cadena de blocs dels arxius actuals blk000??.dat</translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Set the number of threads to service RPC calls (default: 4)</source>
+        <translation>Estableix el nombre de fils per atendre trucades RPC (per defecte: 4)</translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Verifying blocks...</source>
+        <translation>Verificant blocs...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Verifying wallet...</source>
+        <translation>Verificant moneder...</translation>
+    </message>
+    <message>
+        <location line="-69"/>
+        <source>Imports blocks from external blk000??.dat file</source>
+        <translation>Importa blocs de un fitxer blk000??.dat extern</translation>
+    </message>
+    <message>
+        <location line="-76"/>
+        <source>Set the number of script verification threads (up to 16, 0 = auto, &lt;0 = leave that many cores free, default: 0)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+77"/>
+        <source>Information</source>
+        <translation>&amp;Informació</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Invalid -tor address: &apos;%s&apos;</source>
+        <translation>Adreça -tor invàlida: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Invalid amount for -mintxfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Maintain a full transaction index (default: 0)</source>
+        <translation>Mantenir tot l&apos;índex de transaccions (per defecte: 0)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
+        <translation>Mida màxima del buffer de recepció per a cada connexió, &lt;n&gt;*1000 bytes (default: 5000)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: 1000)</source>
+        <translation>Mida màxima del buffer d&apos;enviament per a cada connexió, &lt;n&gt;*1000 bytes (default: 5000)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Only accept block chain matching built-in checkpoints (default: 1)</source>
+        <translation>Tan sols acceptar cadenes de blocs que coincideixin amb els punts de prova (per defecte: 1)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Only connect to nodes in network &lt;net&gt; (IPv4, IPv6 or Tor)</source>
+        <translation>Només connectar als nodes de la xarxa &lt;net&gt; (IPv4, IPv6 o Tor)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Output extra debugging information. Implies all other -debug* options</source>
+        <translation>Sortida de la informació extra de debugging. Implica totes les demés opcions -debug*</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Output extra network debugging information</source>
+        <translation>Sortida de la informació extra de debugging de xarxa.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Prepend debug output with timestamp</source>
+        <translation>Anteposar estampa temporal a les dades de debug</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
+        <translation>Opcions SSL: (veure la Wiki de Peercoin per a instruccions de configuració SSL)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Select the version of socks proxy to use (4-5, default: 5)</source>
+        <translation>Selecciona la versió de socks proxy a utilitzar (4-5, per defecte: 5)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Send trace/debug info to console instead of debug.log file</source>
+        <translation>Enviar informació de traça/debug a la consola en comptes del arxiu debug.log</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Send trace/debug info to debugger</source>
+        <translation>Enviar informació de traça/debug a un debugger</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Set maximum block size in bytes (default: 250000)</source>
+        <translation>Establir una mida màxima de bloc en bytes (per defecte: 250000)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Set minimum block size in bytes (default: 0)</source>
+        <translation>Establir una mida mínima de bloc en bytes (per defecte: 0)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
+        <translation>Reduir l&apos;arxiu debug.log al iniciar el client (per defecte 1 quan no -debug)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Signing transaction failed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Specify connection timeout in milliseconds (default: 5000)</source>
+        <translation>Especificar el temps limit per a un intent de connexió en milisegons (per defecte: 5000)</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>System error: </source>
+        <translation>Error de sistema:</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Transaction amount too small</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction amounts must be positive</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction too large</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Use UPnP to map the listening port (default: 0)</source>
+        <translation>Utilitza UPnP per a mapejar els ports d&apos;escolta (per defecte: 0)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Use UPnP to map the listening port (default: 1 when listening)</source>
+        <translation>Utilitza UPnP per a mapejar els ports d&apos;escolta (per defecte: 1 quan s&apos;escolta)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Use proxy to reach tor hidden services (default: same as -proxy)</source>
+        <translation>Utilitzar proxy per arribar als serveis tor amagats (per defecte: el mateix que -proxy)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Username for JSON-RPC connections</source>
+        <translation>Nom d&apos;usuari per a connexions JSON-RPC</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Warning</source>
+        <translation>Avís</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Warning: This version is obsolete, upgrade required!</source>
+        <translation>Advertència: Aquetsa versió està obsoleta, és necessari actualitzar!</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You need to rebuild the databases using -reindex to change -txindex</source>
+        <translation>Necessiteu reconstruir les bases de dades usant -reindex per canviar -txindex</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>wallet.dat corrupt, salvage failed</source>
+        <translation>L&apos;arxiu wallet.data és corrupte, el rescat de les dades ha fallat</translation>
+    </message>
+    <message>
+        <location line="-50"/>
+        <source>Password for JSON-RPC connections</source>
+        <translation>Contrasenya per a connexions JSON-RPC</translation>
+    </message>
+    <message>
+        <location line="-67"/>
+        <source>Allow JSON-RPC connections from specified IP address</source>
+        <translation>Permetre connexions JSON-RPC d&apos;adreces IP específiques</translation>
+    </message>
+    <message>
+        <location line="+76"/>
+        <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
+        <translation>Enviar ordre al node en execució a &lt;ip&gt; (per defecte: 127.0.0.1)</translation>
+    </message>
+    <message>
+        <location line="-120"/>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
+        <translation>Executar orde quan el millor bloc canviï (%s al cmd es reemplaça per un bloc de hash)</translation>
+    </message>
+    <message>
+        <location line="+147"/>
         <source>Upgrade wallet to latest format</source>
         <translation>Actualitzar moneder a l&apos;últim format</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-21"/>
         <source>Set key pool size to &lt;n&gt; (default: 100)</source>
         <translation>Establir límit de nombre de claus a &lt;n&gt; (per defecte: 100)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-12"/>
         <source>Rescan the block chain for missing wallet transactions</source>
         <translation>Re-escanejar cadena de blocs en cerca de transaccions de moneder perdudes</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>How many blocks to check at startup (default: 2500, 0 = all)</source>
-        <translation>Quants blocs s&apos;han de confirmar a l&apos;inici (per defecte: 2500, 0 = tots)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>How thorough the block verification is (0-6, default: 1)</source>
-        <translation>Com és de minuciosa la verificació del bloc (0-6, per defecte: 1)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Imports blocks from external blk000?.dat file</source>
-        <translation>Importar blocs desde l&apos;arxiu extern blk000?.dat</translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location line="+35"/>
         <source>Use OpenSSL (https) for JSON-RPC connections</source>
         <translation>Utilitzar OpenSSL (https) per a connexions JSON-RPC</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-26"/>
         <source>Server certificate file (default: server.cert)</source>
         <translation>Arxiu del certificat de servidor (per defecte: server.cert)</translation>
     </message>
@@ -3108,92 +2762,62 @@ Executar una ordre quan es rep un avís rellevant (%s en cmd es substitueix per 
         <translation>Clau privada del servidor (per defecte: server.pem)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-151"/>
         <source>Acceptable ciphers (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</source>
-        <translation>Xifres acceptables (per defecte: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
+        <translation>Xifrats acceptats (per defecte: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
     </message>
     <message>
-        <location line="+53"/>
-        <source>Error: Wallet unlocked for staking only, unable to create transaction.</source>
-        <translation>Error: Cartera bloquejada nomès per a fer &quot;stake&quot;, no es pot de crear la transacció</translation>
-    </message>
-    <message>
-        <location line="+18"/>
-        <source>WARNING: Invalid checkpoint found! Displayed transactions may not be correct! You may need to upgrade, or notify developers.</source>
-        <translation>ADVERTÈNCIA: Punt de control inv� lid! Les transaccions mostrades podríen no ser correctes! Podria ser necessari actualitzar o notificar-ho als desenvolupadors.</translation>
-    </message>
-    <message>
-        <location line="-158"/>
+        <location line="+165"/>
         <source>This help message</source>
         <translation>Aquest misatge d&apos;ajuda</translation>
     </message>
     <message>
-        <location line="+95"/>
-        <source>Wallet %s resides outside data directory %s.</source>
-        <translation>La cartera %s resideix fora del directori de dades %s.</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  SteepCoin is probably already running.</source>
-        <translation>No es pot obtenir un bloqueig en el directori de dades %s. SteepCoin probablement ja estigui en funcionament.</translation>
-    </message>
-    <message>
-        <location line="-98"/>
-        <source>SteepCoin</source>
-        <translation>SteepCoin</translation>
-    </message>
-    <message>
-        <location line="+140"/>
+        <location line="+6"/>
         <source>Unable to bind to %s on this computer (bind returned error %d, %s)</source>
         <translation>Impossible d&apos;unir %s a aquest ordinador (s&apos;ha retornat l&apos;error %d, %s)</translation>
     </message>
     <message>
-        <location line="-130"/>
+        <location line="-91"/>
         <source>Connect through socks proxy</source>
-        <translation>Conectar a través d&apos;un proxy SOCKS</translation>
+        <translation>Connectar a través de socks proxy</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-10"/>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
         <translation>Permetre consultes DNS per a -addnode, -seednode i -connect</translation>
     </message>
     <message>
-        <location line="+122"/>
+        <location line="+55"/>
         <source>Loading addresses...</source>
         <translation>Carregant adreces...</translation>
     </message>
     <message>
-        <location line="-15"/>
-        <source>Error loading blkindex.dat</source>
-        <translation>Error carregant blkindex.dat</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="-35"/>
         <source>Error loading wallet.dat: Wallet corrupted</source>
         <translation>Error carregant wallet.dat: Moneder corrupte</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of SteepCoin</source>
-        <translation>Error en carregar wallet.dat: La cartera requereix la versió més recent de SteepCoin</translation>
+        <location line="+1"/>
+        <source>Error loading wallet.dat: Wallet requires newer version of Peercoin</source>
+        <translation>Error carregant wallet.dat: El moneder requereix una versió de Peercoin més moderna</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart SteepCoin to complete</source>
-        <translation>La cartera necessita ser reescrita: reiniciar SteepCoin per completar</translation>
+        <location line="+93"/>
+        <source>Wallet needed to be rewritten: restart Peercoin to complete</source>
+        <translation>El moneder necesita ser re-escrit: re-inicia Peercoin per a completar la tasca</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-95"/>
         <source>Error loading wallet.dat</source>
         <translation>Error carregant wallet.dat</translation>
     </message>
     <message>
-        <location line="-16"/>
+        <location line="+28"/>
         <source>Invalid -proxy address: &apos;%s&apos;</source>
         <translation>Adreça -proxy invalida: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="-1"/>
+        <location line="+56"/>
         <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
         <translation>Xarxa desconeguda especificada a -onlynet: &apos;%s&apos;</translation>
     </message>
@@ -3203,107 +2827,87 @@ Executar una ordre quan es rep un avís rellevant (%s en cmd es substitueix per 
         <translation>S&apos;ha demanat una versió desconeguda de -socks proxy: %i</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-96"/>
         <source>Cannot resolve -bind address: &apos;%s&apos;</source>
         <translation>No es pot resoldre l&apos;adreça -bind: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Cannot resolve -externalip address: &apos;%s&apos;</source>
         <translation>No es pot resoldre l&apos;adreça -externalip: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="+44"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>Quantitat invalida per a -paytxfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+44"/>
-        <source>Error: could not start node</source>
-        <translation>Error: no s&apos;ha pogut iniciar el node</translation>
-    </message>
-    <message>
-        <location line="+11"/>
-        <source>Sending...</source>
-        <translation>Enviant...</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+1"/>
         <source>Invalid amount</source>
         <translation>Quanitat invalida</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-6"/>
         <source>Insufficient funds</source>
         <translation>Balanç insuficient</translation>
     </message>
     <message>
-        <location line="-34"/>
+        <location line="+10"/>
         <source>Loading block index...</source>
         <translation>Carregant índex de blocs...</translation>
     </message>
     <message>
-        <location line="-103"/>
+        <location line="-57"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>Afegir un node per a connectar&apos;s-hi i intentar mantenir la connexió oberta</translation>
     </message>
     <message>
-        <location line="+122"/>
-        <source>Unable to bind to %s on this computer. SteepCoin is probably already running.</source>
-        <translation>No es pot enllaçar a %s en aquest equip. SteepCoin probablement ja estigui en funcionament.</translation>
+        <location line="-25"/>
+        <source>Unable to bind to %s on this computer. Peercoin is probably already running.</source>
+        <translation>Impossible d&apos;unir %s en aquest ordinador. Probablement Peercoin ja estigui en execució.</translation>
     </message>
     <message>
-        <location line="-97"/>
+        <location line="+64"/>
         <source>Fee per KB to add to transactions you send</source>
-        <translation>Comisió per KB per a afegir a les transaccions que enviï</translation>
+        <translation>Comisió a afegir per cada  KB de transaccions que enviïs</translation>
     </message>
     <message>
-        <location line="+55"/>
-        <source>Invalid amount for -mininput=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Quantitat invalida per a -mininput=&lt;amount&gt;: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="+19"/>
         <source>Loading wallet...</source>
         <translation>Carregant moneder...</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="-52"/>
         <source>Cannot downgrade wallet</source>
         <translation>No es pot reduir la versió del moneder</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Cannot initialize keypool</source>
-        <translation>No es pot inicialitzar el keypool</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Cannot write default address</source>
         <translation>No es pot escriure l&apos;adreça per defecte</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+64"/>
         <source>Rescanning...</source>
         <translation>Re-escanejant...</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="-57"/>
         <source>Done loading</source>
-        <translation>C� rrega acabada</translation>
+        <translation>Càrrega acabada</translation>
     </message>
     <message>
-        <location line="-167"/>
+        <location line="+82"/>
         <source>To use the %s option</source>
         <translation>Utilitza la opció %s</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="-74"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-31"/>
         <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
 %s
 If the file does not exist, create it with owner-readable-only file permissions.</source>

@@ -2,34 +2,28 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-TARGET_PLATFORM:=i686
-#TARGET_PLATFORM:=x86_64
+#DEPSDIR:=/usr/i586-mingw32msvc
 
-DEPSDIR:=/usr/$(TARGET_PLATFORM)-w64-mingw32
-CC:=$(TARGET_PLATFORM)-w64-mingw32-gcc
-CXX:=$(TARGET_PLATFORM)-w64-mingw32-g++
-RANLIB=$(TARGET_PLATFORM)-w64-mingw32-ranlib
-STRIP=$(TARGET_PLATFORM)-w64-mingw32-strip
+#CC := i586-mingw32msvc-gcc
+#CXX := i586-mingw32msvc-g++
+CC := ${HOST}-gcc
+CXX := ${HOST}-g++
 
-USE_UPNP:=-
+USE_UPNP:=0
 USE_IPV6:=1
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(CURDIR)"/obj \
- -I"$(DEPSDIR)/boost_1_55_0" \
- -I"$(DEPSDIR)/db-6.0.20/build_unix" \
- -I"$(DEPSDIR)/openssl-1.0.1p/include" \
- -I"$(DEPSDIR)/include" \
- -I"$(DEPSDIR)"
+ -I"$(DEPSDIR)/include/boost" \
+ -I"$(DEPSDIR)/include/openssl" \
+ -I"$(DEPSDIR)/include"
 
 LIBPATHS= \
- -L"$(DEPSDIR)/lib" \
- -L"$(DEPSDIR)/boost_1_55_0/stage/lib" \
- -L"$(DEPSDIR)/db-6.0.20/build_unix" \
- -L"$(DEPSDIR)/openssl-1.0.1p"
+ -L"$(DEPSDIR)/lib"
 
 LIBS= \
+  $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a \
  -l boost_system-mt-s \
  -l boost_filesystem-mt-s \
  -l boost_program_options-mt-s \
@@ -37,12 +31,17 @@ LIBS= \
  -l boost_chrono-mt-s \
  -l db_cxx \
  -l ssl \
- -l crypto 
+ -l crypto
 
-DEFS=-D_MT -DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+DEFS=-D_MT -DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE
 DEBUGFLAGS=-g
-CFLAGS=-O3 -msse2 -w -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
-LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat -static-libgcc -static-libstdc++
+xCXXFLAGS=-O2 -w -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS) $(CXXFLAGS)
+# enable: ASLR, DEP and large address aware
+xLDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat $(LDFLAGS)
+ifeq (${HOST}, i686-w64-mingw32)
+	xLDFLAGS+=-Wl,--large-address-aware
+endif
+TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
 
 ifndef USE_UPNP
 	override USE_UPNP = -
@@ -50,7 +49,7 @@ endif
 ifneq (${USE_UPNP}, -)
 	LIBPATHS += -L"$(DEPSDIR)/miniupnpc"
 	LIBS += -l miniupnpc -l iphlpapi
-	DEFS += -DSTATICLIB -DUSE_UPNP=$(USE_UPNP)
+	DEFS += -DSTATICLIB -DMINIUPNP_STATICLIB -DUSE_UPNP=$(USE_UPNP)
 endif
 
 ifneq (${USE_IPV6}, -)
@@ -63,37 +62,26 @@ LIBS += -l mingwthrd -l kernel32 -l user32 -l gdi32 -l comdlg32 -l winspool -l w
 HEADERS = $(wildcard *.h)
 
 OBJS= \
-    obj/groestl.o \
-    obj/blake.o \
-    obj/bmw.o \
-    obj/skein.o \
-    obj/keccak.o \
-    obj/shavite.o \
-    obj/jh.o \
-    obj/luffa.o \
-    obj/cubehash.o \
-    obj/echo.o \
-    obj/simd.o \
+    leveldb/libleveldb.a \
     obj/alert.o \
     obj/version.o \
     obj/checkpoints.o \
     obj/netbase.o \
-    obj/ntp.o \
     obj/addrman.o \
     obj/crypter.o \
     obj/key.o \
     obj/db.o \
     obj/init.o \
-    obj/irc.o \
     obj/keystore.o \
     obj/main.o \
-    obj/miner.o \
     obj/net.o \
     obj/protocol.o \
+    obj/kernelrecord.o \
     obj/bitcoinrpc.o \
     obj/rpcdump.o \
     obj/rpcnet.o \
     obj/rpcmining.o \
+    obj/rpcminting.o \
     obj/rpcwallet.o \
     obj/rpcblockchain.o \
     obj/rpcrawtransaction.o \
@@ -104,20 +92,18 @@ OBJS= \
     obj/walletdb.o \
     obj/noui.o \
     obj/kernel.o \
-    obj/pbkdf2.o \
-    obj/scrypt.o \
-    obj/scrypt-x86.o \
-    obj/scrypt-x86_64.o 
+    obj/checkpointsync.o \
+    obj/hash.o \
+    obj/bloom.o \
+    obj/leveldb.o \
+    obj/txdb.o
 
-all: SteepCoind.exe
+all: peercoind.exe
 
-LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += -I"$(CURDIR)/leveldb/include"
 DEFS += -I"$(CURDIR)/leveldb/helpers"
-OBJS += obj/txdb-leveldb.o
 leveldb/libleveldb.a:
-	@echo "Building LevelDB ..." && cd leveldb && CC=$(CC) CXX=$(CXX) TARGET_OS=OS_WINDOWS_CROSSCOMPILE CXXFLAGS="-I$(INCLUDEPATHS)" LDFLAGS="-L$(LIBPATHS)" $(MAKE) libleveldb.a libmemenv.a && $(RANLIB) libleveldb.a && $(RANLIB) libmemenv.a && cd ..
-obj/txdb-leveldb.o: leveldb/libleveldb.a
+	@echo "Building LevelDB ..." && cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(xCXXFLAGS)" libleveldb.a libmemenv.a && i586-mingw32msvc-ranlib libleveldb.a && i586-mingw32msvc-ranlib libmemenv.a && cd ..
 
 obj/build.h: FORCE
 	/bin/sh ../share/genbuild.sh obj/build.h
@@ -125,28 +111,27 @@ version.cpp: obj/build.h
 DEFS += -DHAVE_BUILD_INFO
 
 obj/%.o: %.cpp $(HEADERS)
-	$(CXX) -c $(CFLAGS) -o $@ $<
+	$(CXX) -c $(xCXXFLAGS) -o $@ $<
 
-SteepCoind.exe: $(OBJS:obj/%=obj/%)
-	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) -lshlwapi
-	$(STRIP) SteepCoind.exe
-	
-obj/%.o: %.c
-	$(CXX) -c $(xCXXFLAGS) -fpermissive -MMD -MF $(@:%.o=%.d) -o $@ $<
-	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
-	  sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
-	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
-	  rm -f $(@:%.o=%.d)
-	
-obj/scrypt-x86.o: scrypt-x86.S
-	$(CXX) -c $(CFLAGS) -MMD -o $@ $<
+peercoind.exe: $(OBJS:obj/%=obj/%)
+	$(CXX) $(xCXXFLAGS) $(xLDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
+	@cp $@ ppcoind.exe
 
-obj/scrypt-x86_64.o: scrypt-x86_64.S
-	$(CXX) -c $(CFLAGS) -MMD -o $@ $<
+TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
+
+obj-test/%.o: test/%.cpp $(HEADERS)
+	$(CXX) -c $(TESTDEFS) $(xCXXFLAGS) -o $@ $<
+
+test_bitcoin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
+	$(CXX) $(xCXXFLAGS) $(xLDFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework-mt-s $(LIBS)
+
 
 clean:
 	-rm -f obj/*.o
-	-rm -f SteepCoind.exe
+	-rm -f peercoind.exe
+	-rm -f ppcoind.exe
+	-rm -f obj-test/*.o
+	-rm -f test_bitcoin.exe
 	-rm -f obj/build.h
 	cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 

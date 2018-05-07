@@ -1,27 +1,19 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.0">
+<defaultcodec>UTF-8</defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About SteepCoin</source>
-        <translation>Over SteepCoin</translation>
+        <source>About Peercoin</source>
+        <translation>Over Peercoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;SteepCoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;SteepCoin&lt;/b&gt; versie</translation>
+        <source>&lt;b&gt;Peercoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Peercoin&lt;/b&gt; versie</translation>
     </message>
     <message>
-        <location line="+41"/>
-        <source>Copyright © 2009-2014 The Bitcoin developers
-Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2017 The SteepCoin developers</source>
-        <translation>Copyright © 2009-2014 De Bitcoin ontwikkelaars
-Copyright © 2012-2014 De NovaCoin ontwikkelaars
-Copyright © 2014 De SteepCoin ontwikkelaars</translation>
-    </message>
-    <message>
-        <location line="+15"/>
+        <location line="+57"/>
         <source>
 This is experimental software.
 
@@ -35,6 +27,16 @@ Gedistribueerd onder de MIT/X11 software licentie, zie het bijgevoegde bestand C
 
 Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in de OpenSSL Toolkit (http://www.openssl.org/) en cryptografische software gemaakt door Eric Young (eay@cryptsoft.com) en UPnP software geschreven door Thomas Bernard.</translation>
     </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="+14"/>
+        <source>Copyright</source>
+        <translation>Auteursrecht</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The Peercoin developers</source>
+        <translation>De Peercoin-ontwikkelaars</translation>
+    </message>
 </context>
 <context>
     <name>AddressBookPage</name>
@@ -44,9 +46,9 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>Adresboek</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+19"/>
         <source>Double-click to edit address or label</source>
-        <translation>Dubbelklik om het adres of label te wijzigen</translation>
+        <translation>Dubbelklik om adres of label te wijzigen</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -61,32 +63,32 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     <message>
         <location line="-11"/>
         <source>&amp;New Address</source>
-        <translation>&amp;Nieuw adres</translation>
+        <translation>&amp;Nieuw Adres</translation>
     </message>
     <message>
-        <location line="-46"/>
-        <source>These are your SteepCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Dit zijn al jou SteepCoin adressen om betalingen mee te ontvangen. Je kunt iedere verzender een apart adres geven zodat je kunt volgen wie jou betaald.</translation>
+        <location filename="../addressbookpage.cpp" line="+63"/>
+        <source>These are your Peercoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Dit zijn uw Peercoinadressen om betalingen mee te ontvangen. U kunt er voor kiezen om een uniek adres aan te maken voor elke afzender. Op deze manier kunt u bijhouden wie al aan u betaald heeft.</translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location filename="../forms/addressbookpage.ui" line="+14"/>
         <source>&amp;Copy Address</source>
         <translation>&amp;Kopiëer Adres</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Show &amp;QR Code</source>
-        <translation>Toon &amp;QR Code</translation>
+        <translation>Toon &amp;QR-Code</translation>
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a SteepCoin address</source>
-        <translation>Teken een bericht om te bewijzen dat je een SteepCoin adres bezit.</translation>
+        <source>Sign a message to prove you own a Peercoin address</source>
+        <translation>Onderteken een bericht om te bewijzen dat u een bepaald Peercoinadres bezit</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Sign &amp;Message</source>
-        <translation>Teken &amp;Bericht</translation>
+        <translation>&amp;Onderteken Bericht</translation>
     </message>
     <message>
         <location line="+25"/>
@@ -94,14 +96,24 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>Verwijder het geselecteerde adres van de lijst</translation>
     </message>
     <message>
-        <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified SteepCoin address</source>
-        <translation>Verifieer een bericht om zeker te zijn dat deze is ondertekend met een specifiek SteepCoin adres</translation>
+        <location line="+27"/>
+        <source>Export the data in the current tab to a file</source>
+        <translation>Exporteer de data in de huidige tab naar een bestand</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Export</source>
+        <translation>&amp;Exporteer</translation>
+    </message>
+    <message>
+        <location line="-44"/>
+        <source>Verify a message to ensure it was signed with a specified Peercoin address</source>
+        <translation>Controleer een bericht om te verifiëren dat het gespecificeerde Peercoinadres het bericht heeft ondertekend.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Verify Message</source>
-        <translation>&amp;Verifieer Bericht</translation>
+        <translation>&amp;Verifiëer Bericht</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -109,19 +121,29 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>&amp;Verwijder</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="+65"/>
+        <location filename="../addressbookpage.cpp" line="-5"/>
+        <source>These are your Peercoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Dit zijn uw Peercoinadressen om betalingen mee te verzenden. Check altijd het bedrag en het ontvangende adres voordat u uw peercoins verzendt.</translation>
+    </message>
+    <message>
+        <location line="+13"/>
         <source>Copy &amp;Label</source>
         <translation>Kopiëer &amp;Label</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>&amp;Edit</source>
         <translation>&amp;Bewerk</translation>
     </message>
     <message>
-        <location line="+250"/>
+        <location line="+1"/>
+        <source>Send &amp;Coins</source>
+        <translation>Verstuur &amp;Coins</translation>
+    </message>
+    <message>
+        <location line="+260"/>
         <source>Export Address Book Data</source>
-        <translation>Exporteer Adresboek Data</translation>
+        <translation>Exporteer Gegevens van het Adresboek</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -136,7 +158,7 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     <message>
         <location line="+0"/>
         <source>Could not write to file %1.</source>
-        <translation>Kan niet schrijven naat bestand %1</translation>
+        <translation>Kon niet schrijven naar bestand %1.</translation>
     </message>
 </context>
 <context>
@@ -162,7 +184,7 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     <message>
         <location filename="../forms/askpassphrasedialog.ui" line="+26"/>
         <source>Passphrase Dialog</source>
-        <translation>Wachtwoordscherm</translation>
+        <translation>Wachtwoorddialoogscherm</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -180,19 +202,9 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>Herhaal wachtwoord</translation>
     </message>
     <message>
-        <location line="+33"/>
-        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation>Bedoeld om het command &apos;sendmoney&apos; uit te schakelen indien het OS niet meer veilig is. Geeft geen echte beveiliging.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>For staking only</source>
-        <translation>Alleen voor staking</translation>
-    </message>
-    <message>
-        <location filename="../askpassphrasedialog.cpp" line="+35"/>
+        <location filename="../askpassphrasedialog.cpp" line="+33"/>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;10 or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Vul een nieuw wachtwoord in voor uw portemonnee. &lt;br/&gt; Gebruik een wachtwoord van &lt;b&gt;10 of meer verschillende karakters&lt;/b&gt;, of &lt;b&gt; acht of meer woorden&lt;/b&gt; . </translation>
+        <translation>Vul een nieuw wachtwoord in voor uw portemonnee. &lt;br/&gt; Gebruik een wachtwoord van &lt;b&gt;10 of meer lukrake karakters&lt;/b&gt;, of &lt;b&gt; acht of meer woorden&lt;/b&gt; . </translation>
     </message>
     <message>
         <location line="+1"/>
@@ -200,7 +212,7 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>Versleutel portemonnee</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+3"/>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
         <translation>Deze operatie vereist uw portemonneewachtwoord om de portemonnee te openen.</translation>
     </message>
@@ -236,8 +248,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR COINS&lt;/b&gt;!</source>
-        <translation>Waarschuwing: Als je je portemonnee versleuteld en je verliest je wachtwoord zul je &lt;b&gt;AL JE MUNTEN VERLIEZEN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PEERCOINS&lt;/b&gt;!</source>
+        <translation>Waarschuwing: Als u uw portemonnee versleutelt en uw wachtwoord vergeet, zult u &lt;b&gt;AL UW PEERCOINS VERLIEZEN&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -250,49 +262,49 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>BELANGRIJK: Elke eerder gemaakte backup van uw portemonneebestand dient u te vervangen door het nieuw gegenereerde, versleutelde portemonneebestand. Om veiligheidsredenen zullen eerdere backups van het niet-versleutelde portemonneebestand onbruikbaar worden zodra u uw nieuwe, versleutelde, portemonnee begint te gebruiken.</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+100"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Waarschuwing: De Caps-Lock-toets staat aan!</translation>
     </message>
     <message>
-        <location line="-133"/>
-        <location line="+60"/>
+        <location line="-130"/>
+        <location line="+58"/>
         <source>Wallet encrypted</source>
         <translation>Portemonnee versleuteld</translation>
     </message>
     <message>
-        <location line="-58"/>
-        <source>SteepCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>SteepCoin zal nu sluiten om het versleutel proces te voltooien. Onthou dat het versleutelen van je portemonnee je niet volledig beschermt tegen diefstal van munten door malware op je computer.</translation>
+        <location line="-56"/>
+        <source>Peercoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your peercoins from being stolen by malware infecting your computer.</source>
+        <translation>Peercoin zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw peercoins stelen.</translation>
     </message>
     <message>
         <location line="+13"/>
         <location line="+7"/>
-        <location line="+44"/>
+        <location line="+42"/>
         <location line="+6"/>
         <source>Wallet encryption failed</source>
         <translation>Portemonneeversleuteling mislukt</translation>
     </message>
     <message>
-        <location line="-56"/>
+        <location line="-54"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>Portemonneeversleuteling mislukt door een interne fout. Uw portemonnee is niet versleuteld.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location line="+50"/>
+        <location line="+48"/>
         <source>The supplied passphrases do not match.</source>
         <translation>De opgegeven wachtwoorden komen niet overeen</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-37"/>
         <source>Wallet unlock failed</source>
         <translation>Portemonnee openen mislukt</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+12"/>
+        <location line="+11"/>
         <location line="+19"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>Het opgegeven wachtwoord voor de portemonnee-ontsleuteling is niet correct.</translation>
@@ -311,17 +323,17 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="+282"/>
+        <location filename="../bitcoingui.cpp" line="+233"/>
         <source>Sign &amp;message...</source>
         <translation>&amp;Onderteken bericht...</translation>
     </message>
     <message>
-        <location line="+251"/>
+        <location line="+280"/>
         <source>Synchronizing with network...</source>
         <translation>Synchroniseren met netwerk...</translation>
     </message>
     <message>
-        <location line="-319"/>
+        <location line="-349"/>
         <source>&amp;Overview</source>
         <translation>&amp;Overzicht</translation>
     </message>
@@ -331,7 +343,7 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>Toon algemeen overzicht van de portemonnee</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+20"/>
         <source>&amp;Transactions</source>
         <translation>&amp;Transacties</translation>
     </message>
@@ -341,32 +353,17 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>Blader door transactieverleden</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <source>&amp;Address Book</source>
-        <translation>&amp;Adresboek</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+7"/>
         <source>Edit the list of stored addresses and labels</source>
-        <translation>Wijzig de lijst met bewaarde adressen en labels</translation>
+        <translation>Bewerk de lijst van opgeslagen adressen en labels</translation>
     </message>
     <message>
-        <location line="-13"/>
-        <source>&amp;Receive coins</source>
-        <translation>&amp;Ontvang munten</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="-14"/>
         <source>Show the list of addresses for receiving payments</source>
-        <translation>Toon de lijst  aan adressen voor ontvangen betalingen</translation>
+        <translation>Toon lijst van adressen om betalingen mee te ontvangen</translation>
     </message>
     <message>
-        <location line="-7"/>
-        <source>&amp;Send coins</source>
-        <translation>Verstuur munten</translation>
-    </message>
-    <message>
-        <location line="+35"/>
+        <location line="+31"/>
         <source>E&amp;xit</source>
         <translation>&amp;Afsluiten</translation>
     </message>
@@ -376,9 +373,9 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>Programma afsluiten</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Show information about SteepCoin</source>
-        <translation>Toon informatie over SteepCoin</translation>
+        <location line="+4"/>
+        <source>Show information about Peercoin</source>
+        <translation>Laat informatie zien over Peercoin</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -393,10 +390,10 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     <message>
         <location line="+2"/>
         <source>&amp;Options...</source>
-        <translation>&amp;Opties...</translation>
+        <translation>O&amp;pties...</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>&amp;Encrypt Wallet...</source>
         <translation>&amp;Versleutel Portemonnee...</translation>
     </message>
@@ -410,45 +407,30 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <source>&amp;Change Passphrase...</source>
         <translation>&amp;Wijzig Wachtwoord</translation>
     </message>
-    <message numerus="yes">
-        <location line="+259"/>
-        <source>~%n block(s) remaining</source>
-        <translation><numerusform>~%n blok nodig</numerusform><numerusform>~%n blokken nodig</numerusform></translation>
-    </message>
     <message>
-        <location line="+6"/>
-        <source>Downloaded %1 of %2 blocks of transaction history (%3% done).</source>
-        <translation>%1 van %2 aan transactie historie blokken gedownload (%3% klaar).</translation>
-    </message>
-    <message>
-        <location line="-256"/>
-        <source>&amp;Export...</source>
-        <translation>&amp;Exporteren...</translation>
-    </message>
-    <message>
-        <location line="-64"/>
-        <source>Send coins to a SteepCoin address</source>
-        <translation>Verstuur munten naar een SteepCoin adres</translation>
-    </message>
-    <message>
-        <location line="+47"/>
-        <source>Modify configuration options for SteepCoin</source>
-        <translation>Verander configuratie opties voor SteepCoin</translation>
-    </message>
-    <message>
-        <location line="+18"/>
-        <source>Export the data in the current tab to a file</source>
-        <translation>Exporteer de data in de huidige tab naar een bestand</translation>
-    </message>
-    <message>
-        <location line="-14"/>
-        <source>Encrypt or decrypt wallet</source>
-        <translation>Versleutel of ontsleutel de portemonnee</translation>
+        <location line="+285"/>
+        <source>Importing blocks from disk...</source>
+        <translation>Blokken aan het importeren vanaf harde schijf...</translation>
     </message>
     <message>
         <location line="+3"/>
+        <source>Reindexing blocks on disk...</source>
+        <translation>Bezig met herindexeren van blokken op harde schijf...</translation>
+    </message>
+    <message>
+        <location line="-347"/>
+        <source>Send coins to a Peercoin address</source>
+        <translation>Verstuur munten naar een Peercoinadres</translation>
+    </message>
+    <message>
+        <location line="+49"/>
+        <source>Modify configuration options for Peercoin</source>
+        <translation>Wijzig instellingen van Peercoin</translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <source>Backup wallet to another location</source>
-        <translation>Backup portemonnee naar een andere locatie</translation>
+        <translation>&amp;Backup portemonnee naar een andere locatie</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -456,7 +438,7 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>Wijzig het wachtwoord voor uw portemonneversleuteling</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+6"/>
         <source>&amp;Debug window</source>
         <translation>&amp;Debugscherm</translation>
     </message>
@@ -466,24 +448,40 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>Open debugging en diagnostische console</translation>
     </message>
     <message>
-        <location line="-5"/>
+        <location line="-4"/>
         <source>&amp;Verify message...</source>
         <translation>&amp;Verifiëer bericht...</translation>
     </message>
     <message>
-        <location line="-202"/>
-        <source>SteepCoin</source>
-        <translation>SteepCoin</translation>
+        <location line="-165"/>
+        <location line="+530"/>
+        <source>Peercoin</source>
+        <translation>Peercoin</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="-530"/>
         <source>Wallet</source>
         <translation>Portemonnee</translation>
     </message>
     <message>
-        <location line="+180"/>
-        <source>&amp;About SteepCoin</source>
-        <translation>&amp;Over SteepCoin</translation>
+        <location line="+101"/>
+        <source>&amp;Send</source>
+        <translation>&amp;Versturen</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>&amp;Receive</source>
+        <translation>&amp;Ontvangen</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>&amp;Addresses</source>
+        <translation>&amp;Adressen</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>&amp;About Peercoin</source>
+        <translation>&amp;Over Peercoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -491,159 +489,148 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
         <translation>&amp;Toon / Verberg</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Unlock wallet</source>
-        <translation>Open portemonnee</translation>
-    </message>
-    <message>
         <location line="+1"/>
-        <source>&amp;Lock Wallet</source>
-        <translation>&amp;Sluit portemonnee</translation>
+        <source>Show or hide the main Window</source>
+        <translation>Toon of verberg het hoofdvenster</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Lock wallet</source>
-        <translation>Sluit portemonnee</translation>
+        <location line="+3"/>
+        <source>Encrypt the private keys that belong to your wallet</source>
+        <translation>Versleutel de geheime sleutels die bij uw portemonnee horen</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+7"/>
+        <source>Sign messages with your Peercoin addresses to prove you own them</source>
+        <translation>Onderteken berichten met uw Peercoinadressen om te bewijzen dat u deze adressen bezit</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Verify messages to ensure they were signed with specified Peercoin addresses</source>
+        <translation>Verifiëer handtekeningen om zeker te zijn dat de berichten zijn ondertekend met de gespecificeerde Peercoinadressen</translation>
+    </message>
+    <message>
+        <location line="+28"/>
         <source>&amp;File</source>
         <translation>&amp;Bestand</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>&amp;Settings</source>
         <translation>&amp;Instellingen</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+6"/>
         <source>&amp;Help</source>
         <translation>&amp;Hulp</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+9"/>
         <source>Tabs toolbar</source>
         <translation>Tab-werkbalk</translation>
     </message>
     <message>
-        <location line="+8"/>
-        <source>Actions toolbar</source>
-        <translation>Acties werkbalk</translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <location line="+9"/>
+        <location line="+17"/>
+        <location line="+10"/>
         <source>[testnet]</source>
         <translation>[testnetwerk]</translation>
     </message>
     <message>
-        <location line="+0"/>
-        <location line="+60"/>
-        <source>SteepCoin client</source>
-        <translation>SteepCoin client</translation>
+        <location line="+47"/>
+        <source>Peercoin client</source>
+        <translation>Peercoin client</translation>
     </message>
     <message numerus="yes">
-        <location line="+75"/>
-        <source>%n active connection(s) to SteepCoin network</source>
-        <translation><numerusform>%n actieve verbinding naar SteepCoin netwerk</numerusform><numerusform>%n actieve verbindingen naar SteepCoin netwerk</numerusform></translation>
+        <location line="+141"/>
+        <source>%n active connection(s) to Peercoin network</source>
+        <translation><numerusform>%n actieve connectie naar Peercoinnetwerk</numerusform><numerusform>%n actieve connecties naar Peercoinnetwerk</numerusform></translation>
     </message>
     <message>
-        <location line="+40"/>
-        <source>Downloaded %1 blocks of transaction history.</source>
-        <translation>%1 blokken van transactie geschiedenis gedownload.</translation>
+        <location line="+22"/>
+        <source>No block source available...</source>
+        <translation>Geen bron van blokken beschikbaar...</translation>
     </message>
     <message>
-        <location line="+413"/>
-        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
-        <translation>Staking. &lt;br&gt; Uw gewicht wordt  %1 &lt;br&gt; Network gewicht is %2 &lt;br&gt; Verwachte tijd om beloning te verdienen is %3</translation>
+        <location line="+12"/>
+        <source>Processed %1 of %2 (estimated) blocks of transaction history.</source>
+        <translation>%1 van %2 (geschat) blokken van de transactiehistorie verwerkt.</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Not staking because wallet is locked</source>
-        <translation>Niet staking omdat portemonnee aan het beveiligd is</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Not staking because wallet is offline</source>
-        <translation>Niet staking omdat portemonnee aan het offline is</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Not staking because wallet is syncing</source>
-        <translation>Niet staking omdat portemonnee aan het synchroniseren is.</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Not staking because you don&apos;t have mature coins</source>
-        <translation>Niet staking omdat je geen mature munten hebt</translation>
+        <location line="+4"/>
+        <source>Processed %1 blocks of transaction history.</source>
+        <translation>%1 blokken van transactiehistorie verwerkt.</translation>
     </message>
     <message numerus="yes">
-        <location line="-403"/>
-        <source>%n second(s) ago</source>
-        <translation><numerusform>%n seconden geleden</numerusform><numerusform>%n seconden geleden</numerusform></translation>
-    </message>
-    <message>
-        <location line="-312"/>
-        <source>About SteepCoin card</source>
-        <translation>Over SteepCoin card</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Show information about SteepCoin card</source>
-        <translation>Toon informatie over SteepCoin card</translation>
-    </message>
-    <message>
-        <location line="+18"/>
-        <source>&amp;Unlock Wallet...</source>
-        <translation>Ontgrendel portemonnee...</translation>
-    </message>
-    <message numerus="yes">
-        <location line="+297"/>
-        <source>%n minute(s) ago</source>
-        <translation><numerusform>%n minuut geleden</numerusform><numerusform>%n minuten geleden</numerusform></translation>
+        <location line="+20"/>
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n uur</numerusform><numerusform>%n uur</numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
-        <source>%n hour(s) ago</source>
-        <translation><numerusform>%n uur geleden</numerusform><numerusform>%n uren geleden</numerusform></translation>
+        <source>%n day(s)</source>
+        <translation><numerusform>%n dag</numerusform><numerusform>%n dagen</numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
-        <source>%n day(s) ago</source>
-        <translation><numerusform>%n dag geleden</numerusform><numerusform>%n dagen geleden</numerusform></translation>
+        <source>%n week(s)</source>
+        <translation><numerusform>%n week</numerusform><numerusform>%n weken</numerusform></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+4"/>
+        <source>%1 behind</source>
+        <translation>%1 achter</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Last received block was generated %1 ago.</source>
+        <translation>Laatst ontvangen blok was %1 geleden gegenereerd.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Transactions after this will not yet be visible.</source>
+        <translation>Transacties na dit moment zullen nu nog niet zichtbaar zijn.</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Error</source>
+        <translation>Fout</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Warning</source>
+        <translation>Waarschuwing</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Information</source>
+        <translation>Informatie</translation>
+    </message>
+    <message>
+        <location line="+70"/>
+        <source>You can send this transaction for a fee of %1, which is burned and prevents spamming of the network. Do you want to pay the fee?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location line="-140"/>
         <source>Up to date</source>
         <translation>Bijgewerkt</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+31"/>
         <source>Catching up...</source>
         <translation>Aan het bijwerken...</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>Last received block was generated %1.</source>
-        <translation>Laatst ontvangen blok is gegenereerd op %1.</translation>
-    </message>
-    <message>
-        <location line="+59"/>
-        <source>This transaction is over the size limit.  You can still send it for a fee of %1, which goes to the nodes that process your transaction and helps to support the network.  Do you want to pay the fee?</source>
-        <translation>De grootte van deze transactie overschrijdt de limiet. U kan deze transactie laten uitvoeren voor een meerkost van %1, dewelke doorgestuurd wordt naar de nodes die uw transactie verwerken, alsook ter ondersteuning van het netwerk. Wil u deze meerkost betalen?</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+113"/>
         <source>Confirm transaction fee</source>
-        <translation>Bevestig transactie kosten</translation>
+        <translation>Bevestig transactiekosten</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+8"/>
         <source>Sent transaction</source>
         <translation>Verzonden transactie</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+0"/>
         <source>Incoming transaction</source>
         <translation>Binnenkomende transactie</translation>
     </message>
@@ -661,352 +648,39 @@ Adres: %4
 </translation>
     </message>
     <message>
-        <location line="+100"/>
-        <location line="+15"/>
+        <location line="+33"/>
+        <location line="+23"/>
         <source>URI handling</source>
         <translation>URI-behandeling</translation>
     </message>
     <message>
-        <location line="-15"/>
-        <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid SteepCoin address or malformed URI parameters.</source>
-        <translation>URI kan niet ontleedt worden! Mogelijke oorzaken zijn een ongeldig SteepCoin adres of incorrecte URI parameters.</translation>
+        <location line="-23"/>
+        <location line="+23"/>
+        <source>URI can not be parsed! This can be caused by an invalid Peercoin address or malformed URI parameters.</source>
+        <translation>URI kan niet worden geïnterpreteerd. Dit kan komen door een ongeldig Peercoinadres of misvormde URI-parameters.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+17"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>Portemonnee is &lt;b&gt;versleuteld&lt;/b&gt; en momenteel &lt;b&gt;geopend&lt;/b&gt;</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+8"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Portemonnee is &lt;b&gt;versleuteld&lt;/b&gt; en momenteel &lt;b&gt;gesloten&lt;/b&gt;</translation>
     </message>
     <message>
-        <location line="+25"/>
-        <source>Backup Wallet</source>
-        <translation>Backup Portemonnee</translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>Wallet Data (*.dat)</source>
-        <translation>Portemonnee bestanden (*.dat)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Backup Failed</source>
-        <translation>Backup mislukt</translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>There was an error trying to save the wallet data to the new location.</source>
-        <translation>Er was een fout opgetreden bij het opslaan van de wallet data naar de nieuwe locatie.</translation>
-    </message>
-    <message numerus="yes">
-        <location line="+76"/>
-        <source>%n second(s)</source>
-        <translation><numerusform>%n seconden</numerusform><numerusform>%n seconden</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location line="+4"/>
-        <source>%n minute(s)</source>
-        <translation><numerusform>%n minuut</numerusform><numerusform>%n minuten</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location line="+4"/>
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n uur</numerusform><numerusform>%n uur</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location line="+4"/>
-        <source>%n day(s)</source>
-        <translation><numerusform>%n dag</numerusform><numerusform>%n dagen</numerusform></translation>
-    </message>
-    <message>
-        <location line="+18"/>
-        <source>Not staking</source>
-        <translation>Niet aan het staken.</translation>
-    </message>
-    <message>
-        <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. SteepCoin can no longer continue safely and will quit.</source>
-        <translation>Een fatale fout . SteepCoin kan niet langer veilig doorgaan en sluit af.</translation>
+        <location filename="../bitcoin.cpp" line="+111"/>
+        <source>A fatal error occurred. Peercoin can no longer continue safely and will quit.</source>
+        <translation>Er is een fatale fout opgetreden. Peercoin kan niet meer veilig doorgaan en zal nu afgesloten worden.</translation>
     </message>
 </context>
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+90"/>
+        <location filename="../clientmodel.cpp" line="+104"/>
         <source>Network Alert</source>
         <translation>Netwerkwaarschuwing</translation>
-    </message>
-</context>
-<context>
-    <name>CoinControlDialog</name>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="+14"/>
-        <source>Coin Control</source>
-        <translation>Coin controle opties</translation>
-    </message>
-    <message>
-        <location line="+31"/>
-        <source>Quantity:</source>
-        <translation>Kwantiteit</translation>
-    </message>
-    <message>
-        <location line="+32"/>
-        <source>Bytes:</source>
-        <translation>Bytes:</translation>
-    </message>
-    <message>
-        <location line="+48"/>
-        <source>Amount:</source>
-        <translation>Bedrag:</translation>
-    </message>
-    <message>
-        <location line="+32"/>
-        <source>Priority:</source>
-        <translation>Prioriteit:</translation>
-    </message>
-    <message>
-        <location line="+48"/>
-        <source>Fee:</source>
-        <translation>Vergoeding:</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>Low Output:</source>
-        <translation>Lage uitvoer:</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="+551"/>
-        <source>no</source>
-        <translation>nee</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="+51"/>
-        <source>After Fee:</source>
-        <translation>Na vergoeding:</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>Change:</source>
-        <translation>Wijzigen:</translation>
-    </message>
-    <message>
-        <location line="+69"/>
-        <source>(un)select all</source>
-        <translation>(de)selecteer alles</translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>Tree mode</source>
-        <translation>Boom modus</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>List mode</source>
-        <translation>Lijst modus</translation>
-    </message>
-    <message>
-        <location line="+45"/>
-        <source>Amount</source>
-        <translation>Bedrag</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Label</source>
-        <translation>Label</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Address</source>
-        <translation>Adres</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Date</source>
-        <translation>Datum</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Confirmations</source>
-        <translation>Bevestigingen</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Confirmed</source>
-        <translation>Bevestigd</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Priority</source>
-        <translation>Prioriteit</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="-515"/>
-        <source>Copy address</source>
-        <translation>Kopieer adres</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy label</source>
-        <translation>Kopieer label</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <location line="+26"/>
-        <source>Copy amount</source>
-        <translation>Kopieer bedrag</translation>
-    </message>
-    <message>
-        <location line="-25"/>
-        <source>Copy transaction ID</source>
-        <translation>Kopieer transactie-ID</translation>
-    </message>
-    <message>
-        <location line="+24"/>
-        <source>Copy quantity</source>
-        <translation>Kopieer aantal</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Copy fee</source>
-        <translation>Kopieer vergoeding</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy after fee</source>
-        <translation>Kopieer na vergoeding</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy bytes</source>
-        <translation>Kopieer bytes</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy priority</source>
-        <translation>Kopieer prioriteit</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy low output</source>
-        <translation>Kopieer lage uitvoer</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy change</source>
-        <translation>Kopieer wijzig</translation>
-    </message>
-    <message>
-        <location line="+317"/>
-        <source>highest</source>
-        <translation>hoogste</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>high</source>
-        <translation>hoog</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>medium-high</source>
-        <translation>gemiddeld hoog</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>medium</source>
-        <translation>gemiddeld</translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <source>low-medium</source>
-        <translation>laag gemiddeld</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>low</source>
-        <translation>laag</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>lowest</source>
-        <translation>laagste</translation>
-    </message>
-    <message>
-        <location line="+155"/>
-        <source>DUST</source>
-        <translation>STOF</translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>yes</source>
-        <translation>ja</translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>This label turns red, if the transaction size is bigger than 10000 bytes.
-
- This means a fee of at least %1 per kb is required.
-
- Can vary +/- 1 Byte per input.</source>
-        <translation>Dit label wordt rood, als de transactie grootte groter is dan 10000 bytes.&lt;br&gt;
-
-Dit betekend een fee van minimaal %1 per kb is noodzakelijk.&lt;br&gt;
-
-Kan varieren van +/- 1 Byte per invulling</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Transactions with higher priority get more likely into a block.
-
-This label turns red, if the priority is smaller than &quot;medium&quot;.
-
- This means a fee of at least %1 per kb is required.</source>
-        <translation>Transacties met hogere prioriteit komen sneller in een blok
-
-Dit label wordt rood, als de prioriteit kleiner is dan &quot;normaal&quot;.
-
-Dit betekend een fee van minimaal %1 per kb is noodzakelijk.</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>This label turns red, if any recipient receives an amount smaller than %1.
-
- This means a fee of at least %2 is required. 
-
- Amounts below 0.546 times the minimum relay fee are shown as DUST.</source>
-        <translation>Dit label wordt rood, als elke ontvanger ontvangt een bedrag dat kleiner is dan 1%. 
-
-Dit betekent dat een vergoeding van ten minste 2% is vereist. 
-
-Bedragen onder 0.546 keer het minimum vergoeding worden weergegeven als DUST.</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>This label turns red, if the change is smaller than %1.
-
- This means a fee of at least %2 is required.</source>
-        <translation>Dit label wordt rood, als de verandering kleiner is dan %1.
-
-Dit betekend dat een fee van %2 is vereist.</translation>
-    </message>
-    <message>
-        <location line="+37"/>
-        <location line="+66"/>
-        <source>(no label)</source>
-        <translation>(geen label)</translation>
-    </message>
-    <message>
-        <location line="-9"/>
-        <source>change from %1 (%2)</source>
-        <translation>wijzig van %1 (%2)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>(change)</source>
-        <translation>(wijzig)</translation>
     </message>
 </context>
 <context>
@@ -1024,7 +698,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+10"/>
         <source>The label associated with this address book entry</source>
-        <translation>Het label geassocieerd met deze notitie in het adresboek</translation>
+        <translation>Het label dat geassocieerd is met dit adres</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1034,10 +708,10 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+10"/>
         <source>The address associated with this address book entry. This can only be modified for sending addresses.</source>
-        <translation>Het adres geassocieerd met deze notitie in het adresboek. Dit kan enkel aangepast worden bij verzend-adressen.</translation>
+        <translation>Het adres dat geassocieerd is met deze inschrijving in het adresboek. Dit kan alleen worden veranderd voor zend-adressen.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="+20"/>
+        <location filename="../editaddressdialog.cpp" line="+21"/>
         <source>New receiving address</source>
         <translation>Nieuw ontvangstadres</translation>
     </message>
@@ -1063,8 +737,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid SteepCoin address.</source>
-        <translation>Het ingevoerde adres &quot;%1&quot; is geen geldig SteepCoin adres.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Peercoin address.</source>
+        <translation>Het opgegeven adres &quot;%1&quot; is een ongeldig Peercoinadres</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1080,10 +754,10 @@ Dit betekend dat een fee van %2 is vereist.</translation>
 <context>
     <name>GUIUtil::HelpMessageBox</name>
     <message>
-        <location filename="../guiutil.cpp" line="+420"/>
+        <location filename="../guiutil.cpp" line="+424"/>
         <location line="+12"/>
-        <source>SteepCoin-Qt</source>
-        <translation>SteepCoin-Qt</translation>
+        <source>Peercoin-Qt</source>
+        <translation>Peercoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1098,17 +772,17 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+1"/>
         <source>command-line options</source>
-        <translation>Commandoregel-opties</translation>
+        <translation>commandoregel-opties</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>UI options</source>
-        <translation>Gebruikerinterface-opties</translation>
+        <translation>gebruikersinterfaceopties</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>Stel taal in, bijvoorbeeld &quot;de_DE&quot; (standaard: systeeminstellingen)</translation>
+        <translation>Stel taal in, bijvoorbeeld &apos;&apos;de_DE&quot; (standaard: systeeminstellingen)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1135,53 +809,43 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.</source>
-        <translation>Optioneel transactiekosten per kB dat helpt ervoor zorgen dat uw transacties worden snel verwerkt. De meeste transacties zijn 1 kB. Fee 0.01 aanbevolen.</translation>
+        <source>Mandatory network transaction fee per kB transferred. Most transactions are 1 kB and incur a 0.01 PPC fee. Note: transfer size may increase depending on the number of input transactions required to be added together to fund the payment.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+15"/>
-        <source>Pay transaction &amp;fee</source>
-        <translation>Betaal &amp;transactiekosten</translation>
+        <source>Additional network &amp;fee</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+31"/>
-        <source>Reserved amount does not participate in staking and is therefore spendable at any time.</source>
-        <translation>Gereserveerde hoeveelheid doet niet mee in staking en is daarom altijd uitgeefbaar.</translation>
-    </message>
-    <message>
-        <location line="+15"/>
-        <source>Reserve</source>
-        <translation>Gereserveerd</translation>
-    </message>
-    <message>
-        <location line="+31"/>
-        <source>Automatically start SteepCoin after logging in to the system.</source>
-        <translation>Automatisch starten van SteepCoin na inloggen van het systeem.</translation>
+        <source>Automatically start Peercoin after logging in to the system.</source>
+        <translation>Start Peercoin automatisch na inloggen in het systeem</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start SteepCoin on system login</source>
-        <translation>&amp;Start SteepCoin bij systeem aanmelding</translation>
+        <source>&amp;Start Peercoin on system login</source>
+        <translation>Start &amp;Peercoin bij het inloggen in het systeem</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>Detach block and address databases at shutdown. This means they can be moved to another data directory, but it slows down shutdown. The wallet is always detached.</source>
-        <translation>Los blok en adressenbestanden bij het afsluiten. Dit betekent dat ze naar een ander data-map worden verplaatst, maar het vertraagt ​​shutdown. De portemonnee is altijd vrijstaand.</translation>
+        <location line="+35"/>
+        <source>Reset all client options to default.</source>
+        <translation>Reset alle clientopties naar de standaardinstellingen.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Detach databases at shutdown</source>
-        <translation>&amp;Koppel database los bij afsluiten</translation>
+        <source>&amp;Reset Options</source>
+        <translation>&amp;Reset Opties</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+13"/>
         <source>&amp;Network</source>
         <translation>&amp;Netwerk</translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the SteepCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>De SteepCoin client poort automatisch openen op de router. Dit werkt alleen wanneer uw router UPnP ondersteunt en deze is ingeschakeld.</translation>
+        <source>Automatically open the Peercoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Open de Peercoin-poort automatisch op de router. Dit werkt alleen als de router UPnP ondersteunt en het aanstaat.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1190,13 +854,13 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the SteepCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Verbinding maken met het SteepCoin netwerk via een SOCKS proxy (bijvoorbeeld als U gebruik maakt van Tor)</translation>
+        <source>Connect to the Peercoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Verbind met het Peercoin-netwerk via een SOCKS-proxy (bijv. wanneer u via Tor wilt verbinden)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Connect through SOCKS proxy:</source>
-        <translation>&amp;Verbind door SOCKS proxy:</translation>
+        <translation>&amp;Verbind via een SOCKS-proxy</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -1206,7 +870,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+19"/>
         <source>IP address of the proxy (e.g. 127.0.0.1)</source>
-        <translation>IP Adres van de proxy (bijv. 127.0.0.1)</translation>
+        <translation>IP-adres van de proxy (bijv. 127.0.0.1)</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1265,8 +929,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting SteepCoin.</source>
-        <translation>De user interface-taal kan hier ingesteld worden. Deze instelling word toegepast na SteepCoin opnieuw op te starten.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Peercoin.</source>
+        <translation>De taal van de gebruikersinterface kan hier ingesteld worden. Deze instelling zal pas van kracht worden nadat Peercoin herstart wordt.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1280,23 +944,13 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show SteepCoin addresses in the transaction list or not.</source>
-        <translation>SteepCoin adressen in de transactielijst weergeven of niet</translation>
+        <source>Whether to show Peercoin addresses in the transaction list or not.</source>
+        <translation>Of Peercoinadressen getoond worden in de transactielijst</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Display addresses in transaction list</source>
         <translation>Toon a&amp;dressen in de transactielijst</translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>Whether to show coin control features or not.</source>
-        <translation>Munt controle functies weergeven of niet.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Display coin &amp;control features (experts only!)</source>
-        <translation>Laat coin &amp; control functies zien (enkel voor gevorderden!)</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1314,12 +968,27 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>&amp;Toepassen</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="+55"/>
+        <location filename="../optionsdialog.cpp" line="+53"/>
         <source>default</source>
         <translation>standaard</translation>
     </message>
     <message>
-        <location line="+149"/>
+        <location line="+130"/>
+        <source>Confirm options reset</source>
+        <translation>Bevestig reset opties</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Some settings may require a client restart to take effect.</source>
+        <translation>Sommige instellingen vereisen het herstarten van de client voordat ze in werking treden.</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Do you want to proceed?</source>
+        <translation> Wilt u doorgaan?</translation>
+    </message>
+    <message>
+        <location line="+42"/>
         <location line="+9"/>
         <source>Warning</source>
         <translation>Waarschuwing</translation>
@@ -1327,8 +996,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting SteepCoin.</source>
-        <translation>Deze instelling word toegepast na een restart van SteepCoin.</translation>
+        <source>This setting will take effect after restarting Peercoin.</source>
+        <translation>Deze instelling zal pas van kracht worden na het herstarten van Peercoin.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1344,15 +1013,15 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Vorm</translation>
     </message>
     <message>
-        <location line="+33"/>
-        <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the SteepCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>De weergegeven informatie kan verouderd zijn, Je portemonnee synchroniseerd automatisch met het SteepCoin netwerk nadat er verbindig is gemaakt, maar dit proces is nog niet voltooid.</translation>
+        <location line="+50"/>
+        <location line="+166"/>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Peercoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>De weergegeven informatie kan verouderd zijn. Uw portemonnee synchroniseert automaticsh met het Peercoinnetwerk nadat een verbinding is gelegd, maar dit proces is nog niet voltooid.</translation>
     </message>
     <message>
-        <location line="-160"/>
-        <source>Stake:</source>
-        <translation>Stake:</translation>
+        <location line="-124"/>
+        <source>Balance:</source>
+        <translation>Saldo:</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1360,22 +1029,12 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Onbevestigd:</translation>
     </message>
     <message>
-        <location line="-107"/>
+        <location line="-78"/>
         <source>Wallet</source>
         <translation>Portemonnee</translation>
     </message>
     <message>
-        <location line="+49"/>
-        <source>Spendable:</source>
-        <translation>Uitgeefbaar:</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>Your current spendable balance</source>
-        <translation>Uw beschikbare saldo</translation>
-    </message>
-    <message>
-        <location line="+71"/>
+        <location line="+107"/>
         <source>Immature:</source>
         <translation>Immatuur:</translation>
     </message>
@@ -1385,35 +1044,33 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Gedolven saldo dat nog niet tot wasdom is gekomen</translation>
     </message>
     <message>
-        <location line="+20"/>
-        <source>Total:</source>
-        <translation>Totaal:</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>Your current total balance</source>
-        <translation>Uw totale saldo</translation>
-    </message>
-    <message>
         <location line="+46"/>
         <source>&lt;b&gt;Recent transactions&lt;/b&gt;</source>
         <translation>&lt;b&gt;Recente transacties&lt;/b&gt;</translation>
     </message>
     <message>
-        <location line="-108"/>
+        <location line="-101"/>
+        <source>Your current balance</source>
+        <translation>Uw huidige saldo</translation>
+    </message>
+    <message>
+        <location line="+29"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the current balance</source>
-        <translation>Totaal van de transacties die nog moeten worden bevestigd, en nog niet mee voor het huidige balans</translation>
+        <translation>Totaal van de transacties die nog moeten worden bevestigd en nog niet zijn meegeteld in uw huidige saldo </translation>
     </message>
     <message>
-        <location line="-29"/>
-        <source>Total of coins that was staked, and do not yet count toward the current balance</source>
-        <translation>Totaal aantal munten dat was staked, en nog niet telt voor huidige balans.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="+113"/>
+        <location filename="../overviewpage.cpp" line="+116"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>niet gesynchroniseerd</translation>
+    </message>
+</context>
+<context>
+    <name>PaymentServer</name>
+    <message>
+        <location filename="../paymentserver.cpp" line="+107"/>
+        <source>Cannot start peercoin: click-to-pay handler</source>
+        <translation>Kan peercoin niet starten: click-to-pay handler</translation>
     </message>
 </context>
 <context>
@@ -1421,17 +1078,17 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location filename="../forms/qrcodedialog.ui" line="+14"/>
         <source>QR Code Dialog</source>
-        <translation>QR Code Scherm</translation>
+        <translation>QR-codescherm</translation>
     </message>
     <message>
         <location line="+59"/>
         <source>Request Payment</source>
-        <translation>Vraag betaling</translation>
+        <translation>Vraag betaling aan</translation>
     </message>
     <message>
         <location line="+56"/>
         <source>Amount:</source>
-        <translation>Hoeveelheid:</translation>
+        <translation>Bedrag:</translation>
     </message>
     <message>
         <location line="-44"/>
@@ -1446,7 +1103,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+71"/>
         <source>&amp;Save As...</source>
-        <translation>&amp;Opslaan als...</translation>
+        <translation>&amp;Opslaan Als...</translation>
     </message>
     <message>
         <location filename="../qrcodedialog.cpp" line="+62"/>
@@ -1456,7 +1113,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+40"/>
         <source>The entered amount is invalid, please check.</source>
-        <translation>De ingevoerde hoeveel is ongeldig, controleer aub.</translation>
+        <translation>Het opgegeven bedrag is ongeldig, controleer het s.v.p.</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -1466,12 +1123,12 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+25"/>
         <source>Save QR Code</source>
-        <translation>Sla QR Code op.</translation>
+        <translation>Sla QR-code op</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>PNG Images (*.png)</source>
-        <translation>PNG Afbeeldingen (*.png)</translation>
+        <translation>PNG-Afbeeldingen (*.png)</translation>
     </message>
 </context>
 <context>
@@ -1491,7 +1148,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <location line="+53"/>
         <location line="+23"/>
         <location line="+23"/>
-        <location filename="../rpcconsole.cpp" line="+348"/>
+        <location filename="../rpcconsole.cpp" line="+339"/>
         <source>N/A</source>
         <translation>N.v.t.</translation>
     </message>
@@ -1528,7 +1185,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+23"/>
         <source>On testnet</source>
-        <translation>Op testnetwerk</translation>
+        <translation>Op testnet</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -1562,13 +1219,13 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the SteepCoin-Qt  help message message to get a list with possible SteepCoin command-line options.</source>
-        <translation>Laat het SteepCoin-QT help bericht zien om een lijst te krijgen met mogelijke SteepCoin command-regel opties.</translation>
+        <source>Show the Peercoin-Qt help message to get a list with possible Peercoin command-line options.</source>
+        <translation>Toon het PeercoinQt-hulpbericht voor een lijst met mogelijke Peercoin commandoregel-opties.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Show</source>
-        <translation>&amp;Show</translation>
+        <translation>&amp;Toon</translation>
     </message>
     <message>
         <location line="+24"/>
@@ -1582,13 +1239,13 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="-104"/>
-        <source>SteepCoin - Debug window</source>
-        <translation>SteepCoin - Debugscherm</translation>
+        <source>Peercoin - Debug window</source>
+        <translation>Peercoin-debugscherm</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>SteepCoin Core</source>
-        <translation>SteepCoin Kern</translation>
+        <source>Peercoin Core</source>
+        <translation>Peercoin Kern</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1597,8 +1254,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the SteepCoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Open het SteepCoin debug log bestand van de huidige data map. Dit kan een paar seconden duren voor grote log bestanden.</translation>
+        <source>Open the Peercoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Open het Peercoindebug-logbestand van de huidige datamap. Dit kan een aantal seconden duren voor grote logbestanden.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1606,9 +1263,9 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Maak console leeg</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the SteepCoin RPC console.</source>
-        <translation>Welkom bij de SteepCoin RPC console.</translation>
+        <location filename="../rpcconsole.cpp" line="-30"/>
+        <source>Welcome to the Peercoin RPC console.</source>
+        <translation>Welkom bij de Peercoin RPC-console.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1625,7 +1282,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+182"/>
+        <location filename="../sendcoinsdialog.cpp" line="+124"/>
         <location line="+5"/>
         <location line="+5"/>
         <location line="+5"/>
@@ -1636,96 +1293,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Verstuur munten</translation>
     </message>
     <message>
-        <location line="+76"/>
-        <source>Coin Control Features</source>
-        <translation>Coin controle opties</translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Inputs...</source>
-        <translation>Invoer...</translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>automatically selected</source>
-        <translation>automatisch geselecteerd</translation>
-    </message>
-    <message>
-        <location line="+19"/>
-        <source>Insufficient funds!</source>
-        <translation>Onvoldoende fonds!</translation>
-    </message>
-    <message>
-        <location line="+77"/>
-        <source>Quantity:</source>
-        <translation>Kwantiteit</translation>
-    </message>
-    <message>
-        <location line="+22"/>
-        <location line="+35"/>
-        <source>0</source>
-        <translation>0</translation>
-    </message>
-    <message>
-        <location line="-19"/>
-        <source>Bytes:</source>
-        <translation>Bytes:</translation>
-    </message>
-    <message>
-        <location line="+51"/>
-        <source>Amount:</source>
-        <translation>Bedrag:</translation>
-    </message>
-    <message>
-        <location line="+22"/>
-        <location line="+86"/>
-        <location line="+86"/>
-        <location line="+32"/>
-        <source>0.00 hack</source>
-        <translation>123.456 hack</translation>
-    </message>
-    <message>
-        <location line="-191"/>
-        <source>Priority:</source>
-        <translation>Prioriteit:</translation>
-    </message>
-    <message>
-        <location line="+19"/>
-        <source>medium</source>
-        <translation>gemiddeld</translation>
-    </message>
-    <message>
-        <location line="+32"/>
-        <source>Fee:</source>
-        <translation>Vergoeding:</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>Low Output:</source>
-        <translation>Lage uitvoer:</translation>
-    </message>
-    <message>
-        <location line="+19"/>
-        <source>no</source>
-        <translation>nee</translation>
-    </message>
-    <message>
-        <location line="+32"/>
-        <source>After Fee:</source>
-        <translation>Na vergoeding:</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>Change</source>
-        <translation>Wijzigen</translation>
-    </message>
-    <message>
         <location line="+50"/>
-        <source>custom change address</source>
-        <translation>handmatig veranderen adres</translation>
-    </message>
-    <message>
-        <location line="+106"/>
         <source>Send to multiple recipients at once</source>
         <translation>Verstuur aan verschillende ontvangers ineens</translation>
     </message>
@@ -1737,7 +1305,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+20"/>
         <source>Remove all transaction fields</source>
-        <translation>Verwijder alles in de invulvelden</translation>
+        <translation>Verwijder alle transactievelden</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1745,14 +1313,14 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Verwijder &amp;Alles</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+22"/>
         <source>Balance:</source>
         <translation>Saldo:</translation>
     </message>
     <message>
-        <location line="+16"/>
-        <source>123.456 hack</source>
-        <translation>123.456 hack</translation>
+        <location line="+10"/>
+        <source>123.456 BTC</source>
+        <translation>123.456 BTC</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -1765,54 +1333,9 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>&amp;Verstuur</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a SteepCoin address (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>Voeg een SteepCoin adres in (bijv. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
-    </message>
-    <message>
-        <location line="+15"/>
-        <source>Copy quantity</source>
-        <translation>Kopieer aantal</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy amount</source>
-        <translation>Kopieer bedrag</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy fee</source>
-        <translation>Kopieer vergoeding</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy after fee</source>
-        <translation>Kopieer na vergoeding</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy bytes</source>
-        <translation>Kopieer bytes</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy priority</source>
-        <translation>Kopieer prioriteit</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy low output</source>
-        <translation>Kopieer lage uitvoer</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Copy change</source>
-        <translation>Kopieer wijzig</translation>
-    </message>
-    <message>
-        <location line="+86"/>
+        <location filename="../sendcoinsdialog.cpp" line="-59"/>
         <source>&lt;b&gt;%1&lt;/b&gt; to %2 (%3)</source>
-        <translation>&lt;b&gt; %1 &lt;/b&gt; to %2 (%3)</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; aan %2 (%3)</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1822,15 +1345,15 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+1"/>
         <source>Are you sure you want to send %1?</source>
-        <translation>Weet je zeker dat je %1 wilt verzenden?</translation>
+        <translation>Weet u zeker dat u %1 wil versturen?</translation>
     </message>
     <message>
         <location line="+0"/>
         <source> and </source>
-        <translation>en</translation>
+        <translation> en </translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+23"/>
         <source>The recipient address is not valid, please recheck.</source>
         <translation>Het ontvangstadres is niet geldig, controleer uw invoer.</translation>
     </message>
@@ -1856,28 +1379,13 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>Error: Transaction creation failed.</source>
-        <translation>FOUT: Creëren van transactie mislukt.</translation>
+        <source>Error: Transaction creation failed!</source>
+        <translation>Fout: Aanmaak transactie mislukt!</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Error: The transaction was rejected. This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Fout: De transactie was geweigerd, Dit kan gebeuren als sommige munten in je portemonnee al gebruikt zijn, door het gebruik van een kopie van wallet.dat en de munten in de kopie zijn niet gemarkeerd als gebruikt.</translation>
-    </message>
-    <message>
-        <location line="+251"/>
-        <source>WARNING: Invalid SteepCoin address</source>
-        <translation>WAARSCHUWING: Ongeldig SteepCoin adres</translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>(no label)</source>
-        <translation>(geen label)</translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <source>WARNING: unknown change address</source>
-        <translation>WAARSCHUWING: Onbekend adres</translation>
+        <translation>Fout: De transactie was afgewezen. Dit kan gebeuren als u eerder uitgegeven munten opnieuw wilt versturen, zoals wanneer u een kopie van uw portemonneebestand (wallet.dat) heeft gebruikt en in de kopie deze munten zijn uitgegeven, maar in de huidige portemonnee deze nog niet als zodanig zijn gemarkeerd.</translation>
     </message>
 </context>
 <context>
@@ -1898,23 +1406,23 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Betaal &amp;Aan:</translation>
     </message>
     <message>
-        <location line="+24"/>
-        <location filename="../sendcoinsentry.cpp" line="+25"/>
+        <location line="+34"/>
+        <source>The address to send the payment to (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Het adres waaraan u wilt betalen  (bijv. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+    </message>
+    <message>
+        <location line="+60"/>
+        <location filename="../sendcoinsentry.cpp" line="+26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Vul een label in voor dit adres om het toe te voegen aan uw adresboek</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="-78"/>
         <source>&amp;Label:</source>
         <translation>&amp;Label:</translation>
     </message>
     <message>
-        <location line="+18"/>
-        <source>The address to send the payment to  (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>Het adres om naar te betalen (bijv. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
-    </message>
-    <message>
-        <location line="+10"/>
+        <location line="+28"/>
         <source>Choose address from address book</source>
         <translation>Kies adres uit adresboek</translation>
     </message>
@@ -1940,8 +1448,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a SteepCoin address (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>Voeg een SteepCoin adres in (bijv. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
+        <source>Enter a Peercoin address</source>
+        <translation>Vul een Peercoinadres in (bijv. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
 </context>
 <context>
@@ -1953,34 +1461,33 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location line="+124"/>
         <source>&amp;Sign Message</source>
         <translation>O&amp;nderteken Bericht</translation>
     </message>
     <message>
-        <location line="-118"/>
+        <location line="+6"/>
         <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
         <translation>U kunt berichten ondertekenen met een van uw adressen om te bewijzen dat u dit adres bezit. Pas op dat u geen onduidelijke dingen ondertekent, want phishingaanvallen zouden u kunnen misleiden om zo uw identiteit te stelen. Onderteken alleen berichten waarmee u het volledig eens bent.</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>Het adres om het bericht te ondertekenen (bijv. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ) </translation>
+        <source>The address to sign the message with (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Het adres om het bericht mee te ondertekenen (Vb.: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L).</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location line="+203"/>
+        <location line="+213"/>
         <source>Choose an address from the address book</source>
         <translation>Kies een adres uit het adresboek</translation>
     </message>
     <message>
-        <location line="-193"/>
-        <location line="+203"/>
+        <location line="-203"/>
+        <location line="+213"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-193"/>
+        <location line="-203"/>
         <source>Paste address from clipboard</source>
         <translation>Plak adres vanuit klembord</translation>
     </message>
@@ -1995,17 +1502,27 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Typ hier het bericht dat u wilt ondertekenen</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+7"/>
+        <source>Signature</source>
+        <translation>Handtekening</translation>
+    </message>
+    <message>
+        <location line="+27"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>Kopieer de huidige handtekening naar het systeemklembord</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this SteepCoin address</source>
-        <translation>Teken een bericht om te bewijzen dat je een SteepCoin adres bezit.</translation>
+        <source>Sign the message to prove you own this Peercoin address</source>
+        <translation>Onderteken een bericht om te bewijzen dat u een bepaald Peercoinadres bezit</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+3"/>
+        <source>Sign &amp;Message</source>
+        <translation>Onderteken &amp;Bericht</translation>
+    </message>
+    <message>
+        <location line="+14"/>
         <source>Reset all sign message fields</source>
         <translation>Verwijder alles in de invulvelden</translation>
     </message>
@@ -2017,35 +1534,39 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="-87"/>
-        <location line="+70"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Verifiëer Bericht</translation>
     </message>
     <message>
-        <location line="-64"/>
+        <location line="+6"/>
         <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
         <translation>Voer het ondertekenende adres, bericht en handtekening hieronder in (let erop dat u nieuwe regels, spaties en tabs juist overneemt) om de handtekening te verifiëren. Let erop dat u niet meer uit het bericht interpreteert dan er daadwerkelijk staat,  om te voorkomen dat u wordt misleid in een man-in-the-middle-aanval.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>Het adres van het bericht is ondertekend met (bijv. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
+        <source>The address the message was signed with (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Het adres waarmee bet bericht was ondertekend (Vb.: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L).</translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified SteepCoin address</source>
-        <translation>Verifieer een bericht om zeker te zijn dat deze is ondertekend met een specifiek SteepCoin adres</translation>
+        <source>Verify the message to ensure it was signed with the specified Peercoin address</source>
+        <translation>Controleer een bericht om te verifiëren dat het gespecificeerde Peercoinadres het bericht heeft ondertekend.</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+3"/>
+        <source>Verify &amp;Message</source>
+        <translation>Verifiëer &amp;Bericht</translation>
+    </message>
+    <message>
+        <location line="+14"/>
         <source>Reset all verify message fields</source>
         <translation>Verwijder alles in de invulvelden</translation>
     </message>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a SteepCoin address (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</source>
-        <translation>Voeg een SteepCoin adres in (bijv. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)</translation>
+        <source>Enter a Peercoin address</source>
+        <translation>Vul een Peercoinadres in (bijv. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2054,8 +1575,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter SteepCoin signature</source>
-        <translation>Voer SteepCoin handtekening in</translation>
+        <source>Enter Peercoin signature</source>
+        <translation>Voer Peercoin-handtekening in</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2125,24 +1646,27 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
 </context>
 <context>
+    <name>SplashScreen</name>
+    <message>
+        <location filename="../splashscreen.cpp" line="+22"/>
+        <source>The Peercoin developers</source>
+        <translation>De Peercoin-ontwikkelaars</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>[testnet]</source>
+        <translation>[testnetwerk]</translation>
+    </message>
+</context>
+<context>
     <name>TransactionDesc</name>
     <message>
-        <location filename="../transactiondesc.cpp" line="+19"/>
+        <location filename="../transactiondesc.cpp" line="+20"/>
         <source>Open until %1</source>
         <translation>Openen totdat %1</translation>
     </message>
-    <message numerus="yes">
-        <location line="-2"/>
-        <source>Open for %n block(s)</source>
-        <translation><numerusform>Open voor nog %n blok</numerusform><numerusform>Open voor nog %n blokken</numerusform></translation>
-    </message>
     <message>
-        <location line="+8"/>
-        <source>conflicted</source>
-        <translation>conflicted</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+6"/>
         <source>%1/offline</source>
         <translation>%1/offline</translation>
     </message>
@@ -2259,8 +1783,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Generated coins must mature 510 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Gegenereerd munten moeten 510 blokken maturen voordat ze kunnen worden besteed. Wanneer je een blok genereerd, het naar het netwerk is verzonden en toegevoegd aan de blokketen, zal de status veranderen naar &quot;niet geaccepteerd&quot;and kan het niet uitgegeven worden.  Dit kan soms gebeuren als een ander knooppunt genereert een blok binnen een paar seconden na jou.</translation>
+        <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Gegeneerde munten moeten 120 blokken wachten voordat ze tot wasdom komen en kunnen worden uitgegeven. Uw net gegenereerde blok is uitgezonden aan het netwerk om te worden toegevoegd aan de blokketen. Als het niet wordt geaccepteerd in de keten, zal het blok als &quot;niet geaccepteerd&quot; worden aangemerkt en kan het niet worden uitgegeven. Dit kan soms gebeuren als een andere node net iets sneller een blok heeft gegenereerd; een paar seconden voor het uwe.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2273,7 +1797,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Transactie</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Inputs</source>
         <translation>Inputs</translation>
     </message>
@@ -2293,12 +1817,17 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>onwaar</translation>
     </message>
     <message>
-        <location line="-211"/>
+        <location line="-209"/>
         <source>, has not been successfully broadcast yet</source>
         <translation>, is nog niet met succes uitgezonden</translation>
     </message>
+    <message numerus="yes">
+        <location line="-35"/>
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Open voor nog %n blok</numerusform><numerusform>Open voor nog %n blokken</numerusform></translation>
+    </message>
     <message>
-        <location line="+35"/>
+        <location line="+70"/>
         <source>unknown</source>
         <translation>onbekend</translation>
     </message>
@@ -2319,7 +1848,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
 <context>
     <name>TransactionTableModel</name>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="+226"/>
+        <location filename="../transactiontablemodel.cpp" line="+225"/>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
@@ -2338,48 +1867,38 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <source>Amount</source>
         <translation>Bedrag</translation>
     </message>
-    <message>
-        <location line="+60"/>
-        <source>Open until %1</source>
-        <translation>Open tot %1</translation>
-    </message>
-    <message>
-        <location line="+12"/>
-        <source>Confirmed (%1 confirmations)</source>
-        <translation>Bevestigd (%1 bevestigingen)</translation>
-    </message>
     <message numerus="yes">
-        <location line="-15"/>
+        <location line="+57"/>
         <source>Open for %n more block(s)</source>
         <translation><numerusform>Open voor nog %n blok</numerusform><numerusform>Open voor nog %n blokken</numerusform></translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Offline</source>
-        <translation>Offline</translation>
+        <location line="+3"/>
+        <source>Open until %1</source>
+        <translation>Open tot %1</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Unconfirmed</source>
-        <translation>Onbevestigd:</translation>
+        <source>Offline (%1 confirmations)</source>
+        <translation>Niet verbonden (%1 bevestigingen)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Confirming (%1 of %2 recommended confirmations)</source>
-        <translation>Bevestigen.. (%1 van de %2 bevestigingen)</translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Conflicted</source>
-        <translation>Conflicted</translation>
+        <source>Unconfirmed (%1 of %2 confirmations)</source>
+        <translation>Onbevestigd (%1 van %2 bevestigd)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Immature (%1 confirmations, will be available after %2)</source>
-        <translation>Immature (%1 bevestiging, word beschikbaar na %2)</translation>
+        <source>Confirmed (%1 confirmations)</source>
+        <translation>Bevestigd (%1 bevestigingen)</translation>
+    </message>
+    <message numerus="yes">
+        <location line="+8"/>
+        <source>Mined balance will be available when it matures in %n more block(s)</source>
+        <translation><numerusform>Gedolven saldo zal beschikbaar komen als het tot wasdom komt na %n blok</numerusform><numerusform>Gedolven saldo zal beschikbaar komen als het tot wasdom komt na %n blokken</numerusform></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+5"/>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
         <translation>Dit blok is niet ontvangen bij andere nodes en zal waarschijnlijk niet worden geaccepteerd!</translation>
     </message>
@@ -2389,7 +1908,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Gegenereerd maar niet geaccepteerd</translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+43"/>
         <source>Received with</source>
         <translation>Ontvangen met</translation>
     </message>
@@ -2419,7 +1938,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>(nvt)</translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+199"/>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
         <translation>Transactiestatus. Houd de muiscursor boven dit veld om het aantal bevestigingen te laten zien.</translation>
     </message>
@@ -2447,7 +1966,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
 <context>
     <name>TransactionView</name>
     <message>
-        <location filename="../transactionview.cpp" line="+55"/>
+        <location filename="../transactionview.cpp" line="+52"/>
         <location line="+16"/>
         <source>All</source>
         <translation>Alles</translation>
@@ -2548,9 +2067,9 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Toon transactiedetails</translation>
     </message>
     <message>
-        <location line="+144"/>
+        <location line="+139"/>
         <source>Export Transaction Data</source>
-        <translation>Exporteer Transactie Data</translation>
+        <translation>Exporteer transactiegegevens</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2600,7 +2119,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+0"/>
         <source>Could not write to file %1.</source>
-        <translation>Kan niet schrijven naar bestand %1</translation>
+        <translation>Kon niet schrijven naar bestand %1.</translation>
     </message>
     <message>
         <location line="+100"/>
@@ -2616,57 +2135,97 @@ Dit betekend dat een fee van %2 is vereist.</translation>
 <context>
     <name>WalletModel</name>
     <message>
-        <location filename="../walletmodel.cpp" line="+206"/>
-        <source>Sending...</source>
-        <translation>Versturen...</translation>
+        <location filename="../walletmodel.cpp" line="+193"/>
+        <source>Send Coins</source>
+        <translation>Verstuur munten</translation>
+    </message>
+</context>
+<context>
+    <name>WalletView</name>
+    <message>
+        <location filename="../walletview.cpp" line="+42"/>
+        <source>&amp;Export</source>
+        <translation>&amp;Exporteer</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Export the data in the current tab to a file</source>
+        <translation>Exporteer de data in de huidige tab naar een bestand</translation>
+    </message>
+    <message>
+        <location line="+193"/>
+        <source>Backup Wallet</source>
+        <translation>Portomonnee backuppen</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Wallet Data (*.dat)</source>
+        <translation>Portemonnee-data (*.dat)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Backup Failed</source>
+        <translation>Backup Mislukt</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>There was an error trying to save the wallet data to the new location.</source>
+        <translation>Er is een fout opgetreden bij het wegschrijven van de portemonnee-data naar de nieuwe locatie.</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Backup Successful</source>
+        <translation>Backup Succesvol</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The wallet data was successfully saved to the new location.</source>
+        <translation>De portemonneedata is succesvol opgeslagen op de nieuwe locatie.</translation>
     </message>
 </context>
 <context>
     <name>bitcoin-core</name>
     <message>
-        <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>SteepCoin version</source>
-        <translation>SteepCoin versie</translation>
+        <location filename="../bitcoinstrings.cpp" line="+94"/>
+        <source>Peercoin version</source>
+        <translation>Peercoinversie</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+102"/>
         <source>Usage:</source>
         <translation>Gebruik:</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Send command to -server or SteepCoind</source>
-        <translation>Verstuur commando naar -server of SteepCoind</translation>
+        <location line="-29"/>
+        <source>Send command to -server or peercoind</source>
+        <translation>Stuur commando naar -server of peercoind</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-23"/>
         <source>List commands</source>
         <translation>Lijst van commando&apos;s</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-12"/>
         <source>Get help for a command</source>
         <translation>Toon hulp voor een commando</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+24"/>
         <source>Options:</source>
         <translation>Opties:</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Specify configuration file (default: SteepCoin.conf)</source>
-        <translation>Selecteer configuratie bestand (standaard: SteepCoin.conf)</translation>
+        <location line="+24"/>
+        <source>Specify configuration file (default: peercoin.conf)</source>
+        <translation>Specificeer configuratiebestand (standaard: peercoin.conf)
+</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Specify pid file (default: SteepCoind.pid)</source>
-        <translation>Selecteer pid bestand (standaard: SteepCoin.conf)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Specify wallet file (within data directory)</source>
-        <translation>Specificeer het portemonnee bestand (vanuit de gegevensmap)</translation>
+        <location line="+3"/>
+        <source>Specify pid file (default: peercoind.pid)</source>
+        <translation>Specificeer pid-bestand (standaard: peercoind.pid)
+</translation>
     </message>
     <message>
         <location line="-1"/>
@@ -2674,202 +2233,365 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Stel datamap in</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-9"/>
         <source>Set database cache size in megabytes (default: 25)</source>
         <translation>Stel databankcachegrootte in in megabytes (standaard: 25)</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Set database disk log size in megabytes (default: 100)</source>
-        <translation>Stel database cache grootte in in megabytes (standaard: 100)</translation>
+        <location line="-28"/>
+        <source>Listen for connections on &lt;port&gt; (default: 8333 or testnet: 18333)</source>
+        <translation>Luister voor verbindingen op &lt;poort&gt; (standaard: 8333 of testnet: 18333)</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Listen for connections on &lt;port&gt; (default: 15714 or testnet: 25714)</source>
-        <translation>Luister voor verbindingen op &lt;poort&gt; (standaard: 15714 of testnet: 25714)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+5"/>
         <source>Maintain at most &lt;n&gt; connections to peers (default: 125)</source>
         <translation>Onderhoud maximaal &lt;n&gt; verbindingen naar peers (standaard: 125)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-48"/>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
         <translation>Verbind naar een node om adressen van anderen op te halen, en verbreek vervolgens de verbinding</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+82"/>
         <source>Specify your own public address</source>
         <translation>Specificeer uw eigen publieke adres</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <source>Bind to given address. Use [host]:port notation for IPv6</source>
-        <translation>Koppel aan gegeven adres. Gebruik [host]:poort notatie voor IPv6</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Stake your coins to support network and gain reward (default: 1)</source>
-        <translation>Stake je munten om netwerk te supporten en krijg hiervoor beloning (standaard: 1)</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
         <translation>Drempel om verbinding te verbreken naar zich misdragende peers (standaard: 100)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-134"/>
         <source>Number of seconds to keep misbehaving peers from reconnecting (default: 86400)</source>
         <translation>Aantal seconden dat zich misdragende peers niet opnieuw mogen verbinden (standaard: 86400)</translation>
     </message>
     <message>
-        <location line="-44"/>
+        <location line="-29"/>
         <source>An error occurred while setting up the RPC port %u for listening on IPv4: %s</source>
         <translation>Er is een fout opgetreden tijdens het instellen van de inkomende RPC-poort %u op IPv4: %s</translation>
     </message>
     <message>
-        <location line="+51"/>
-        <source>Detach block and address databases. Increases shutdown time (default: 0)</source>
-        <translation>Ontkoppel blok en adressenbestanden. Verhoogt shutdown tijd (standaard: 0)</translation>
+        <location line="+27"/>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 8332 or testnet: 18332)</source>
+        <translation>Wacht op JSON-RPC-connecties op poort &lt;port&gt; (standaard: 8332 of testnet: 18332)</translation>
     </message>
     <message>
-        <location line="+109"/>
-        <source>Error: The transaction was rejected.  This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Fout: De transactie was geweigerd, Dit kan gebeuren als sommige munten in je portemonnee al gebruikt zijn, door het gebruik van een kopie van wallet.dat en de munten in de kopie zijn niet gemarkeerd als gebruikt.</translation>
-    </message>
-    <message>
-        <location line="-5"/>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds  </source>
-        <translation>Fout: Deze transactie vereist een transactie vergoeding van ten minste %s vanwege de hoeveelheid, complexiteit, of het gebruik van recent ontvangen gelden</translation>
-    </message>
-    <message>
-        <location line="-87"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 15715 or testnet: 25715)</source>
-        <translation>Wacht op JSON-RPC-connecties op &lt;poort&gt; (standaard: 15715 of testnet: 25715) </translation>
-    </message>
-    <message>
-        <location line="-11"/>
+        <location line="+37"/>
         <source>Accept command line and JSON-RPC commands</source>
         <translation>Aanvaard commandoregel- en JSON-RPC-commando&apos;s</translation>
     </message>
     <message>
-        <location line="+101"/>
-        <source>Error: Transaction creation failed  </source>
-        <translation>Fout: Creëren van transactie mislukt.</translation>
-    </message>
-    <message>
-        <location line="-5"/>
-        <source>Error: Wallet locked, unable to create transaction  </source>
-        <translation>Fout: Portemonnee is op slot, niet mogelijk een transactie te creëren.</translation>
-    </message>
-    <message>
-        <location line="-8"/>
-        <source>Importing blockchain data file.</source>
-        <translation>Importeren van blokketen data bestand.</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Importing bootstrap blockchain data file.</source>
-        <translation>Importeren van blokketen data bestand.</translation>
-    </message>
-    <message>
-        <location line="-88"/>
+        <location line="+76"/>
         <source>Run in the background as a daemon and accept commands</source>
         <translation>Draai in de achtergrond als daemon en aanvaard commando&apos;s</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+37"/>
         <source>Use the test network</source>
         <translation>Gebruik het testnetwerk</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="-112"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
         <translation>Accepteer verbindingen van buitenaf (standaard: 1 als geen -proxy of -connect is opgegeven)</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-80"/>
+        <source>%s, you must set a rpcpassword in the configuration file:
+%s
+It is recommended you use the following random password:
+rpcuser=peercoinrpc
+rpcpassword=%s
+(you do not need to remember this password)
+The username and password MUST NOT be the same.
+If the file does not exist, create it with owner-readable-only file permissions.
+It is also recommended to set alertnotify so you are notified of problems;
+for example: alertnotify=echo %%s | mail -s &quot;Peercoin Alert&quot; admin@foo.com
+</source>
+        <translation>%s, u moet een RPC-wachtwoord instellen in het configuratiebestand: %s
+U wordt aangeraden het volgende willekeurige wachtwoord te gebruiken:
+rpcuser=peercoinrpc
+rpcpassword=%s
+(u hoeft dit wachtwoord niet te onthouden)
+De gebruikersnaam en wachtwoord mogen niet hetzelfde zijn.
+Als het bestand niet bestaat, make hem dan aan met leesrechten voor enkel de eigenaar.
+Het is ook aan te bevelen &quot;alertnotify&quot; in te stellen zodat u op de hoogte gesteld wordt van problemen;
+for example: alertnotify=echo %%s | mail -s &quot;Peercoin Alert&quot; admin@foo.com</translation>
+    </message>
+    <message>
+        <location line="+17"/>
         <source>An error occurred while setting up the RPC port %u for listening on IPv6, falling back to IPv4: %s</source>
         <translation>Er is een fout opgetreden tijdens het instellen van de inkomende RPC-poort %u op IPv6, terugval naar IPv4: %s</translation>
     </message>
     <message>
-        <location line="+117"/>
-        <source>Error initializing database environment %s! To recover, BACKUP THAT DIRECTORY, then remove everything from it except for wallet.dat.</source>
-        <translation>Fout bij het ​​initialiseren van de database omgeving %s! Om te herstellen, BACKUP die directory, verwijder dan alles van behalve het wallet.dat.</translation>
+        <location line="+3"/>
+        <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
+        <translation>Bind aan opgegeven adres en luister er altijd op. Gebruik [host]:port notatie voor IPv6</translation>
     </message>
     <message>
-        <location line="-20"/>
-        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: 27000)</source>
-        <translation>Stel maximale grootte van high-priority/low-fee transacties in bytes (standaard: 27000)</translation>
+        <location line="+3"/>
+        <source>Cannot obtain a lock on data directory %s. Peercoin is probably already running.</source>
+        <translation>Kan geen lock op de datamap %s verkrijgen. Peercoin draait vermoedelijk reeds.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
+        <translation>Fout: De transactie was afgewezen! Dit kan gebeuren als sommige munten in uw portemonnee al eerder uitgegeven zijn, zoals wanneer u een kopie van uw wallet.dat heeft gebruikt en in de kopie deze munten zijn uitgegeven, maar in deze portemonnee die munten nog niet als zodanig zijn gemarkeerd.</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
+        <translation>Fout: Deze transactie vereist transactiekosten van tenminste %s, vanwege zijn grootte, complexiteit, of het gebruik van onlangs ontvangen munten!</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Execute command when a relevant alert is received (%s in cmd is replaced by message)</source>
+        <translation>Voer opdracht uit zodra een relevante melding ontvangen is (%s  wordt in cmd vervangen door het bericht)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <translation>Voer opdracht uit zodra een portemonneetransactie verandert (%s in cmd wordt vervangen door TxID)</translation>
     </message>
     <message>
         <location line="+11"/>
+        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: 27000)</source>
+        <translation>Stel maximumgrootte in in bytes voor hoge-prioriteits-/lage-transactiekosten-transacties (standaard: 27000)</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
+        <translation>Dit is een pre-release testversie - gebruik op eigen risico! Gebruik deze niet voor het delven van munten of handelsdoeleinden</translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
         <translation>Waarschuwing: -paytxfee is zeer hoog ingesteld.  Dit zijn de transactiekosten die u betaalt bij het versturen van een transactie.</translation>
     </message>
     <message>
-        <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong SteepCoin will not work properly.</source>
-        <translation>Waarschuwing: Controleer of de datum en tijd van de computer juist zijn! Als uw klok verkeerd is SteepCoin zal niet goed werken.</translation>
+        <location line="+3"/>
+        <source>Warning: Displayed transactions may not be correct! You may need to upgrade, or other nodes may need to upgrade.</source>
+        <translation>Waarschuwing: Weergegeven transacties zijn mogelijk niet correct! Mogelijk dient u te upgraden, of andere nodes dienen te upgraden.</translation>
     </message>
     <message>
-        <location line="-31"/>
+        <location line="+3"/>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Peercoin will not work properly.</source>
+        <translation>Waarschuwing: Controleer dat de datum en tijd op uw computer correct zijn ingesteld. Als uw klok fout staat zal Peercoin niet correct werken.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
         <translation>Waarschuwing: Fout bij het lezen van wallet.dat! Alle sleutels zijn in goede orde uitgelezen, maar transactiedata of adresboeklemma&apos;s zouden kunnen ontbreken of fouten bevatten.</translation>
     </message>
     <message>
-        <location line="-18"/>
+        <location line="+3"/>
         <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
         <translation>Waarschuwing: wallet.dat is corrupt, data is veiliggesteld! Originele wallet.dat is opgeslagen als wallet.{tijdstip}.bak in %s; als uw balans of transacties incorrect zijn dient u een backup terug te zetten.</translation>
     </message>
     <message>
-        <location line="-30"/>
+        <location line="+14"/>
         <source>Attempt to recover private keys from a corrupt wallet.dat</source>
         <translation>Poog de geheime sleutels uit een corrupt wallet.dat bestand terug te halen</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>Block creation options:</source>
         <translation>Blokcreatie-opties:</translation>
     </message>
     <message>
-        <location line="-62"/>
+        <location line="+5"/>
         <source>Connect only to the specified node(s)</source>
         <translation>Verbind alleen naar de gespecificeerde node(s)</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+3"/>
+        <source>Corrupted block database detected</source>
+        <translation>Corrupte blokkendatabase gedetecteerd</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
         <translation>Ontdek eigen IP-adres (standaard: 1 als er wordt geluisterd en geen -externalip is opgegeven)</translation>
     </message>
     <message>
-        <location line="+94"/>
+        <location line="+1"/>
+        <source>Do you want to rebuild the block database now?</source>
+        <translation>Wilt u de blokkendatabase nu herbouwen?</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Error initializing block database</source>
+        <translation>Fout bij intialisatie blokkendatabase</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error initializing wallet database environment %s!</source>
+        <translation>Probleem met initializeren van de database-omgeving %s!</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error loading block database</source>
+        <translation>Fout bij het laden van blokkendatabase</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error opening block database</source>
+        <translation>Fout bij openen blokkendatabase</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Error: Disk space is low!</source>
+        <translation>Fout: Weinig vrije diskruimte!</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error: Wallet locked, unable to create transaction!</source>
+        <translation>Fout: Portemonnee vergrendeld, aanmaak transactie niet mogelijk!</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error: system error: </source>
+        <translation>Fout: Systeemfout:</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
         <translation>Mislukt om op welke poort dan ook te luisteren. Gebruik -listen=0 as u dit wilt.</translation>
     </message>
     <message>
-        <location line="-90"/>
-        <source>Find peers using DNS lookup (default: 1)</source>
-        <translation>Zoek peers doormiddel van DNS lookup (standaard: 1)</translation>
+        <location line="+1"/>
+        <source>Failed to read block info</source>
+        <translation>Lezen van blokinformatie mislukt</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <source>Sync checkpoints policy (default: strict)</source>
-        <translation>Sync checkpoints beleid (standaard: strikt)</translation>
+        <location line="+1"/>
+        <source>Failed to read block</source>
+        <translation>Lezen van blok mislukt</translation>
     </message>
     <message>
-        <location line="+83"/>
+        <location line="+1"/>
+        <source>Failed to sync block index</source>
+        <translation>Synchroniseren van blokindex mislukt</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write block index</source>
+        <translation>Schrijven van blokindex mislukt</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write block info</source>
+        <translation>Schrijven van blokinformatie mislukt</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write block</source>
+        <translation>Schrijven van blok mislukt</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write file info</source>
+        <translation>Schrijven van bestandsinformatie mislukt</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write to coin database</source>
+        <translation>Schrijven naar coindatabase mislukt</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write transaction index</source>
+        <translation>Schrijven van transactieindex mislukt</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write undo data</source>
+        <translation>Schrijven van undo-data mislukt</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Find peers using DNS lookup (default: 1 unless -connect)</source>
+        <translation>Vind andere nodes d.m.v. DNS-naslag (standaard: 1 tenzij -connect)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Generate coins (default: 0)</source>
+        <translation>Genereer munten (standaard: 0)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>How many blocks to check at startup (default: 288, 0 = all)</source>
+        <translation>Aantal te checken blokken bij het opstarten (standaard: 288, 0 = allemaal)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>How thorough the block verification is (0-4, default: 3)</source>
+        <translation>Hoe grondig de blokverificatie is (0-4, standaard: 3)</translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Not enough file descriptors available.</source>
+        <translation>Niet genoeg file descriptors beschikbaar.</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Rebuild block chain index from current blk000??.dat files</source>
+        <translation>Blokketen opnieuw opbouwen van huidige blk000??.dat-bestanden</translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Set the number of threads to service RPC calls (default: 4)</source>
+        <translation>Stel het aantal threads in om RPC-aanvragen mee te bedienen (standaard: 4)</translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Verifying blocks...</source>
+        <translation>Blokken aan het controleren...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Verifying wallet...</source>
+        <translation>Portomonnee aan het controleren...</translation>
+    </message>
+    <message>
+        <location line="-69"/>
+        <source>Imports blocks from external blk000??.dat file</source>
+        <translation>Importeert blokken van extern blk000??.dat bestand</translation>
+    </message>
+    <message>
+        <location line="-76"/>
+        <source>Set the number of script verification threads (up to 16, 0 = auto, &lt;0 = leave that many cores free, default: 0)</source>
+        <translation>Stel het aantal threads voor scriptverificatie in (max 16, 0 = auto, &lt;0 = laat zoveel cores vrij, standaard: 0)</translation>
+    </message>
+    <message>
+        <location line="+77"/>
+        <source>Information</source>
+        <translation>Informatie</translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Invalid -tor address: &apos;%s&apos;</source>
-        <translation>Ongeldig-tor adres: &apos;%s&apos;</translation>
+        <translation>Ongeldig -tor adres: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <source>Invalid amount for -reservebalance=&lt;amount&gt;</source>
-        <translation>Ongeldig bedrag voor -reservebalance = &lt;bedrag&gt;</translation>
+        <location line="+1"/>
+        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Ongeldig bedrag voor -minrelaytxfee=&lt;bedrag&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="-82"/>
+        <location line="+1"/>
+        <source>Invalid amount for -mintxfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Ongeldig bedrag voor -mintxfee=&lt;bedrag&gt;: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Maintain a full transaction index (default: 0)</source>
+        <translation>Onderhoud een volledige transactieindex (standaard: 0)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
         <translation>Maximum per-connectie ontvangstbuffer, &lt;n&gt;*1000 bytes (standaard: 5000)</translation>
     </message>
@@ -2879,233 +2601,177 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <translation>Maximum per-connectie zendbuffer, &lt;n&gt;*1000 bytes (standaard: 1000)</translation>
     </message>
     <message>
-        <location line="-16"/>
+        <location line="+2"/>
+        <source>Only accept block chain matching built-in checkpoints (default: 1)</source>
+        <translation>Accepteer alleen blokketen die overeenkomt met de ingebouwde checkpoints (standaard: 1)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Only connect to nodes in network &lt;net&gt; (IPv4, IPv6 or Tor)</source>
         <translation>Verbind alleen naar nodes in netwerk &lt;net&gt; (IPv4, IPv6 of Tor)</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+2"/>
         <source>Output extra debugging information. Implies all other -debug* options</source>
-        <translation>Geef extra debugging informatie weer. Impliceert alle andere debug * opties</translation>
+        <translation>Output extra debugginginformatie. Impliceert alle andere -debug* opties</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Output extra network debugging information</source>
-        <translation>Geef extra netwerk debug informatie weer</translation>
+        <translation>Output extra netwerk-debugginginformatie</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Prepend debug output with timestamp</source>
+        <translation>Voorzie de debuggingsuitvoer van een tijdsaanduiding</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
+        <translation>SSL-opties: (zie de Peercoin wiki voor SSL-instructies)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Prepend debug output with timestamp</source>
-        <translation>Voeg een tijdstempel toe aan debug output</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>SSL-opties: (zie de Bitcoin wiki voor SSL-instructies)</translation>
-    </message>
-    <message>
-        <location line="-74"/>
         <source>Select the version of socks proxy to use (4-5, default: 5)</source>
-        <translation>Selecteer de versie van socks proxy (4-5, default: 5)</translation>
+        <translation>Selecteer de versie van de SOCKS-proxy om te gebruiken (4 of 5, standaard is 5)</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+3"/>
         <source>Send trace/debug info to console instead of debug.log file</source>
         <translation>Stuur trace/debug-info naar de console in plaats van het debug.log bestand</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Send trace/debug info to debugger</source>
-        <translation>Stuur trace/debug info naar de debugger</translation>
+        <translation>Stuur trace/debug-info naar debugger</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+5"/>
         <source>Set maximum block size in bytes (default: 250000)</source>
-        <translation>Stel maximale block grootte in bytes in (standaard: 250000)</translation>
+        <translation>Stel maximum blokgrootte in in bytes (standaard: 250000)</translation>
     </message>
     <message>
-        <location line="-1"/>
+        <location line="+1"/>
         <source>Set minimum block size in bytes (default: 0)</source>
         <translation>Stel minimum blokgrootte in in bytes (standaard: 0)</translation>
     </message>
     <message>
-        <location line="-29"/>
+        <location line="+2"/>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
         <translation>Verklein debug.log-bestand bij het opstarten van de client (standaard: 1 als geen -debug)</translation>
     </message>
     <message>
-        <location line="-42"/>
+        <location line="+1"/>
+        <source>Signing transaction failed</source>
+        <translation>Ondertekenen van transactie mislukt</translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Specify connection timeout in milliseconds (default: 5000)</source>
         <translation>Specificeer de time-outtijd in milliseconden (standaard: 5000)</translation>
     </message>
     <message>
-        <location line="+109"/>
-        <source>Unable to sign checkpoint, wrong checkpointkey?
-</source>
-        <translation>Kan checkpoint niet ondertekenen, verkeerde checkpoint sleutel? 
-</translation>
+        <location line="+4"/>
+        <source>System error: </source>
+        <translation>Systeemfout:</translation>
     </message>
     <message>
-        <location line="-80"/>
+        <location line="+4"/>
+        <source>Transaction amount too small</source>
+        <translation>Transactiebedrag te klein</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction amounts must be positive</source>
+        <translation>Transactiebedragen moeten positief zijn</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction too large</source>
+        <translation>Transactie te groot</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Use UPnP to map the listening port (default: 0)</source>
         <translation>Gebruik UPnP om de luisterende poort te mappen (standaard: 0)</translation>
     </message>
     <message>
-        <location line="-1"/>
+        <location line="+1"/>
         <source>Use UPnP to map the listening port (default: 1 when listening)</source>
         <translation>Gebruik UPnP om de luisterende poort te mappen (standaard: 1 als er wordt geluisterd)</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="+1"/>
         <source>Use proxy to reach tor hidden services (default: same as -proxy)</source>
-        <translation>Gebruik proxy tor verborgen diensten (standaard: zelfde als -proxy)</translation>
+        <translation>Gebruik proxy om &apos;tor hidden services&apos; te bereiken (standaard: hetzelfde als -proxy)</translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+2"/>
         <source>Username for JSON-RPC connections</source>
         <translation>Gebruikersnaam voor JSON-RPC-verbindingen</translation>
     </message>
     <message>
-        <location line="+47"/>
-        <source>Verifying database integrity...</source>
-        <translation>Database integriteit wordt geverifieërd</translation>
-    </message>
-    <message>
-        <location line="+57"/>
-        <source>WARNING: syncronized checkpoint violation detected, but skipped!</source>
-        <translation>WAARSCHUWING: gesynchroniseerd checkpoint overtreding is geconstateerd, maar overgeslagen!</translation>
+        <location line="+4"/>
+        <source>Warning</source>
+        <translation>Waarschuwing</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: Disk space is low!</source>
-        <translation>Waarschuwing: Hardeschijf raakt vol!</translation>
-    </message>
-    <message>
-        <location line="-2"/>
         <source>Warning: This version is obsolete, upgrade required!</source>
         <translation>Waarschuwing: Deze versie is verouderd, een upgrade is vereist!</translation>
     </message>
     <message>
-        <location line="-48"/>
+        <location line="+1"/>
+        <source>You need to rebuild the databases using -reindex to change -txindex</source>
+        <translation>U moet de databases herbouwen met behulp van -reindex om -txindex te kunnen veranderen</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>wallet.dat corrupt, salvage failed</source>
         <translation>wallet.dat corrupt, veiligstellen mislukt</translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="-50"/>
         <source>Password for JSON-RPC connections</source>
         <translation>Wachtwoord voor JSON-RPC-verbindingen</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <source>%s, you must set a rpcpassword in the configuration file:
- %s
-It is recommended you use the following random password:
-rpcuser=SteepCoinrpc
-rpcpassword=%s
-(you do not need to remember this password)
-The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permissions.
-It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;SteepCoin Alert&quot; admin@foo.com
-</source>
-        <translation>%s, u moet een rpcpassword instellen in het configuratiebestand: 
-%s 
-Het wordt aanbevolen de volgende willekeurig wachtwoord gebruiken: 
-rpcuser = SteepCoinrpc 
-rpcpassword = %s 
-(je hoeft niet dit wachtwoord te onthouden) 
-De gebruikersnaam en het wachtwoord MAG NIET hetzelfde zijn. 
-Als het bestand niet bestaat, maakt u met leesbare-alleen-eigenaar bestandsbeheermachtigingen.  
-Het wordt ook aanbevolen om alertnotify instellen zodat u een melding van problemen;  
-bijvoorbeeld: alertnotify = echo %%s | mail -s &quot;SteepCoin Alert&quot; admin@foo.com </translation>
-    </message>
-    <message>
-        <location line="+51"/>
-        <source>Find peers using internet relay chat (default: 0)</source>
-        <translation>Zoek peers door gebruik van Internet Relay Chat (standaard: 1) {? 0)}</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Sync time with other nodes. Disable if time on your system is precise e.g. syncing with NTP (default: 1)</source>
-        <translation>Synchroniseer tijd met andere connecties. Uitschakelen als de tijd op uw systeem nauwkeurig is bijv. synchroniseren met NTP (standaard: 1)</translation>
-    </message>
-    <message>
-        <location line="+15"/>
-        <source>When creating transactions, ignore inputs with value less than this (default: 0.01)</source>
-        <translation>Bij het maken van transacties, negeer ingangen met waarde minder dan dit (standaard: 0,01)</translation>
-    </message>
-    <message>
-        <location line="+16"/>
+        <location line="-67"/>
         <source>Allow JSON-RPC connections from specified IP address</source>
         <translation>Sta JSON-RPC verbindingen van opgegeven IP-adres toe</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+76"/>
         <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
         <translation>Verstuur commando&apos;s naar proces dat op &lt;ip&gt; draait (standaard: 127.0.0.1)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-120"/>
         <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
         <translation>Voer commando uit zodra het beste blok verandert (%s in cmd wordt vervangen door blockhash)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>Voer opdracht uit zodra een portemonneetransactie verandert (%s in cmd wordt vervangen door TxID)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Require a confirmations for change (default: 0)</source>
-        <translation>Vereist een bevestiging voor verandering (standaard: 0)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Enforce transaction scripts to use canonical PUSH operators (default: 1)</source>
-        <translation>Dwing transactie scripts gebruik van canonieke PUSH operatoren (standaard: 1)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Execute command when a relevant alert is received (%s in cmd is replaced by message)</source>
-        <translation>Voer opdracht uit zodra een relevante waarschuwing wordt ontvangen (%s in cmd wordt vervangen door bericht)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+147"/>
         <source>Upgrade wallet to latest format</source>
         <translation>Vernieuw portemonnee naar nieuwste versie</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-21"/>
         <source>Set key pool size to &lt;n&gt; (default: 100)</source>
         <translation>Stel sleutelpoelgrootte in op &lt;n&gt; (standaard: 100)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-12"/>
         <source>Rescan the block chain for missing wallet transactions</source>
         <translation>Doorzoek de blokketen op ontbrekende portemonnee-transacties</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>How many blocks to check at startup (default: 2500, 0 = all)</source>
-        <translation>Hoeveel blokken controleren bij opstarten (standaard: 2500, 0= alles)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>How thorough the block verification is (0-6, default: 1)</source>
-        <translation>Hoe grondig het blokverificatie is (0-6, standaard: 1)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Imports blocks from external blk000?.dat file</source>
-        <translation>Importeer blokken van extern blk000?.dat bestand</translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location line="+35"/>
         <source>Use OpenSSL (https) for JSON-RPC connections</source>
         <translation>Gebruik OpenSSL (https) voor JSON-RPC-verbindingen</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-26"/>
         <source>Server certificate file (default: server.cert)</source>
         <translation>Certificaat-bestand voor server (standaard: server.cert)</translation>
     </message>
@@ -3115,92 +2781,62 @@ bijvoorbeeld: alertnotify = echo %%s | mail -s &quot;SteepCoin Alert&quot; admin
         <translation>Geheime sleutel voor server (standaard: server.pem)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-151"/>
         <source>Acceptable ciphers (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</source>
-        <translation>Aanvaardbare cijfers (standaard: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
+        <translation>Aanvaardbare ciphers (standaard: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
     </message>
     <message>
-        <location line="+53"/>
-        <source>Error: Wallet unlocked for staking only, unable to create transaction.</source>
-        <translation>Fout: Portemonnee ontgrendeld voor alleen staking, niet in staat om de transactie te maken.</translation>
-    </message>
-    <message>
-        <location line="+18"/>
-        <source>WARNING: Invalid checkpoint found! Displayed transactions may not be correct! You may need to upgrade, or notify developers.</source>
-        <translation>WAARSCHUWING: Ongeldig controlepunt gevonden! Weergegeven transacties kunnen niet kloppen! Het is mogelijk dat je moet upgraden, of developers moet waarschuwen.</translation>
-    </message>
-    <message>
-        <location line="-158"/>
+        <location line="+165"/>
         <source>This help message</source>
         <translation>Dit helpbericht</translation>
     </message>
     <message>
-        <location line="+95"/>
-        <source>Wallet %s resides outside data directory %s.</source>
-        <translation>Portemonnee %s bevindt zich buiten de datamap %s.</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  SteepCoin is probably already running.</source>
-        <translation>Kan een slot op data directory %s niet verkrijgen. SteepCoin wordt waarschijnlijk al uitgevoerd.</translation>
-    </message>
-    <message>
-        <location line="-98"/>
-        <source>SteepCoin</source>
-        <translation>SteepCoin</translation>
-    </message>
-    <message>
-        <location line="+140"/>
+        <location line="+6"/>
         <source>Unable to bind to %s on this computer (bind returned error %d, %s)</source>
         <translation>Niet in staat om aan %s te binden op deze computer (bind gaf error %d, %s)</translation>
     </message>
     <message>
-        <location line="-130"/>
+        <location line="-91"/>
         <source>Connect through socks proxy</source>
-        <translation>Verbind door socks proxy</translation>
+        <translation>Verbind via een socks-proxy</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-10"/>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
         <translation>Sta DNS-naslag toe voor -addnode, -seednode en -connect</translation>
     </message>
     <message>
-        <location line="+122"/>
+        <location line="+55"/>
         <source>Loading addresses...</source>
         <translation>Adressen aan het laden...</translation>
     </message>
     <message>
-        <location line="-15"/>
-        <source>Error loading blkindex.dat</source>
-        <translation>Fout bij laden van blkindex.dat</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="-35"/>
         <source>Error loading wallet.dat: Wallet corrupted</source>
         <translation>Fout bij laden wallet.dat: Portemonnee corrupt</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of SteepCoin</source>
-        <translation>Fout bij laden van wallet.dat: Portemonnee vereist een nieuwere versie van SteepCoin</translation>
+        <location line="+1"/>
+        <source>Error loading wallet.dat: Wallet requires newer version of Peercoin</source>
+        <translation>Fout bij laden wallet.dat: Portemonnee vereist een nieuwere versie van Peercoin</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart SteepCoin to complete</source>
-        <translation>Portemonnee moet herschreven worden: herstart SteepCoin om te voltooien</translation>
+        <location line="+93"/>
+        <source>Wallet needed to be rewritten: restart Peercoin to complete</source>
+        <translation>Portemonnee moest herschreven worden: Herstart Peercoin om te voltooien</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-95"/>
         <source>Error loading wallet.dat</source>
         <translation>Fout bij laden wallet.dat</translation>
     </message>
     <message>
-        <location line="-16"/>
+        <location line="+28"/>
         <source>Invalid -proxy address: &apos;%s&apos;</source>
         <translation>Ongeldig -proxy adres: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="-1"/>
+        <location line="+56"/>
         <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
         <translation>Onbekend netwerk gespecificeerd in -onlynet: &apos;%s&apos;</translation>
     </message>
@@ -3210,113 +2846,93 @@ bijvoorbeeld: alertnotify = echo %%s | mail -s &quot;SteepCoin Alert&quot; admin
         <translation>Onbekende -socks proxyversie aangegeven: %i</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-96"/>
         <source>Cannot resolve -bind address: &apos;%s&apos;</source>
         <translation>Kan -bind adres niet herleiden: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Cannot resolve -externalip address: &apos;%s&apos;</source>
         <translation>Kan -externlip adres niet herleiden: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="-24"/>
+        <location line="+44"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>Ongeldig bedrag voor -paytxfee=&lt;bedrag&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+44"/>
-        <source>Error: could not start node</source>
-        <translation>Fout: kan geen verbinding maken met node</translation>
-    </message>
-    <message>
-        <location line="+11"/>
-        <source>Sending...</source>
-        <translation>Versturen...</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+1"/>
         <source>Invalid amount</source>
         <translation>Ongeldig bedrag</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-6"/>
         <source>Insufficient funds</source>
         <translation>Ontoereikend saldo</translation>
     </message>
     <message>
-        <location line="-34"/>
+        <location line="+10"/>
         <source>Loading block index...</source>
         <translation>Blokindex aan het laden...</translation>
     </message>
     <message>
-        <location line="-103"/>
+        <location line="-57"/>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation>Voeg een node om naar te verbinden toe en probeer de verbinding open te houden</translation>
     </message>
     <message>
-        <location line="+122"/>
-        <source>Unable to bind to %s on this computer. SteepCoin is probably already running.</source>
-        <translation>Niet mogelijk om %s op deze computer. SteepCoin is waarschijnlijk al geopened.</translation>
+        <location line="-25"/>
+        <source>Unable to bind to %s on this computer. Peercoin is probably already running.</source>
+        <translation>Niet in staat om aan %s te binden op deze computer. Peercoin draait vermoedelijk reeds.</translation>
     </message>
     <message>
-        <location line="-97"/>
+        <location line="+64"/>
         <source>Fee per KB to add to transactions you send</source>
-        <translation>Vergoeding per KB toe te voegen aan de transacties die u verzendt</translation>
+        <translation>Kosten per KB om aan transacties toe te voegen die u verstuurt</translation>
     </message>
     <message>
-        <location line="+55"/>
-        <source>Invalid amount for -mininput=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Ongeldig bedrag voor -mininput = &lt;bedrag&gt;: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="+19"/>
         <source>Loading wallet...</source>
         <translation>Portemonnee aan het laden...</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="-52"/>
         <source>Cannot downgrade wallet</source>
         <translation>Kan portemonnee niet downgraden</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Cannot initialize keypool</source>
-        <translation>Kan keypool niet initialiseren</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Cannot write default address</source>
         <translation>Kan standaardadres niet schrijven</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+64"/>
         <source>Rescanning...</source>
         <translation>Blokketen aan het doorzoeken...</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="-57"/>
         <source>Done loading</source>
         <translation>Klaar met laden</translation>
     </message>
     <message>
-        <location line="-167"/>
+        <location line="+82"/>
         <source>To use the %s option</source>
         <translation>Om de %s optie te gebruiken</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="-74"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-31"/>
         <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
 %s
 If the file does not exist, create it with owner-readable-only file permissions.</source>
         <translation>U dient rpcpassword=&lt;wachtwoord&gt; in te stellen in het configuratiebestand:
 %s
-Als het bestand niet bestaat, maak het dan aan, met een alleen-lezen permissie.</translation>
+Als het bestand niet bestaat, maak het dan aan, met een alleen-lezen-permissie.</translation>
     </message>
 </context>
 </TS>

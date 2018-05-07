@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017 The SteepCoin developers
+// Copyright (c) 2012-2017 The Peercoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_NET_H
@@ -16,11 +16,13 @@
 #endif
 
 #include "mruset.h"
+#include "limitedmap.h"
 #include "netbase.h"
 #include "protocol.h"
 #include "addrman.h"
+#include "hash.h"
+#include "bloom.h"
 
-class CRequestTracker;
 class CNode;
 class CBlockIndex;
 extern int nBestHeight;
@@ -37,10 +39,10 @@ void AddressCurrentlyConnected(const CService& addr);
 CNode* FindNode(const CNetAddr& ip);
 CNode* FindNode(const CService& ip);
 CNode* ConnectNode(CAddress addrConnect, const char *strDest = NULL);
-void MapPort();
+void MapPort(bool fUseUPnP);
 unsigned short GetListenPort();
 bool BindListenPort(const CService &bindAddr, std::string& strError=REF(std::string()));
-void StartNode(void* parg);
+void StartNode(boost::thread_group& threadGroup);
 bool StopNode();
 void SocketSendData(CNode *pnode);
 
@@ -50,7 +52,6 @@ enum
     LOCAL_IF,     // address a local interface listens on
     LOCAL_BIND,   // address explicit bound to
     LOCAL_UPNP,   // address reported by UPnP
-    LOCAL_IRC,    // address reported by IRC (deprecated)
     LOCAL_HTTP,   // address reported by whatismyip.com and similar
     LOCAL_MANUAL, // address explicitly specified (-externalip=)
 
@@ -70,64 +71,22 @@ void SetReachable(enum Network net, bool fFlag = true);
 CAddress GetLocalAddress(const CNetAddr *paddrPeer = NULL);
 
 
-enum
-{
-    MSG_TX = 1,
-    MSG_BLOCK,
-};
-
-class CRequestTracker
-{
-public:
-    void (*fn)(void*, CDataStream&);
-    void* param1;
-
-    explicit CRequestTracker(void (*fnIn)(void*, CDataStream&)=NULL, void* param1In=NULL)
-    {
-        fn = fnIn;
-        param1 = param1In;
-    }
-
-    bool IsNull()
-    {
-        return fn == NULL;
-    }
-};
-
-
-/** Thread types */
-enum threadId
-{
-    THREAD_SOCKETHANDLER,
-    THREAD_OPENCONNECTIONS,
-    THREAD_MESSAGEHANDLER,
-    THREAD_RPCLISTENER,
-    THREAD_UPNP,
-    THREAD_DNSSEED,
-    THREAD_ADDEDCONNECTIONS,
-    THREAD_DUMPADDRESS,
-    THREAD_RPCHANDLER,
-    THREAD_STAKE_MINER,
-    THREAD_NTP,
-
-    THREAD_MAX
-};
-
-extern bool fClient;
 extern bool fDiscover;
-extern bool fUseUPnP;
-extern uint64_t nLocalServices;
-extern uint64_t nLocalHostNonce;
+extern uint64 nLocalServices;
 extern CAddress addrSeenByPeer;
-extern boost::array<int, THREAD_MAX> vnThreadsRunning;
+extern uint64 nLocalHostNonce;
 extern CAddrMan addrman;
+extern int nMaxConnections;
 
 extern std::vector<CNode*> vNodes;
 extern CCriticalSection cs_vNodes;
 extern std::map<CInv, CDataStream> mapRelay;
-extern std::deque<std::pair<int64_t, CInv> > vRelayExpiration;
+extern std::deque<std::pair<int64, CInv> > vRelayExpiration;
 extern CCriticalSection cs_mapRelay;
-extern std::map<CInv, int64_t> mapAlreadyAskedFor;
+extern limitedmap<CInv, int64> mapAlreadyAskedFor;
+
+extern std::vector<std::string> vAddedNodes;
+extern CCriticalSection cs_vAddedNodes;
 
 
 
@@ -135,16 +94,19 @@ extern std::map<CInv, int64_t> mapAlreadyAskedFor;
 class CNodeStats
 {
 public:
-    uint64_t nServices;
-    int64_t nLastSend;
-    int64_t nLastRecv;
-    int64_t nTimeConnected;
+    uint64 nServices;
+    int64 nLastSend;
+    int64 nLastRecv;
+    int64 nTimeConnected;
     std::string addrName;
     int nVersion;
-    std::string strSubVer;
+    std::string cleanSubVer;
     bool fInbound;
     int nStartingHeight;
     int nMisbehavior;
+    uint64 nSendBytes;
+    uint64 nRecvBytes;
+    bool fSyncNode;
 };
 
 
@@ -189,59 +151,73 @@ public:
 
 
 
+
 /** Information about a peer */
 class CNode
 {
 public:
     // socket
-    uint64_t nServices;
+    uint64 nServices;
     SOCKET hSocket;
     CDataStream ssSend;
     size_t nSendSize; // total size of all vSendMsg entries
     size_t nSendOffset; // offset inside the first vSendMsg already sent
+    uint64 nSendBytes;
     std::deque<CSerializeData> vSendMsg;
     CCriticalSection cs_vSend;
 
+    std::deque<CInv> vRecvGetData;
     std::deque<CNetMessage> vRecvMsg;
     CCriticalSection cs_vRecvMsg;
+    uint64 nRecvBytes;
     int nRecvVersion;
 
-    int64_t nLastSend;
-    int64_t nLastRecv;
-    int64_t nLastSendEmpty;
-    int64_t nTimeConnected;
+    int64 nLastSend;
+    int64 nLastRecv;
+    int64 nLastSendEmpty;
+    int64 nTimeConnected;
     CAddress addr;
     std::string addrName;
     CService addrLocal;
     int nVersion;
-    std::string strSubVer;
+    // strSubVer is whatever byte array we read from the wire. However, this field is intended 
+    // to be printed out, displayed to humans in various forms and so on. So we sanitize it and
+    // store the sanitized version in cleanSubVer. The original should be used when dealing with
+    // the network or wire types and the cleaned string used when displayed or logged.
+    std::string strSubVer, cleanSubVer;
     bool fOneShot;
     bool fClient;
     bool fInbound;
     bool fNetworkNode;
     bool fSuccessfullyConnected;
     bool fDisconnect;
+    // We use fRelayTxes for two purposes -
+    // a) it allows us to not relay tx invs before receiving the peer's version message
+    // b) the peer may tell us in their version message that we should not relay tx invs
+    //    until they have initialized their bloom filter.
+    bool fRelayTxes;
     CSemaphoreGrant grantOutbound;
+    CCriticalSection cs_filter;
+    CBloomFilter* pfilter;
     int nRefCount;
 protected:
 
     // Denial-of-service detection/prevention
     // Key is IP address, value is banned-until-time
-    static std::map<CNetAddr, int64_t> setBanned;
+    static std::map<CNetAddr, int64> setBanned;
     static CCriticalSection cs_setBanned;
     int nMisbehavior;
 
 public:
-    std::map<uint256, CRequestTracker> mapRequests;
-    CCriticalSection cs_mapRequests;
     uint256 hashContinue;
     CBlockIndex* pindexLastGetBlocksBegin;
     uint256 hashLastGetBlocksEnd;
     int nStartingHeight;
+    bool fStartSync;
 
     // flood relay
     std::vector<CAddress> vAddrToSend;
-    mruset<CAddress> setAddrKnown;
+    std::set<CAddress> setAddrKnown;
     bool fGetAddr;
     std::set<uint256> setKnown;
     uint256 hashCheckpointKnown; // ppcoin: known sent sync-checkpoint
@@ -250,15 +226,17 @@ public:
     mruset<CInv> setInventoryKnown;
     std::vector<CInv> vInventoryToSend;
     CCriticalSection cs_inventory;
-    std::multimap<int64_t, CInv> mapAskFor;
+    std::multimap<int64, CInv> mapAskFor;
 
-    CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn = "", bool fInboundIn=false) : ssSend(SER_NETWORK, INIT_PROTO_VERSION), setAddrKnown(5000)
+    CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn = "", bool fInboundIn=false) : ssSend(SER_NETWORK, MIN_PROTO_VERSION)
     {
         nServices = 0;
         hSocket = hSocketIn;
-        nRecvVersion = INIT_PROTO_VERSION;
+        nRecvVersion = MIN_PROTO_VERSION;
         nLastSend = 0;
         nLastRecv = 0;
+        nSendBytes = 0;
+        nRecvBytes = 0;
         nLastSendEmpty = GetTime();
         nTimeConnected = GetTime();
         addr = addrIn;
@@ -278,10 +256,13 @@ public:
         pindexLastGetBlocksBegin = 0;
         hashLastGetBlocksEnd = 0;
         nStartingHeight = -1;
+        fStartSync = false;
         fGetAddr = false;
         nMisbehavior = 0;
         hashCheckpointKnown = 0;
+        fRelayTxes = false;
         setInventoryKnown.max_size(SendBufferSize() / 1000);
+        pfilter = new CBloomFilter();
 
         // Be shy and don't send version until we hear
         if (hSocket != INVALID_SOCKET && !fInbound)
@@ -295,6 +276,8 @@ public:
             closesocket(hSocket);
             hSocket = INVALID_SOCKET;
         }
+        if (pfilter)
+            delete pfilter;
     }
 
 private:
@@ -340,6 +323,8 @@ public:
         nRefCount--;
     }
 
+
+
     void AddAddressKnown(const CAddress& addr)
     {
         setAddrKnown.insert(addr);
@@ -376,25 +361,35 @@ public:
     {
         // We're using mapAskFor as a priority queue,
         // the key is the earliest time the request can be sent
-        int64_t& nRequestTime = mapAlreadyAskedFor[inv];
+        int64 nRequestTime;
+        limitedmap<CInv, int64>::const_iterator it = mapAlreadyAskedFor.find(inv);
+        if (it != mapAlreadyAskedFor.end())
+            nRequestTime = it->second;
+        else
+            nRequestTime = 0;
         if (fDebugNet)
-            printf("askfor %s   %"PRId64" (%s)\n", inv.ToString().c_str(), nRequestTime, DateTimeStrFormat("%H:%M:%S", nRequestTime/1000000).c_str());
+            printf("askfor %s   %" PRI64d" (%s)\n", inv.ToString().c_str(), nRequestTime, DateTimeStrFormat("%H:%M:%S", nRequestTime/1000000).c_str());
 
         // Make sure not to reuse time indexes to keep things in the same order
-        int64_t nNow = (GetTime() - 1) * 1000000;
-        static int64_t nLastTime;
+        int64 nNow = (GetTime() - 1) * 1000000;
+        static int64 nLastTime;
         ++nLastTime;
         nNow = std::max(nNow, nLastTime);
         nLastTime = nNow;
 
         // Each retry is 2 minutes after the last
         nRequestTime = std::max(nRequestTime + 2 * 60 * 1000000, nNow);
+        if (it != mapAlreadyAskedFor.end())
+            mapAlreadyAskedFor.update(it, nRequestTime);
+        else
+            mapAlreadyAskedFor.insert(std::make_pair(inv, nRequestTime));
         mapAskFor.insert(std::make_pair(nRequestTime, inv));
     }
 
 
 
-    void BeginMessage(const char* pszCommand)
+    // TODO: Document the postcondition of this function.  Is cs_vSend locked?
+    void BeginMessage(const char* pszCommand) EXCLUSIVE_LOCK_FUNCTION(cs_vSend)
     {
         ENTER_CRITICAL_SECTION(cs_vSend);
         assert(ssSend.size() == 0);
@@ -403,7 +398,8 @@ public:
             printf("sending: %s ", pszCommand);
     }
 
-    void AbortMessage()
+    // TODO: Document the precondition of this function.  Is cs_vSend locked?
+    void AbortMessage() UNLOCK_FUNCTION(cs_vSend)
     {
         ssSend.clear();
 
@@ -413,7 +409,8 @@ public:
             printf("(aborted)\n");
     }
 
-    void EndMessage()
+    // TODO: Document the precondition of this function.  Is cs_vSend locked?
+    void EndMessage() UNLOCK_FUNCTION(cs_vSend)
     {
         if (mapArgs.count("-dropmessagestest") && GetRand(atoi(mapArgs["-dropmessagestest"])) == 0)
         {
@@ -612,53 +609,6 @@ public:
         }
     }
 
-
-    void PushRequest(const char* pszCommand,
-                     void (*fn)(void*, CDataStream&), void* param1)
-    {
-        uint256 hashReply;
-        RAND_bytes((unsigned char*)&hashReply, sizeof(hashReply));
-
-        {
-            LOCK(cs_mapRequests);
-            mapRequests[hashReply] = CRequestTracker(fn, param1);
-        }
-
-        PushMessage(pszCommand, hashReply);
-    }
-
-    template<typename T1>
-    void PushRequest(const char* pszCommand, const T1& a1,
-                     void (*fn)(void*, CDataStream&), void* param1)
-    {
-        uint256 hashReply;
-        RAND_bytes((unsigned char*)&hashReply, sizeof(hashReply));
-
-        {
-            LOCK(cs_mapRequests);
-            mapRequests[hashReply] = CRequestTracker(fn, param1);
-        }
-
-        PushMessage(pszCommand, hashReply, a1);
-    }
-
-    template<typename T1, typename T2>
-    void PushRequest(const char* pszCommand, const T1& a1, const T2& a2,
-                     void (*fn)(void*, CDataStream&), void* param1)
-    {
-        uint256 hashReply;
-        RAND_bytes((unsigned char*)&hashReply, sizeof(hashReply));
-
-        {
-            LOCK(cs_mapRequests);
-            mapRequests[hashReply] = CRequestTracker(fn, param1);
-        }
-
-        PushMessage(pszCommand, hashReply, a1, a2);
-    }
-
-
-
     void PushGetBlocks(CBlockIndex* pindexBegin, uint256 hashEnd);
     bool IsSubscribed(unsigned int nChannel);
     void Subscribe(unsigned int nChannel, unsigned int nHops=0);
@@ -687,19 +637,14 @@ public:
     void copyStats(CNodeStats &stats);
 };
 
-inline void RelayInventory(const CInv& inv)
-{
-    // Put on lists to offer to the other nodes
-    {
-        LOCK(cs_vNodes);
-        BOOST_FOREACH(CNode* pnode, vNodes)
-            pnode->PushInventory(inv);
-    }
-}
+
 
 class CTransaction;
 void RelayTransaction(const CTransaction& tx, const uint256& hash);
 void RelayTransaction(const CTransaction& tx, const uint256& hash, const CDataStream& ss);
 
+class CBlock;
+void RelayBlock(const CBlock& tx, const uint256& hash);
+void RelayBlock(const CBlock& tx, const uint256& hash, const CDataStream& ss);
 
 #endif

@@ -1,4 +1,5 @@
 #include "addresstablemodel.h"
+
 #include "guiutil.h"
 #include "walletmodel.h"
 
@@ -6,7 +7,6 @@
 #include "base58.h"
 
 #include <QFont>
-#include <QColor>
 
 const QString AddressTableModel::Send = "S";
 const QString AddressTableModel::Receive = "R";
@@ -90,7 +90,7 @@ public:
         case CT_NEW:
             if(inModel)
             {
-                OutputDebugStringF("Warning: AddressTablePriv::updateEntry: Got CT_NEW, but entry is already in model\n");
+                OutputDebugStringF("Warning: AddressTablePriv::updateEntry: Got CT_NOW, but entry is already in model\n");
                 break;
             }
             parent->beginInsertRows(QModelIndex(), lowerIndex, lowerIndex);

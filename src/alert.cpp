@@ -19,13 +19,13 @@ using namespace std;
 map<uint256, CAlert> mapAlerts;
 CCriticalSection cs_mapAlerts;
 
+// static const char* pszMainKey = "04a0a849dd49b113d3179a332dd77715c43be4d0076e2f19e66de23dd707e56630f792f298dfd209bf042bb3561f4af6983f3d81e439737ab0bf7f898fecd21aab";
+// static const char* pszTestKey = "04302390343f91cc401d56d68b123028bf52e5fca1939df127f63c6467cdf9c8e2c14b61104cf817d0b780da337893ecc4aaff1309e536162dabbdb45200ca2b0a";
+
 static const char* pszMainKey = "04d7cebc827760ebd48893af43b79ddf9443c2d4f82805cc2e0299a9203755b56c560491628bc45aa01add05dc361667461504d619a7316359fd78e05a034f00f";
 
 // TestNet alerts pubKey
 static const char* pszTestKey = "04c737bfd23d16fedbd599c7f46bf3f04d7a37451f5c8e7aeb4458ad573432bfd8ed676664a3b5664aec82574507a87eb8015ee8f862419ef72b0072b597edc90";
-
-// TestNet alerts private key
-// "474bfe1a6803b213e8d253f6aff38db0b3c5571d954b4cb04e5c78df5714c1da"
 
 void CUnsignedAlert::SetNull()
 {
@@ -56,8 +56,8 @@ std::string CUnsignedAlert::ToString() const
     return strprintf(
         "CAlert(\n"
         "    nVersion     = %d\n"
-        "    nRelayUntil  = %"PRId64"\n"
-        "    nExpiration  = %"PRId64"\n"
+        "    nRelayUntil  = %" PRI64d"\n"
+        "    nExpiration  = %" PRI64d"\n"
         "    nID          = %d\n"
         "    nCancel      = %d\n"
         "    setCancel    = %s\n"
@@ -248,15 +248,7 @@ bool CAlert::ProcessAlert(bool fThread)
                 // be safe we first strip anything not in safeChars, then add single quotes around
                 // the whole string before passing it to the shell:
                 std::string singleQuote("'");
-                // safeChars chosen to allow simple messages/URLs/email addresses, but avoid anything
-                // even possibly remotely dangerous like & or >
-                std::string safeChars("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890 .,;_/:?@");
-                std::string safeStatus;
-                for (std::string::size_type i = 0; i < strStatusBar.size(); i++)
-                {
-                    if (safeChars.find(strStatusBar[i]) != std::string::npos)
-                        safeStatus.push_back(strStatusBar[i]);
-                }
+                std::string safeStatus = SanitizeString(strStatusBar);
                 safeStatus = singleQuote+safeStatus+singleQuote;
                 boost::replace_all(strCmd, "%s", safeStatus);
 

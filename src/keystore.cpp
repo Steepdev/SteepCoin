@@ -1,6 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017 The SteepCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -29,9 +28,6 @@ bool CBasicKeyStore::AddKey(const CKey& key)
 
 bool CBasicKeyStore::AddCScript(const CScript& redeemScript)
 {
-    if (redeemScript.size() > MAX_SCRIPT_ELEMENT_SIZE)
-        return error("CBasicKeyStore::AddCScript() : redeemScripts > %i bytes are invalid", MAX_SCRIPT_ELEMENT_SIZE);
-
     {
         LOCK(cs_KeyStore);
         mapScripts[redeemScript.GetID()] = redeemScript;

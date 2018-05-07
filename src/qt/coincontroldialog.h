@@ -30,7 +30,7 @@ public:
     static void updateLabels(WalletModel*, QDialog*);
     static QString getPriorityLabel(double);
 
-    static QList<qint64> payAmounts;
+    static QList<std::pair<QString, qint64> > payAddresses;
     static CCoinControl *coinControl;
 
 private:
@@ -48,6 +48,7 @@ private:
     QString strPad(QString, int, QString);
     void sortView(int, Qt::SortOrder);
     void updateView();
+    void unselectSpent();
 
     enum
     {
@@ -57,6 +58,7 @@ private:
         COLUMN_ADDRESS,
         COLUMN_DATE,
         COLUMN_CONFIRMATIONS,
+        COLUMN_COINAGE,
         COLUMN_PRIORITY,
         COLUMN_TXHASH,
         COLUMN_VOUT_INDEX,

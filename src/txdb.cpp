@@ -9,7 +9,7 @@
 
 using namespace std;
 
-/*void static BatchWriteCoins(CLevelDBBatch &batch, const uint256 &hash, const CCoins &coins) {
+void static BatchWriteCoins(CLevelDBBatch &batch, const uint256 &hash, const CCoins &coins) {
     if (coins.IsPruned())
         batch.Erase(make_pair('c', hash));
     else
@@ -63,9 +63,9 @@ bool CCoinsViewDB::BatchWrite(const std::map<uint256, CCoins> &mapCoins, CBlockI
         BatchWriteHashBestChain(batch, pindex->GetBlockHash());
 
     return db.WriteBatch(batch);
-}*/
+}
 
-CBlockTreeDB::CBlockTreeDB(size_t nCacheSize, bool fMemory, bool fWipe) : CLevelDBWrapper(GetDataDir() / "blocks" / "index", nCacheSize, fMemory, fWipe) {
+CBlockTreeDB::CBlockTreeDB(size_t nCacheSize, bool fMemory, bool fWipe) : CLevelDB(GetDataDir() / "blocks" / "index", nCacheSize, fMemory, fWipe) {
 }
 
 bool CBlockTreeDB::WriteBlockIndex(const CDiskBlockIndex& blockindex)
@@ -111,7 +111,7 @@ bool CBlockTreeDB::ReadLastBlockFile(int &nFile) {
     return Read('l', nFile);
 }
 
-/*bool CCoinsViewDB::GetStats(CCoinsStats &stats) {
+bool CCoinsViewDB::GetStats(CCoinsStats &stats) {
     leveldb::Iterator *pcursor = db.NewIterator();
     pcursor->SeekToFirst();
 
@@ -160,15 +160,15 @@ bool CBlockTreeDB::ReadLastBlockFile(int &nFile) {
     stats.hashSerialized = ss.GetHash();
     stats.nTotalAmount = nTotalAmount;
     return true;
-}*/
+}
 
-bool CBlockTreeDB::ReadTxIndex(const uint256 &txid, CDiskTxPosrr &pos) {
+bool CBlockTreeDB::ReadTxIndex(const uint256 &txid, CDiskTxPos &pos) {
     return Read(make_pair('t', txid), pos);
 }
 
-bool CBlockTreeDB::WriteTxIndex(const std::vector<std::pair<uint256, CDiskTxPosrr> >&vect) {
+bool CBlockTreeDB::WriteTxIndex(const std::vector<std::pair<uint256, CDiskTxPos> >&vect) {
     CLevelDBBatch batch;
-    for (std::vector<std::pair<uint256,CDiskTxPosrr> >::const_iterator it=vect.begin(); it!=vect.end(); it++)
+    for (std::vector<std::pair<uint256,CDiskTxPos> >::const_iterator it=vect.begin(); it!=vect.end(); it++)
         batch.Write(make_pair('t', it->first), it->second);
     return WriteBatch(batch);
 }
@@ -204,12 +204,12 @@ bool CBlockTreeDB::LoadBlockIndexGuts()
             if (chType == 'b') {
                 leveldb::Slice slValue = pcursor->value();
                 CDataStream ssValue(slValue.data(), slValue.data()+slValue.size(), SER_DISK, CLIENT_VERSION);
-                CDiskBlockIndexneww diskindex;
+                CDiskBlockIndex diskindex;
                 ssValue >> diskindex;
 
                 // Construct block index object
-                CBlockIndexversion* pindexNew = InsertBlockIndexverrr(diskindex.GetBlockHash());
-                pindexNew->pprev          = InsertBlockIndexverrr(diskindex.hashPrev);
+                CBlockIndex* pindexNew = InsertBlockIndex(diskindex.GetBlockHash());
+                pindexNew->pprev          = InsertBlockIndex(diskindex.hashPrev);
                 pindexNew->nHeight        = diskindex.nHeight;
                 pindexNew->nFile          = diskindex.nFile;
                 pindexNew->nDataPos       = diskindex.nDataPos;
@@ -232,9 +232,8 @@ bool CBlockTreeDB::LoadBlockIndexGuts()
                 pindexNew->hashProofOfStake = diskindex.hashProofOfStake;
 
                 // Watch for genesis block
-                if (pindexGenesisBlock == NULL && diskindex.GetBlockHash() == hashGenesisBlock) {
-                    // pindexGenesisBlock = pindexNew;
-                }
+                if (pindexGenesisBlock == NULL && diskindex.GetBlockHash() == hashGenesisBlock)
+                    pindexGenesisBlock = pindexNew;
 
                 if (!pindexNew->CheckIndex())
                     return error("LoadBlockIndex() : CheckIndex failed: %s", pindexNew->ToString().c_str());

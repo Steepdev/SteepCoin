@@ -1,5 +1,4 @@
-// Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017 The SteepCoin developers
+// Copyright (c) 2009-2012 The Bitcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef __CRYPTER_H__
@@ -54,7 +53,7 @@ public:
         // 25000 rounds is just under 0.1 seconds on a 1.86 GHz Pentium M
         // ie slightly lower than the lowest hardware we need bother supporting
         nDeriveIterations = 25000;
-        nDerivationMethod = 1;
+        nDerivationMethod = 0;
         vchOtherDerivationParameters = std::vector<unsigned char>(0);
     }
 
@@ -76,7 +75,6 @@ public:
             break;
         }
     }
-
 };
 
 typedef std::vector<unsigned char, secure_allocator<unsigned char> > CKeyingMaterial;
@@ -97,8 +95,8 @@ public:
 
     void CleanKey()
     {
-        OPENSSL_cleanse(&chKey, sizeof chKey);
-        OPENSSL_cleanse(&chIV, sizeof chIV);
+        OPENSSL_cleanse(chKey, sizeof(chKey));
+        OPENSSL_cleanse(chIV, sizeof(chIV));
         fKeySet = false;
     }
 
