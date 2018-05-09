@@ -30,19 +30,19 @@ struct CBlockIndexWorkComparator;
 
 static const int LAST_POW_BLOCK = 500000;//
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
-static const unsigned int MAX_BLOCK_SIZE = 1000000;
+static const unsigned int MAX_BLOCK_SIZE = 20000000;
 /** Obsolete: maximum size for mined blocks */
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 /** Default for -blockmaxsize, maximum size for mined blocks **/
-static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 350000;
+// static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 350000;
 /** Default for -blockprioritysize, maximum space for zero/low-fee transactions **/
-static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 30000;
+static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 27000;
 /** The maximum size for transactions we're willing to relay/mine */
 static const unsigned int MAX_STANDARD_TX_SIZE = 100000;
 /** The maximum allowed number of signature check operations in a block (network rule) */
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 /** Default for -maxorphantx, maximum number of orphan transactions kept in memory */
-static const unsigned int DEFAULT_MAX_ORPHAN_TRANSACTIONS = 100;
+static const unsigned int DEFAULT_MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;;
 /** The maximum number of entries in an 'inv' protocol message */
 static const unsigned int MAX_INV_SZ = 50000;
 /** Default for -maxorphanblocks, maximum number of orphan blocks kept in memory */
@@ -57,9 +57,9 @@ static const unsigned int UNDOFILE_CHUNK_SIZE = 0x100000; // 1 MiB
 static const unsigned int MEMPOOL_HEIGHT = 0x7FFFFFFF;
 /** No amount larger than this (in satoshi) is valid */
 static const int64 MAX_MONEY = 1000000000 * COIN;
-// static const int64 MAX_MONEY = 2000000000 * COIN;
+
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
-// static const int64 MIN_TX_FEE = CENT;
+
 static const int64 MIN_TX_FEE = 1000;
 static const int64 MIN_RELAY_TX_FEE = MIN_TX_FEE;
 // static const int64 MIN_RELAY_TX_FEE = CENT;
