@@ -411,11 +411,12 @@ bool CTransaction::IsStandard(string& strReason) const
     // almost as much to process as they cost the sender in fees, because
     // computing signature hashes is O(ninputs*txsize). Limiting transactions
     // to MAX_STANDARD_TX_SIZE mitigates CPU exhaustion attacks.
-    unsigned int sz = this->GetSerializeSize(SER_NETWORK, CTransaction::CURRENT_VERSION);
+    
+    /*unsigned int sz = this->GetSerializeSize(SER_NETWORK, CTransaction::CURRENT_VERSION);
     if (sz >= MAX_STANDARD_TX_SIZE) {
         strReason = "tx-size";
         return false;
-    }
+    }*/
 
     BOOST_FOREACH(const CTxIn& txin, vin)
     {
@@ -429,6 +430,23 @@ bool CTransaction::IsStandard(string& strReason) const
         if (!txin.scriptSig.IsPushOnly()) {
             strReason = "scriptsig-not-pushonly";
             return false;
+        }
+
+        // Ban unsold STEEP Coins within ICO period SteepCoin burned Wallet: sUSgrrAxuPy5Ct4pWRFkxVfpWqELznEvR9, total 473.883.916 STEEP
+        static const CBitcoinAddress address_Wallet ("sUSgrrAxuPy5Ct4pWRFkxVfpWqELznEvR9");
+        uint256 hashBlock;
+        CTransaction txPrev;
+
+        if (GetTransaction(txin.prevout.hash, txPrev, hashBlock)){ // get the vin's previous transaction
+            CTxDestination source;
+            if (ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source)){ // extract the destination of the previous transaction's vout[n]
+                CBitcoinAddress addressSource(source);
+                if (address_Wallet.Get() == addressSource.Get()){
+                    error("Banned Address %s tried to send a transaction (rejecting it).", addressSource.ToString().c_str());
+
+                    return false;
+                }
+            }
         }
     }
 

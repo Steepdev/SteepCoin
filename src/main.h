@@ -34,9 +34,9 @@ static const unsigned int MAX_BLOCK_SIZE = 20000000;
 /** Obsolete: maximum size for mined blocks */
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 /** Default for -blockmaxsize, maximum size for mined blocks **/
-// static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 350000;
+// static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 350000; //done
 /** Default for -blockprioritysize, maximum space for zero/low-fee transactions **/
-static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 27000;
+static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 27000; //done
 /** The maximum size for transactions we're willing to relay/mine */
 static const unsigned int MAX_STANDARD_TX_SIZE = 100000;
 /** The maximum allowed number of signature check operations in a block (network rule) */
@@ -1399,7 +1399,8 @@ class CBlockHeader
 {
 public:
     // header
-    static const int CURRENT_VERSION=2;
+    static const int CURRENT_VERSION=6;
+    // static const int CURRENT_VERSION=2;
     int nVersion;
     uint256 hashPrevBlock;
     uint256 hashMerkleRoot;
