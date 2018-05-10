@@ -1153,323 +1153,315 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 }
 
 // miner's coin base reward
-int64 GetProofOfWorkReward(unsigned int nBits) 
+int64 GetProofOfWorkReward(int nHeight, unsigned int nBits) 
 {
-    int64_t nSubsidyaaa = 1 * COIN;
-    printf("GetProofOfWorkReward1\n");
+    int currentheight = nHeight;
     int64 nFees = 0 * COIN;
-    printf("GetProofOfWorkReward1a\n");
     int64 nSubsidy = 0 * COIN;
-
-    printf("GetProofOfWorkReward1b\n");
-    printf("GetProofOfWorkReward1bb\n");
+    
     if (pindexBest == NULL) {
         printf("pindexBest is NULL\n");
     }
-    printf("pindexBest=%d\n", (pindexBest->nHeight+1));
-    printf("GetProofOfWorkReward1bc\n");
-    if (pindexBest->nHeight+1 == 1) // SteepCoin ICO RESERVED ( Totally:500 millions)
+    if (currentheight+1 == 1) // SteepCoin ICO RESERVED ( Totally:500 millions)
     {
-      printf("GetProofOfWorkReward11\n");
       nSubsidy = 100000000 * COIN; 
       return nSubsidy + nFees;
     }
-    else if(pindexBest->nHeight+1 < 10) 
+    
+    else if(currentheight+1 < 10) 
     {
-        printf("GetProofOfWorkReward12\n");
         nSubsidy = 50000000 * COIN;
         return nSubsidy + nFees;
     }
-    else if (pindexBest->nHeight+1 < 500000)
+        
+    else if (currentheight+1 < 500000)
     {
-      printf("GetProofOfWorkReward13\n");
       nSubsidy = 1 * COIN;
       return nSubsidy + nFees;
     }
     
-    printf("GetProofOfWorkReward14\n");
     if (fDebug && GetBoolArg("-printcreation")) {
         // printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%" PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);      
     }
     
-    printf("GetProofOfWorkReward2\n");
     return nSubsidy + nFees;
 }
 
 
 
 
-int64 GetProofOfStakeReward(int64 nCoinAge/*, int64_t nFees*/)
+int64 GetProofOfStakeReward(int nHeight,int64 nCoinAge/*, int64_t nFees*/)
 {
+    int currentheight_ = nHeight;
     int64 nSubsidy = 0 * COIN;
     int64 nFees = 0 * CENT;
     
-    if (pindexBest->nHeight < 2000)
+    if (currentheight_ < 2000)
     {
       nSubsidy = 10 * COIN; 
       return nSubsidy + nFees;
     }
 
-    else if(pindexBest->nHeight < 4000)
+    else if(currentheight_ < 4000)
     {
         nSubsidy = 20 * COIN;
         return nSubsidy + nFees;
     }
 
-    else if(pindexBest->nHeight < 6000)
+    else if(currentheight_ < 6000)
     {
         nSubsidy = 500 * COIN;
         return nSubsidy + nFees;
     }
      
-    else if(pindexBest->nHeight < 8000)
+    else if(currentheight_ < 8000)
     {
         nSubsidy = 1000 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 10000)
+    else if(currentheight_ < 10000)
     {
         nSubsidy = 2500 * COIN;
         return nSubsidy + nFees;
     }
 
-    else if(pindexBest->nHeight < 12000)
+    else if(currentheight_ < 12000)
     {
         nSubsidy = 5000 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 14000)
+    else if(currentheight_ < 14000)
     {
         nSubsidy = 10000 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 15000)
+    else if(currentheight_ < 15000)
     {
         nSubsidy = 15000 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 16000)
+    else if(currentheight_ < 16000)
     {
         nSubsidy = 20000 * COIN;
         return nSubsidy + nFees;
     }
 
-    else if(pindexBest->nHeight < 17000)
+    else if(currentheight_ < 17000)
     {
         nSubsidy = 25000 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 18000)
+    else if(currentheight_ < 18000)
     {
         nSubsidy = 10000 * COIN;
         return nSubsidy + nFees;
     }
 
-    else if(pindexBest->nHeight < 20000)
+    else if(currentheight_ < 20000)
     {
         nSubsidy = 5000 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 40000)
+    else if(currentheight_ < 40000)
     {
         nSubsidy = 100 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 42000)
+    else if(currentheight_ < 42000)
     {
         nSubsidy = 300 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 44000)
+    else if(currentheight_ < 44000)
     {
         nSubsidy = 600 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 45000)
+    else if(currentheight_ < 45000)
     {
         nSubsidy = 1000 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 47000)
+    else if(currentheight_ < 47000)
     {
         nSubsidy = 3000 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 48000)
+    else if(currentheight_ < 48000)
     {
         nSubsidy = 6000 * COIN;
         return nSubsidy + nFees;
     }
 
-    else if(pindexBest->nHeight < 50000)
+    else if(currentheight_ < 50000)
     {
         nSubsidy = 10000 * COIN;
         return nSubsidy + nFees;
     }
     
-    else if(pindexBest->nHeight < 55000)
+    else if(currentheight_ < 55000)
     {
         nSubsidy = 2000 * COIN;
         return nSubsidy + nFees;
     }
 
-    else if(pindexBest->nHeight < 60000)
+    else if(currentheight_ < 60000)
     {
         nSubsidy = 1000 * COIN;
         return nSubsidy + nFees;
     }
 
-    else if(pindexBest->nHeight < 70000)
+    else if(currentheight_ < 70000)
     {
         nSubsidy = 200 * COIN;
         return nSubsidy + nFees;
     }
 
-    else if(pindexBest->nHeight < 80000)
+    else if(currentheight_ < 80000)
     {
         nSubsidy = 250 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 81000)
+    else if(currentheight_ < 81000)
     {
         nSubsidy = 1000 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 83000)
+    else if(currentheight_ < 83000)
     {
         nSubsidy = 3000 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 84000)
+    else if(currentheight_ < 84000)
     {
         nSubsidy = 5000 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 85000)
+    else if(currentheight_ < 85000)
     {
         nSubsidy = 10000 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 90000)
+    else if(currentheight_ < 90000)
     {
         nSubsidy = 1000 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 250000)
+    else if(currentheight_ < 250000)
     {
         nSubsidy = 100 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 251000)
+    else if(currentheight_ < 251000)
     {
         nSubsidy = 1000 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 252000)
+    else if(currentheight_ < 252000)
     {
         nSubsidy = 10000 * COIN;
         return nSubsidy + nFees;
     }
 
-    else if(pindexBest->nHeight < 253000)
+    else if(currentheight_ < 253000)
     {
         nSubsidy = 1000 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 300000)
+    else if(currentheight_ < 300000)
     {
         nSubsidy = 100 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 310000)
+    else if(currentheight_ < 310000)
     {
         nSubsidy = 2500 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 350000)
+    else if(currentheight_ < 350000)
     {
         nSubsidy = 100 * COIN;
         return nSubsidy + nFees;
     }   
 
-    else if(pindexBest->nHeight < 360000)
+    else if(currentheight_ < 360000)
     {
         nSubsidy = 2500 * COIN;
         return nSubsidy + nFees;
     }       
     
-    else if(pindexBest->nHeight < 530000)
+    else if(currentheight_ < 530000)
     {
         nSubsidy = 50 * COIN;
         return nSubsidy + nFees;
     }   
     
-    else if(pindexBest->nHeight < 531000)
+    else if(currentheight_ < 531000)
     {
         nSubsidy = 500 * COIN;
         return nSubsidy + nFees;
     }   
     
-    else if(pindexBest->nHeight < 532000)
+    else if(currentheight_ < 532000)
     {
         nSubsidy = 5000 * COIN;
         return nSubsidy + nFees;
     }   
     
-    else if(pindexBest->nHeight < 533000)
+    else if(currentheight_ < 533000)
     {
         nSubsidy = 500 * COIN;
         return nSubsidy + nFees;
     }   
     
-    else if(pindexBest->nHeight < 580000)
+    else if(currentheight_ < 580000)
     {
         nSubsidy = 50 * COIN;
         return nSubsidy + nFees;
     }   
     
-    else if(pindexBest->nHeight < 590000)
+    else if(currentheight_ < 590000)
     {
         nSubsidy = 1500 * COIN;
         return nSubsidy + nFees;
     }   
     
-    else if(pindexBest->nHeight < 630000)
+    else if(currentheight_ < 630000)
     {
         nSubsidy = 50 * COIN;
         return nSubsidy + nFees;
     }   
     
-    else if(pindexBest->nHeight < 631000)
+    else if(currentheight_ < 631000)
     {
         nSubsidy = 1500 * COIN;
         return nSubsidy + nFees;
     }   
     
-    else if(pindexBest->nHeight > 631000)
+    else if(currentheight_ > 631000)
     {
         nSubsidy = 10 * COIN;
         return nSubsidy + nFees;
@@ -2681,7 +2673,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 }
 
 
-bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerkleRoot) const
+bool CBlock::CheckBlock(int pos, CValidationState &state, bool fCheckPOW, bool fCheckMerkleRoot) const
 {
     
 
@@ -2759,13 +2751,14 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         printf("proof_of_work\n");
     }
     printf("nBits=0x%08x\n", nBits);
-    int64 nReward = GetProofOfWorkReward(nBits) - vtx[0].GetMinFee() + MIN_TX_FEE;
+    int64 nReward = GetProofOfWorkReward(pos, nBits) - vtx[0].GetMinFee() + MIN_TX_FEE;
     // if (vtx[0].GetValueOut() > nReward)
     printf("CheckBlock27\n");
     if (vtx[0].GetValueOut() > (IsProofOfWork()? (nReward) : 0)) {
-        return state.DoS(50, error("CheckBlock() : coinbase reward exceeded %s > %s", 
+        return state.DoS(50, error("CheckBlock() : coinbase reward exceeded %s > %s")); 
+        /*return state.DoS(50, error("CheckBlock() : coinbase reward exceeded %s > %s", 
                    FormatMoney(vtx[0].GetValueOut()).c_str(),
-                   FormatMoney(IsProofOfWork()? GetProofOfWorkReward(nBits) : 0).c_str()));
+                   FormatMoney(IsProofOfWork()? GetProofOfWorkReward(nBits) : 0).c_str()));*/
     }
 
     printf("CheckBlock3\n");
@@ -3536,7 +3529,7 @@ bool VerifyDB() {
         if (!block.ReadFromDisk(pindex))
             return error("VerifyDB() : *** block.ReadFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString().c_str());
         // check level 1: verify block validity
-        if (nCheckLevel >= 1 && !block.CheckBlock(state))
+        if (nCheckLevel >= 1 && !block.CheckBlock(pindex->nHeight,state))
             return error("VerifyDB() : *** found bad block at %d, hash=%s\n", pindex->nHeight, pindex->GetBlockHash().ToString().c_str());
         // check level 2: verify undo validity
         if (nCheckLevel >= 2 && pindex) {
@@ -3709,7 +3702,7 @@ bool InitBlockIndex() {
         {
             CValidationState state;
             printf("this_is_before_assertV2\n");
-            assert(block.CheckBlock(state));
+            assert(block.CheckBlock(0,state));
         }
         printf("this_is_beforeV3\n");
 
@@ -5466,7 +5459,7 @@ CBlockTemplate* CreateNewBlock(CReserveKey& reservekey, CWallet* pwallet, bool f
         //TO DO: take a look in case
         if (pblock->IsProofOfWork()) {
             // pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(nFees);
-            pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(pblock->nBits);
+            pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(pindexPrev->nHeight+1, pblock->nBits);
         }
         pblocktemplate->vTxFees[0] = -nFees;
 
