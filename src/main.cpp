@@ -3688,6 +3688,7 @@ bool InitBlockIndex() {
             printf("this_is_before_assertV2\n");
             assert(block.CheckBlock(state));
         }
+        printf("this_is_beforeV3\n");
 
         // Start new block file
         try {
