@@ -1169,16 +1169,12 @@ int64 GetProofOfWorkReward(unsigned int nBits)
       nSubsidy = 100000000 * COIN; 
       return nSubsidy + nFees;
     }
-    
-    printf("GetProofOfWorkReward125\n");
     else if(pindexBest->nHeight+1 < 10) 
     {
         printf("GetProofOfWorkReward12\n");
         nSubsidy = 50000000 * COIN;
         return nSubsidy + nFees;
     }
-        
-    printf("GetProofOfWorkReward135\n");
     else if (pindexBest->nHeight+1 < 500000)
     {
       printf("GetProofOfWorkReward13\n");
