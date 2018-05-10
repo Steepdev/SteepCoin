@@ -2680,7 +2680,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerkleRoot) const
 {
     
-    printf("CheckBlock1\n");
+
     // These are checks that are independent of context
     // that can be verified before saving an orphan block.
 
@@ -2707,7 +2707,7 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
             return error("CheckBlock() : 15 May maxlocks violation");
     }*/
 
-    printf("CheckBlock2\n");
+
     // Check proof of work matches claimed amount
     if (fCheckPOW && IsProofOfWork() && !CheckProofOfWork(GetHash(), nBits))
         return state.DoS(50, error("CheckBlock() : proof of work failed"));
@@ -2718,7 +2718,7 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         return state.Invalid(error("CheckBlock() : block timestamp too far in the future"));
     }
 
-    printf("CheckBlock21\n");
+
     // First transaction must be coinbase, the rest must not be
     if (vtx.empty() || !vtx[0].IsCoinBase())
         return state.DoS(100, error("CheckBlock() : first tx is not coinbase"));
@@ -2726,29 +2726,33 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         if (vtx[i].IsCoinBase())
             return state.DoS(100, error("CheckBlock() : more than one coinbase"));
 
-    printf("CheckBlock22\n");
+
     // ppcoin: only the second transaction can be the optional coinstake
     for (unsigned int i = 2; i < vtx.size(); i++)
         if (vtx[i].IsCoinStake())
             return state.DoS(100, error("CheckBlock() : coinstake in wrong position"));
 
-    printf("CheckBlock23\n");
+
     // ppcoin: coinbase output should be empty if proof-of-stake block
     if (IsProofOfStake() && (vtx[0].vout.size() != 1 || !vtx[0].vout[0].IsEmpty()))
         return error("CheckBlock() : coinbase output not empty for proof-of-stake block");
 
+    printf("CheckBlock24\n");
     // Check coinbase timestamp
     if (GetBlockTime() > FutureDrift((int64)vtx[0].nTime))
     // if (GetBlockTime() > (int64)vtx[0].nTime + nMaxClockDrift)
         return state.DoS(50, error("CheckBlock() : coinbase timestamp is too early"));
 
+    printf("CheckBlock25\n");
     // Check coinstake timestamp
     if (IsProofOfStake() && !CheckCoinStakeTimestamp(GetBlockTime(), (int64)vtx[1].nTime))
         return state.DoS(50, error("CheckBlock() : coinstake timestamp violation nTimeBlock=%" PRI64u" nTimeTx=%u", GetBlockTime(), vtx[1].nTime));
 
+    printf("CheckBlock26\n");
     // Check coinbase reward
     int64 nReward = GetProofOfWorkReward(nBits) - vtx[0].GetMinFee() + MIN_TX_FEE;
     // if (vtx[0].GetValueOut() > nReward)
+    printf("CheckBlock27\n");
     if (vtx[0].GetValueOut() > (IsProofOfWork()? (nReward) : 0))
         return state.DoS(50, error("CheckBlock() : coinbase reward exceeded %s > %s", 
                    FormatMoney(vtx[0].GetValueOut()).c_str(),
