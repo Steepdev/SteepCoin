@@ -3670,10 +3670,12 @@ bool InitBlockIndex() {
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
         assert(block.hashMerkleRoot == uint256("0x23900140194a8df32c57b48c1a259e6c39596adf3499030877832cc79d55830a"));
         block.print();
+        printf("this_is_before_assertV1");
         assert(hash == hashGenesisBlock);
         // ppcoin: check genesis block
         {
             CValidationState state;
+            printf("this_is_before_assertV2");
             assert(block.CheckBlock(state));
         }
 
