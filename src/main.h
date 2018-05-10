@@ -10,6 +10,8 @@
 #include "sync.h"
 #include "net.h"
 #include "script.h"
+#include "scrypt.h"
+#include "hashblock.h"
 
 #include <list>
 
@@ -38,15 +40,15 @@ static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 /** Default for -blockprioritysize, maximum space for zero/low-fee transactions **/
 static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 27000; //done
 /** The maximum size for transactions we're willing to relay/mine */
-static const unsigned int MAX_STANDARD_TX_SIZE = 100000;
+static const unsigned int MAX_STANDARD_TX_SIZE = MAX_BLOCK_SIZE_GEN/5; //done
 /** The maximum allowed number of signature check operations in a block (network rule) */
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 /** Default for -maxorphantx, maximum number of orphan transactions kept in memory */
-static const unsigned int DEFAULT_MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;;
+static const unsigned int DEFAULT_MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;;//done
 /** The maximum number of entries in an 'inv' protocol message */
 static const unsigned int MAX_INV_SZ = 50000;
 /** Default for -maxorphanblocks, maximum number of orphan blocks kept in memory */
-static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 750;
+static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 750;//I will keep it as is
 /** The maximum size of a blk?????.dat file (since 0.8) */
 static const unsigned int MAX_BLOCKFILE_SIZE = 0x8000000; // 128 MiB
 /** The pre-allocation chunk size for blk?????.dat files (since 0.8) */
@@ -57,17 +59,17 @@ static const unsigned int UNDOFILE_CHUNK_SIZE = 0x100000; // 1 MiB
 static const unsigned int MEMPOOL_HEIGHT = 0x7FFFFFFF;
 /** No amount larger than this (in satoshi) is valid */
 static const int64 MAX_MONEY = 1000000000 * COIN;
+static const int MODIFIER_INTERVAL_SWITCH = 1;
 
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 
 static const int64 MIN_TX_FEE = 1000;
-static const int64 MIN_RELAY_TX_FEE = MIN_TX_FEE;
-// static const int64 MIN_RELAY_TX_FEE = CENT;
-static const int64 MAX_MINT_PROOF_OF_WORK = 9999 * COIN;
-static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
+static const int64 MIN_RELAY_TX_FEE = MIN_TX_FEE; //done
+static const int64 MAX_MINT_PROOF_OF_WORK = 9999 * COIN; //done
+static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE; //done
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
-// static const int COINBASE_MATURITY_PPC = 500;
-static const int COINBASE_MATURITY_PPC = 10;
+
+static const int COINBASE_MATURITY_PPC = 10; //done
 // int nCoinbaseMaturity = 10; // for mined blocks needs 10 confirmations
 
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
@@ -90,7 +92,10 @@ static const int fHaveUPnP = false;
 static const uint256 hashGenesisBlockOfficial("0x00000e902f9cea8a855ca2b02605a23eec18c8c76505251a08dddaa91cabdcd8");
 static const uint256 hashGenesisBlockTestNet("0x00000e902f9cea8a855ca2b02605a23eec18c8c76505251a08dddaa91cabdcd8");
 
-static const int64 nMaxClockDrift = 2 * 60 * 60;        // two hours
+
+inline int64 FutureDrift(int64 nTime) { return nTime + 5 * 60; }//5min
+inline int64 PastDrift(int64 nTime)   { return nTime - 5 * 60; }//5min
+static const int64 nMaxClockDrift = 2 * 60 * 60;//DONE
 
 extern CScript COINBASE_FLAGS;
 
@@ -494,6 +499,7 @@ public:
     {
         return SerializeHash(*this);
     }
+
 
     friend bool operator==(const CTxOut& a, const CTxOut& b)
     {
@@ -1441,7 +1447,13 @@ public:
 
     uint256 GetHash() const
     {
-        return Hash(BEGIN(nVersion), END(nNonce));
+        return GetPoWHash();
+    }
+
+    uint256 GetPoWHash() const
+    {
+        return Hash9(BEGIN(nVersion), END(nNonce));
+
     }
 
     int64 GetBlockTime() const
@@ -1627,7 +1639,7 @@ public:
         }
 
         // Check the header
-        if (IsProofOfWork() && !CheckProofOfWork(GetHash(), nBits))
+        if (IsProofOfWork() && !CheckProofOfWork(GetPoWHash(), nBits))
             return error("CBlock::ReadFromDisk() : errors in block header");
 
         return true;

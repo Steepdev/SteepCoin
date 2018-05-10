@@ -38,8 +38,10 @@ set<pair<COutPoint, unsigned int> > setStakeSeen;
 uint256 hashGenesisBlock = hashGenesisBlockOfficial;
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // "standard" scrypt target limit for proof of work, results with 0,000244140625 proof-of-work difficulty
 static CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
+static CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
+static CBigNum bnProofOfStakeLimitTestNet(~uint256(0) >> 20);
 // static CBigNum bnProofOfWorkLimit(~uint256(0) >> 32);
-// static CBigNum bnInitialHashTarget(~uint256(0) >> 40);
+static CBigNum bnInitialHashTarget(~uint256(0) >> 40);
 unsigned int nStakeMinAge = STAKE_MIN_AGE;
 int nCoinbaseMaturity = COINBASE_MATURITY_PPC;
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -88,6 +90,9 @@ int nBlocksToIgnore = 0;
 
 // Settings
 int64 nTransactionFee = MIN_TX_FEE;
+// int64 nReserveBalance = 0;//done
+// int64 nMinimumInputValue = 0;//done
+// int64 nSplitThreshold = 0;
 
 
 
@@ -614,9 +619,10 @@ bool CTransaction::CheckTransaction(CValidationState &state) const
         return state.DoS(10, error("CTransaction::CheckTransaction() : vin empty"));
     if (vout.empty())
         return state.DoS(10, error("CTransaction::CheckTransaction() : vout empty"));
+    //TO DO: delete it for a while
     // Time (prevent mempool memory exhaustion attack)
-    if (nTime > GetAdjustedTime() + nMaxClockDrift)
-        return state.DoS(10, error("CTransaction::CheckTransaction() : timestamp is too far into the future"));
+    /*if (nTime > GetAdjustedTime() + nMaxClockDrift)
+        return state.DoS(10, error("CTransaction::CheckTransaction() : timestamp is too far into the future"));*/
     // Size limits
     if (::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION) > MAX_BLOCK_SIZE)
         return state.DoS(100, error("CTransaction::CheckTransaction() : size limits failed"));
@@ -627,11 +633,14 @@ bool CTransaction::CheckTransaction(CValidationState &state) const
     {
         if (txout.IsEmpty() && (!IsCoinBase()) && (!IsCoinStake()))
             return state.DoS(100, error("CTransaction::CheckTransaction() : txout empty for user transaction"));
+        //TO DO: delete it for a while
         // ppcoin: enforce minimum output amount
         // v0.5 protocol: zero amount allowed
-        if ((!txout.IsEmpty()) && txout.nValue < MIN_TXOUT_AMOUNT &&
+        /*if ((!txout.IsEmpty()) && txout.nValue < MIN_TXOUT_AMOUNT &&
             !(IsProtocolV05(nTime) && (txout.nValue == 0)))
-            return state.DoS(100, error("CTransaction::CheckTransaction() : txout.nValue below minimum"));
+            return state.DoS(100, error("CTransaction::CheckTransaction() : txout.nValue below minimum"));*/
+        if (txout.nValue < 0)
+            return state.DoS(100, error("CTransaction::CheckTransaction() : txout.nValue negative"));
         if (txout.nValue > MAX_MONEY)
             return state.DoS(100, error("CTransaction::CheckTransaction() : txout.nValue too high"));
         nValueOut += txout.nValue;
@@ -854,6 +863,7 @@ bool CTxMemPool::accept(CValidationState &state, CTransaction &tx, bool fCheckIn
             nLastTime = nNow;
             // -limitfreerelay unit is thousand-bytes-per-minute
             // At default rate it would take over a month to fill 1GB
+            // if (dFreeCount > GetArg("-limitfreerelay", 15)*10*1000 && !pwallet->IsFromMe(tx))
             if (dFreeCount >= GetArg("-limitfreerelay", 15)*10*1000)
                 return error("CTxMemPool::accept() : free transaction rejected by rate limiter");
             if (fDebug)
@@ -1142,7 +1152,39 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
     return pblock->GetHash();
 }
 
-int64 GetProofOfWorkReward(unsigned int nBits)
+// miner's coin base reward
+int64 GetProofOfWorkReward(unsigned int nBits) 
+{
+    int64 nFees = 0 * COIN;
+    int64 nSubsidy = 0 * COIN;
+    
+    if (pindexBest->nHeight+1 == 1) // SteepCoin ICO RESERVED ( Totally:500 millions)
+    {
+      nSubsidy = 100000000 * COIN; 
+      return nSubsidy + nFees;
+    }
+    
+    else if(pindexBest->nHeight+1 < 10) 
+    {
+        nSubsidy = 50000000 * COIN;
+        return nSubsidy + nFees;
+    }
+        
+    else if (pindexBest->nHeight+1 < 500000)
+    {
+      nSubsidy = 1 * COIN;
+      return nSubsidy + nFees;
+    }
+    
+    if (fDebug && GetBoolArg("-printcreation")) {
+        // printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%" PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
+        printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);      
+    }
+    
+    return nSubsidy + nFees;
+}
+
+/*int64 GetProofOfWorkReward(unsigned int nBits)
 {
     CBigNum bnSubsidyLimit = MAX_MINT_PROOF_OF_WORK;
     CBigNum bnTarget;
@@ -1172,7 +1214,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
         printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%" PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
 
     return min(nSubsidy, MAX_MINT_PROOF_OF_WORK);
-}
+}*/
 
 
 int64 GetProofOfStakeReward(int64 nCoinAge/*, int64_t nFees*/)
@@ -1451,7 +1493,6 @@ int64 GetProofOfStakeReward(int64 nCoinAge/*, int64_t nFees*/)
     }   
     
     if (fDebug && GetBoolArg("-printcreation")) {
-        // printf("GetProofOfStakeReward(): create=%s nCoinAge=%" PRId64"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%" PRI64d"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);        
     }
     return nSubsidy + nFees;
@@ -1862,7 +1903,7 @@ bool CTransaction::CheckInputs(CValidationState &state, CCoinsViewCache &inputs,
             uint64 nCoinAge;
             if (!GetCoinAge(state, inputs, nCoinAge))
                 return error("CheckInputs() : %s unable to get coin age for coinstake", GetHash().ToString().c_str());
-            int64 nStakeReward = GetValueOut() - nValueIn;
+            int64 nStakeReward = GetValueOut() - nValueIn;nFees
             if (nStakeReward > GetProofOfStakeReward(nCoinAge) - GetMinFee() + MIN_TX_FEE)
                 return state.DoS(100, error("CheckInputs() : %s stake reward exceeded", GetHash().ToString().c_str()));
         }
@@ -2683,7 +2724,7 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         return state.DoS(100, error("CheckBlock() : size limits failed"));
 
     // Special short-term limits to avoid 10,000 BDB lock limit:
-    if (GetBlockTime() >= 1363867200 && // start enforcing 21 March 2013, noon GMT
+    /*if (GetBlockTime() >= 1363867200 && // start enforcing 21 March 2013, noon GMT
         GetBlockTime() < 1368576000)  // stop enforcing 15 May 2013 00:00:00
     {
         // Rule is: #unique txids referenced <= 4,500
@@ -2699,15 +2740,17 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         size_t nTxids = setTxIn.size();
         if (nTxids > 4500)
             return error("CheckBlock() : 15 May maxlocks violation");
-    }
+    }*/
 
     // Check proof of work matches claimed amount
     if (fCheckPOW && IsProofOfWork() && !CheckProofOfWork(GetHash(), nBits))
         return state.DoS(50, error("CheckBlock() : proof of work failed"));
 
     // Check timestamp
-    if (GetBlockTime() > GetAdjustedTime() + nMaxClockDrift)
+    if (GetBlockTime() > FutureDrift(GetAdjustedTime())) {
+    // if (GetBlockTime() > GetAdjustedTime() + nMaxClockDrift) {
         return state.Invalid(error("CheckBlock() : block timestamp too far in the future"));
+    }
 
     // First transaction must be coinbase, the rest must not be
     if (vtx.empty() || !vtx[0].IsCoinBase())
@@ -2726,7 +2769,8 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         return error("CheckBlock() : coinbase output not empty for proof-of-stake block");
 
     // Check coinbase timestamp
-    if (GetBlockTime() > (int64)vtx[0].nTime + nMaxClockDrift)
+    if (GetBlockTime() > FutureDrift((int64)vtx[0].nTime))
+    // if (GetBlockTime() > (int64)vtx[0].nTime + nMaxClockDrift)
         return state.DoS(50, error("CheckBlock() : coinbase timestamp is too early"));
 
     // Check coinstake timestamp
@@ -2734,7 +2778,9 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         return state.DoS(50, error("CheckBlock() : coinstake timestamp violation nTimeBlock=%" PRI64u" nTimeTx=%u", GetBlockTime(), vtx[1].nTime));
 
     // Check coinbase reward
-    if (vtx[0].GetValueOut() > (IsProofOfWork()? (GetProofOfWorkReward(nBits) - vtx[0].GetMinFee() + MIN_TX_FEE) : 0))
+    int64 nReward = GetProofOfWorkReward(nBits) - vtx[0].GetMinFee() + MIN_TX_FEE;
+    // if (vtx[0].GetValueOut() > nReward)
+    if (vtx[0].GetValueOut() > (IsProofOfWork()? (nReward) : 0))
         return state.DoS(50, error("CheckBlock() : coinbase reward exceeded %s > %s", 
                    FormatMoney(vtx[0].GetValueOut()).c_str(),
                    FormatMoney(IsProofOfWork()? GetProofOfWorkReward(nBits) : 0).c_str()));
@@ -2802,14 +2848,19 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
 
         //last pow block
         if (IsProofOfWork() && nHeight > LAST_POW_BLOCK)
-        return state.DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
+            return state.DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
+
+        if (IsProofOfStake() && nHeight < MODIFIER_INTERVAL_SWITCH)
+            return state.DoS(100, error("AcceptBlock() : reject proof-of-stake at height %d", nHeight));
 
         // Check proof-of-work or proof-of-stake
         if (nBits != GetNextTargetRequired(pindexPrev, IsProofOfStake()))
             return state.DoS(100, error("AcceptBlock() : incorrect proof-of-work/proof-of-stake"));
 
         // Check timestamp against prev
-        if (GetBlockTime() <= pindexPrev->GetMedianTimePast() || GetBlockTime() + nMaxClockDrift < pindexPrev->GetBlockTime())
+
+        if (GetBlockTime() <= pindexPrev->GetMedianTimePast() || FutureDrift(GetBlockTime()) < pindexPrev->GetBlockTime())
+        /*if (GetBlockTime() <= pindexPrev->GetMedianTimePast() || GetBlockTime() + nMaxClockDrift < pindexPrev->GetBlockTime())*/
             return state.Invalid(error("AcceptBlock() : block's timestamp is too early"));
 
         // Check that all transactions are finalized
@@ -3570,7 +3621,7 @@ bool LoadBlockIndex()
     }
 
     printf("%s Network: genesis=0x%s nBitsLimit=0x%08x nBitsInitial=0x%08x nStakeMinAge=%d nCoinbaseMaturity=%d nModifierInterval=%d\n",
-           fTestNet? "Test" : "Peercoin", hashGenesisBlock.ToString().substr(0, 20).c_str(), bnProofOfWorkLimit.GetCompact(), bnInitialHashTarget.GetCompact(), nStakeMinAge, nCoinbaseMaturity, nModifierInterval);
+           fTestNet? "Test" : "SteepCoin", hashGenesisBlock.ToString().substr(0, 20).c_str(), bnProofOfWorkLimit.GetCompact(), bnInitialHashTarget.GetCompact(), nStakeMinAge, nCoinbaseMaturity, nModifierInterval);
 
     //
     // Load block index from databases
@@ -5191,7 +5242,8 @@ CBlockTemplate* CreateNewBlock(CReserveKey& reservekey, CWallet* pwallet, bool f
         {
             if (pwallet->CreateCoinStake(*pwallet, pblock->nBits, nSearchTime-nLastCoinStakeSearchTime, txCoinStake))
             {
-                if (txCoinStake.nTime >= max(pindexPrev->GetMedianTimePast()+1, pindexPrev->GetBlockTime() - nMaxClockDrift))
+                if (txCoinStake.nTime >= max(pindexBest->GetMedianTimePast()+1, PastDrift(pindexBest->GetBlockTime())))
+                // if (txCoinStake.nTime >= max(pindexPrev->GetMedianTimePast()+1, pindexPrev->GetBlockTime() - nMaxClockDrift))
                 {   // make sure coinstake would meet timestamp protocol
                     // as it would be the same as the block timestamp
                     pblock->vtx[0].vout[0].SetEmpty();
@@ -5396,8 +5448,11 @@ CBlockTemplate* CreateNewBlock(CReserveKey& reservekey, CWallet* pwallet, bool f
         if (fDebug && GetBoolArg("-printpriority"))
             printf("CreateNewBlock(): total size %" PRI64u"\n", nBlockSize);
 
-        if (pblock->IsProofOfWork())
+        //TO DO: take a look in case
+        if (pblock->IsProofOfWork()) {
+            // pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(nFees);
             pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(pblock->nBits);
+        }
         pblocktemplate->vTxFees[0] = -nFees;
 
         // Fill in header
@@ -5405,7 +5460,8 @@ CBlockTemplate* CreateNewBlock(CReserveKey& reservekey, CWallet* pwallet, bool f
         if (pblock->IsProofOfStake())
             pblock->nTime      = pblock->vtx[1].nTime; //same as coinstake timestamp
         pblock->nTime          = max(pindexPrev->GetMedianTimePast()+1, pblock->GetMaxTransactionTime());
-        pblock->nTime          = max(pblock->GetBlockTime(), pindexPrev->GetBlockTime() - nMaxClockDrift);
+        pblock->nTime          = max(pblock->GetBlockTime(), PastDrift(pindexPrev->GetBlockTime()));
+        // pblock->nTime          = max(pblock->GetBlockTime(), pindexPrev->GetBlockTime() - nMaxClockDrift);
         if (pblock->IsProofOfWork())
             pblock->UpdateTime(pindexPrev);
         pblock->nNonce         = 0;
@@ -5702,10 +5758,12 @@ void BitcoinMiner(CWallet *pwallet, bool fProofOfStake)
 
             // Update nTime every few seconds
             pblock->nTime = max(pindexPrev->GetMedianTimePast()+1, pblock->GetMaxTransactionTime());
-            pblock->nTime = max(pblock->GetBlockTime(), pindexPrev->GetBlockTime() - nMaxClockDrift);
+            pblock->nTime = max(pblock->GetBlockTime(), PastDrift(pindexPrev->GetBlockTime()));
+            // pblock->nTime = max(pblock->GetBlockTime(), pindexPrev->GetBlockTime() - nMaxClockDrift);
             pblock->UpdateTime(pindexPrev);
             nBlockTime = ByteReverse(pblock->nTime);
-            if (pblock->GetBlockTime() >= (int64)pblock->vtx[0].nTime + nMaxClockDrift)
+            if (pblock->GetBlockTime() >= FutureDrift((int64)pblock->vtx[0].nTime))
+            // if (pblock->GetBlockTime() >= (int64)pblock->vtx[0].nTime + nMaxClockDrift)
                 break;  // need to update coinbase timestamp
         }
     } }
