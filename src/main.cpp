@@ -1162,6 +1162,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
     int64 nSubsidy = 0 * COIN;
 
     printf("GetProofOfWorkReward1b\n");
+    printf("pindexBest=%d\n", (pindexBest->nHeight+1);
     if (pindexBest->nHeight+1 == 1) // SteepCoin ICO RESERVED ( Totally:500 millions)
     {
       printf("GetProofOfWorkReward11\n");
@@ -1169,6 +1170,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
       return nSubsidy + nFees;
     }
     
+    printf("GetProofOfWorkReward125\n");
     else if(pindexBest->nHeight+1 < 10) 
     {
         printf("GetProofOfWorkReward12\n");
@@ -1176,6 +1178,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
         return nSubsidy + nFees;
     }
         
+    printf("GetProofOfWorkReward135\n");
     else if (pindexBest->nHeight+1 < 500000)
     {
       printf("GetProofOfWorkReward13\n");
@@ -1183,6 +1186,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
       return nSubsidy + nFees;
     }
     
+    printf("GetProofOfWorkReward14\n");
     if (fDebug && GetBoolArg("-printcreation")) {
         // printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%" PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);      
