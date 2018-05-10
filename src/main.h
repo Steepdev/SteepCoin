@@ -212,6 +212,7 @@ int64 GetProofOfWorkReward(unsigned int nBits);
 int64 GetProofOfStakeReward(int64 nCoinAge);
 /** Calculate the minimum amount of work a received block needs, without knowing its direct parent */
 unsigned int ComputeMinWork(unsigned int nBase, int64 nTime);
+unsigned int ComputeMinStake(unsigned int nBase, int64 nTime, unsigned int nBlockTime);
 /** Get the number of active peers */
 int GetNumBlocksOfPeers();
 /** Check whether we are doing an initial block download (synchronizing from disk or network) */

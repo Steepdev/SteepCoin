@@ -40,7 +40,7 @@ static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // "standard" scrypt targe
 static CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 static CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 static CBigNum bnProofOfStakeLimitTestNet(~uint256(0) >> 20);
-// static CBigNum bnProofOfWorkLimit(~uint256(0) >> 32);
+
 static CBigNum bnInitialHashTarget(~uint256(0) >> 40);
 unsigned int nStakeMinAge = STAKE_MIN_AGE;
 int nCoinbaseMaturity = COINBASE_MATURITY_PPC;
@@ -1184,37 +1184,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
     return nSubsidy + nFees;
 }
 
-/*int64 GetProofOfWorkReward(unsigned int nBits)
-{
-    CBigNum bnSubsidyLimit = MAX_MINT_PROOF_OF_WORK;
-    CBigNum bnTarget;
-    bnTarget.SetCompact(nBits);
-    CBigNum bnTargetLimit = bnProofOfWorkLimit;
-    bnTargetLimit.SetCompact(bnTargetLimit.GetCompact());
 
-    // ppcoin: subsidy is cut in half every 16x multiply of difficulty
-    // A reasonably continuous curve is used to avoid shock to market
-    // (nSubsidyLimit / nSubsidy) ** 4 == bnProofOfWorkLimit / bnTarget
-    CBigNum bnLowerBound = CENT;
-    CBigNum bnUpperBound = bnSubsidyLimit;
-    while (bnLowerBound + CENT <= bnUpperBound)
-    {
-        CBigNum bnMidValue = (bnLowerBound + bnUpperBound) / 2;
-        if (fDebug && GetBoolArg("-printcreation"))
-            printf("GetProofOfWorkReward() : lower=%" PRI64d" upper=%" PRI64d" mid=%" PRI64d"\n", bnLowerBound.getuint64(), bnUpperBound.getuint64(), bnMidValue.getuint64());
-        if (bnMidValue * bnMidValue * bnMidValue * bnMidValue * bnTargetLimit > bnSubsidyLimit * bnSubsidyLimit * bnSubsidyLimit * bnSubsidyLimit * bnTarget)
-            bnUpperBound = bnMidValue;
-        else
-            bnLowerBound = bnMidValue;
-    }
-
-    int64 nSubsidy = bnUpperBound.getuint64();
-    nSubsidy = (nSubsidy / CENT) * CENT;
-    if (fDebug && GetBoolArg("-printcreation"))
-        printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%" PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
-
-    return min(nSubsidy, MAX_MINT_PROOF_OF_WORK);
-}*/
 
 
 int64 GetProofOfStakeReward(int64 nCoinAge/*, int64_t nFees*/)
@@ -1538,11 +1508,50 @@ void static PruneOrphanBlocks()
 static const int64 nTargetTimespan = 60 * 60;  // 60m
 static const int64 nTargetSpacingWorkMax = 12 * STAKE_TARGET_SPACING; // 2-hour
 
+
+//
+// maximum nBits value could possible be required nTime after
+//
+unsigned int ComputeMaxBits(CBigNum bnTargetLimit, unsigned int nBase, int64 nTime)
+{
+    CBigNum bnResult;
+    bnResult.SetCompact(nBase);
+    bnResult *= 2;
+    while (nTime > 0 && bnResult < bnTargetLimit)
+    {
+        // Maximum 200% adjustment per hour
+        bnResult *= 2;
+        nTime -= 1 * 60 * 60;
+    }
+    if (bnResult > bnTargetLimit)
+        bnResult = bnTargetLimit;
+    return bnResult.GetCompact();
+}
+
 //
 // minimum amount of work that could possibly be required nTime after
 // minimum work required was nBase
 //
 unsigned int ComputeMinWork(unsigned int nBase, int64 nTime)
+{
+    return ComputeMaxBits(bnProofOfWorkLimit, nBase, nTime);
+}
+
+//
+// minimum amount of stake that could possibly be required nTime after
+// minimum proof-of-stake required was nBase
+//
+unsigned int ComputeMinStake(unsigned int nBase, int64 nTime, unsigned int nBlockTime)
+{
+    return ComputeMaxBits(bnProofOfStakeLimit, nBase, nTime);
+}
+
+
+//
+// minimum amount of work that could possibly be required nTime after
+// minimum work required was nBase
+//
+/*unsigned int ComputeMinWork(unsigned int nBase, int64 nTime)
 {
     CBigNum bnResult;
     bnResult.SetCompact(nBase);
@@ -1556,7 +1565,7 @@ unsigned int ComputeMinWork(unsigned int nBase, int64 nTime)
     if (bnResult > bnProofOfWorkLimit)
         bnResult = bnProofOfWorkLimit;
     return bnResult.GetCompact();
-}
+}*/
 
 // ppcoin: find last block index up to pindex
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake)
@@ -1604,37 +1613,7 @@ unsigned int static GetNextTargetRequired(const CBlockIndex* pindexLast, bool fP
     return bnNew.GetCompact();
 }
 
-/*unsigned int static GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
-#endif
-{
-    if (pindexLast == NULL)
-        return bnProofOfWorkLimit.GetCompact(); // genesis block
 
-    const CBlockIndex* pindexPrev = GetLastBlockIndex(pindexLast, fProofOfStake);
-    if (pindexPrev->pprev == NULL)
-        return bnInitialHashTarget.GetCompact(); // first block
-    const CBlockIndex* pindexPrevPrev = GetLastBlockIndex(pindexPrev->pprev, fProofOfStake);
-    if (pindexPrevPrev->pprev == NULL)
-        return bnInitialHashTarget.GetCompact(); // second block
-
-    int64 nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
-
-    // ppcoin: target change every block
-    // ppcoin: retarget with exponential moving toward target spacing
-    CBigNum bnNew;
-    bnNew.SetCompact(pindexPrev->nBits);
-    int64 nTargetSpacing = fProofOfStake? STAKE_TARGET_SPACING : min(nTargetSpacingWorkMax, (int64) STAKE_TARGET_SPACING * (1 + pindexLast->nHeight - pindexPrev->nHeight));
-    // int64 nInterval = nTargetTimespan / nTargetSpacing;
-    int64 nTargetSpacing = (int64) STAKE_TARGET_SPACING;
-    int64 nInterval = nTargetTimespan / nTargetSpacing;
-    bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
-    bnNew /= ((nInterval + 1) * nTargetSpacing);
-
-    if (bnNew > bnProofOfWorkLimit)
-        bnNew = bnProofOfWorkLimit;
-
-    return bnNew.GetCompact();
-}*/
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)
 {
@@ -1903,7 +1882,7 @@ bool CTransaction::CheckInputs(CValidationState &state, CCoinsViewCache &inputs,
             uint64 nCoinAge;
             if (!GetCoinAge(state, inputs, nCoinAge))
                 return error("CheckInputs() : %s unable to get coin age for coinstake", GetHash().ToString().c_str());
-            int64 nStakeReward = GetValueOut() - nValueIn;nFees
+            int64 nStakeReward = GetValueOut() - nValueIn;
             if (nStakeReward > GetProofOfStakeReward(nCoinAge) - GetMinFee() + MIN_TX_FEE)
                 return state.DoS(100, error("CheckInputs() : %s stake reward exceeded", GetHash().ToString().c_str()));
         }
@@ -3013,6 +2992,12 @@ bool ProcessBlock(CValidationState &state, CNode* pfrom, CBlock* pblock, CDiskBl
         CBigNum bnNewBlock;
         bnNewBlock.SetCompact(pblock->nBits);
         CBigNum bnRequired;
+
+        /*if (pblock->IsProofOfStake())
+            //TO DO
+            bnRequired.SetCompact(ComputeMinStake(GetLastBlockIndex(pcheckpoint, true)->nBits, deltaTime, pblock->nTime));
+        else
+            bnRequired.SetCompact(ComputeMinWork(GetLastBlockIndex(pcheckpoint, false)->nBits, deltaTime));*/
         bnRequired.SetCompact(ComputeMinWork(GetLastBlockIndex(pcheckpoint, pblock->IsProofOfStake())->nBits, deltaTime));
 
         if (bnNewBlock > bnRequired)
