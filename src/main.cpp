@@ -2679,6 +2679,8 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 
 bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerkleRoot) const
 {
+    
+    printf("CheckBlock1\n");
     // These are checks that are independent of context
     // that can be verified before saving an orphan block.
 
@@ -2705,6 +2707,7 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
             return error("CheckBlock() : 15 May maxlocks violation");
     }*/
 
+    printf("CheckBlock2\n");
     // Check proof of work matches claimed amount
     if (fCheckPOW && IsProofOfWork() && !CheckProofOfWork(GetHash(), nBits))
         return state.DoS(50, error("CheckBlock() : proof of work failed"));
@@ -2748,6 +2751,7 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
                    FormatMoney(vtx[0].GetValueOut()).c_str(),
                    FormatMoney(IsProofOfWork()? GetProofOfWorkReward(nBits) : 0).c_str()));
 
+    printf("CheckBlock3\n");
     // Check transactions
     BOOST_FOREACH(const CTransaction& tx, vtx)
     {
@@ -2789,6 +2793,7 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
     if (fCheckMerkleRoot && !CheckBlockSignature())
         return state.DoS(100, error("CheckBlock() : bad block signature"));
 
+    printf("CheckBlock4\n");
     return true;
 }
 
