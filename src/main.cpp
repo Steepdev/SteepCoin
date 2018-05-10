@@ -1155,10 +1155,13 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 // miner's coin base reward
 int64 GetProofOfWorkReward(unsigned int nBits) 
 {
+    int64_t nSubsidyaaa = 1 * COIN;
     printf("GetProofOfWorkReward1\n");
     int64 nFees = 0 * COIN;
+    printf("GetProofOfWorkReward1a\n");
     int64 nSubsidy = 0 * COIN;
-    
+
+    printf("GetProofOfWorkReward1b\n");
     if (pindexBest->nHeight+1 == 1) // SteepCoin ICO RESERVED ( Totally:500 millions)
     {
       printf("GetProofOfWorkReward11\n");
