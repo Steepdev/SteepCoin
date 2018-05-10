@@ -1162,7 +1162,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
     int64 nSubsidy = 0 * COIN;
 
     printf("GetProofOfWorkReward1b\n");
-    printf("pindexBest=%d\n", (pindexBest->nHeight+1);
+    printf("pindexBest=%d\n", (pindexBest->nHeight+1));
     if (pindexBest->nHeight+1 == 1) // SteepCoin ICO RESERVED ( Totally:500 millions)
     {
       printf("GetProofOfWorkReward11\n");
