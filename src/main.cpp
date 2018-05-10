@@ -2750,6 +2750,9 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
 
     printf("CheckBlock26\n");
     // Check coinbase reward
+    if (IsProofOfWork()) {
+        printf("proof_of_work\n");
+    }
     int64 nReward = GetProofOfWorkReward(nBits) - vtx[0].GetMinFee() + MIN_TX_FEE;
     // if (vtx[0].GetValueOut() > nReward)
     printf("CheckBlock27\n");
