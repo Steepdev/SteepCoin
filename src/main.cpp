@@ -3677,22 +3677,23 @@ bool InitBlockIndex() {
 
         block.print();
         printf("block.GetHash() == %s\n", block.GetHash().ToString().c_str());
+        printf("GenesisBlock == %s\n", hashGenesisBlock.ToString().c_str());
         printf("block.hashMerkleRoot == %s\n", block.hashMerkleRoot.ToString().c_str());
         printf("block.nTime = %u \n", block.nTime);
         printf("block.nNonce = %u \n", block.nNonce);
         //// debug print
         uint256 hash = block.GetHash();
-        printf("%s\n", hash.ToString().c_str());
-        printf("%s\n", hashGenesisBlock.ToString().c_str());
-        printf("%s\n", block.hashMerkleRoot.ToString().c_str());
+        // printf("%s\n", hash.ToString().c_str());
+        // printf("%s\n", hashGenesisBlock.ToString().c_str());
+        // printf("%s\n", block.hashMerkleRoot.ToString().c_str());
         if (fTestNet) {
             printf("tes\n");
         }
         else {printf("main\n");}
-        printf("this_is_before_assertV0\n");
+        // printf("this_is_before_assertV0\n");
         assert(block.hashMerkleRoot == uint256("0x23900140194a8df32c57b48c1a259e6c39596adf3499030877832cc79d55830a"));
         block.print();
-        printf("this_is_before_assertV1\n");
+        // printf("this_is_before_assertV1\n");
         assert(hash == hashGenesisBlock);
         // ppcoin: check genesis block
         {
