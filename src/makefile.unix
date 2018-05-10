@@ -158,6 +158,7 @@ OBJS= \
     obj/luffa.o \
     obj/cubehash.o \
     obj/echo.o \
+    obj/simd.o \
     obj/pbkdf2.o \
     obj/scrypt.o \
     obj/scrypt-arm.o \
