@@ -2718,6 +2718,7 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         return state.Invalid(error("CheckBlock() : block timestamp too far in the future"));
     }
 
+    printf("CheckBlock21\n");
     // First transaction must be coinbase, the rest must not be
     if (vtx.empty() || !vtx[0].IsCoinBase())
         return state.DoS(100, error("CheckBlock() : first tx is not coinbase"));
@@ -2725,11 +2726,13 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         if (vtx[i].IsCoinBase())
             return state.DoS(100, error("CheckBlock() : more than one coinbase"));
 
+    printf("CheckBlock22\n");
     // ppcoin: only the second transaction can be the optional coinstake
     for (unsigned int i = 2; i < vtx.size(); i++)
         if (vtx[i].IsCoinStake())
             return state.DoS(100, error("CheckBlock() : coinstake in wrong position"));
 
+    printf("CheckBlock23\n");
     // ppcoin: coinbase output should be empty if proof-of-stake block
     if (IsProofOfStake() && (vtx[0].vout.size() != 1 || !vtx[0].vout[0].IsEmpty()))
         return error("CheckBlock() : coinbase output not empty for proof-of-stake block");
