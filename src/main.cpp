@@ -1155,6 +1155,7 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 // miner's coin base reward
 int64 GetProofOfWorkReward(unsigned int nBits) 
 {
+    printf("GetProofOfWorkReward1\n");
     int64 nFees = 0 * COIN;
     int64 nSubsidy = 0 * COIN;
     
@@ -1181,6 +1182,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);      
     }
     
+    printf("GetProofOfWorkReward2\n");
     return nSubsidy + nFees;
 }
 
@@ -1468,15 +1470,6 @@ int64 GetProofOfStakeReward(int64 nCoinAge/*, int64_t nFees*/)
     return nSubsidy + nFees;
 }
 
-// ppcoin: miner's coin stake is rewarded based on coin age spent (coin-days)
-/*int64 GetProofOfStakeReward(int64 nCoinAge)
-{
-    static int64 nRewardCoinYear = CENT;  // creation amount per coin-year
-    int64 nSubsidy = nCoinAge * 33 / (365 * 33 + 8) * nRewardCoinYear;
-    if (fDebug && GetBoolArg("-printcreation"))
-        printf("GetProofOfStakeReward(): create=%s nCoinAge=%" PRI64d"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
-    return nSubsidy;
-}*/
 
 // Remove a random orphan block (which does not have any dependent orphans).
 void static PruneOrphanBlocks()
@@ -2713,8 +2706,8 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         return state.DoS(50, error("CheckBlock() : proof of work failed"));
 
     // Check timestamp
-    if (GetBlockTime() > FutureDrift(GetAdjustedTime())) {
     // if (GetBlockTime() > GetAdjustedTime() + nMaxClockDrift) {
+    if (GetBlockTime() > FutureDrift(GetAdjustedTime())) {
         return state.Invalid(error("CheckBlock() : block timestamp too far in the future"));
     }
 
@@ -2737,13 +2730,14 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
     if (IsProofOfStake() && (vtx[0].vout.size() != 1 || !vtx[0].vout[0].IsEmpty()))
         return error("CheckBlock() : coinbase output not empty for proof-of-stake block");
 
-    printf("CheckBlock24\n");
-    // Check coinbase timestamp
-    if (GetBlockTime() > FutureDrift((int64)vtx[0].nTime))
-    // if (GetBlockTime() > (int64)vtx[0].nTime + nMaxClockDrift)
-        return state.DoS(50, error("CheckBlock() : coinbase timestamp is too early"));
 
-    printf("CheckBlock25\n");
+    // Check coinbase timestamp
+    // if (GetBlockTime() > (int64)vtx[0].nTime + nMaxClockDrift)
+    if (GetBlockTime() > FutureDrift((int64)vtx[0].nTime)) {
+        return state.DoS(50, error("CheckBlock() : coinbase timestamp is too early"));
+    }
+
+
     // Check coinstake timestamp
     if (IsProofOfStake() && !CheckCoinStakeTimestamp(GetBlockTime(), (int64)vtx[1].nTime))
         return state.DoS(50, error("CheckBlock() : coinstake timestamp violation nTimeBlock=%" PRI64u" nTimeTx=%u", GetBlockTime(), vtx[1].nTime));
@@ -2753,13 +2747,15 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
     if (IsProofOfWork()) {
         printf("proof_of_work\n");
     }
+    printf("nBits=0x%08x\n", nBits);
     int64 nReward = GetProofOfWorkReward(nBits) - vtx[0].GetMinFee() + MIN_TX_FEE;
     // if (vtx[0].GetValueOut() > nReward)
     printf("CheckBlock27\n");
-    if (vtx[0].GetValueOut() > (IsProofOfWork()? (nReward) : 0))
+    if (vtx[0].GetValueOut() > (IsProofOfWork()? (nReward) : 0)) {
         return state.DoS(50, error("CheckBlock() : coinbase reward exceeded %s > %s", 
                    FormatMoney(vtx[0].GetValueOut()).c_str(),
                    FormatMoney(IsProofOfWork()? GetProofOfWorkReward(nBits) : 0).c_str()));
+    }
 
     printf("CheckBlock3\n");
     // Check transactions
