@@ -3578,7 +3578,7 @@ bool LoadBlockIndex()
 
     if (fTestNet)
     {
-#ifdef TESTING
+/*#ifdef TESTING
         hashGenesisBlock = uint256("00008d0d88095d31f6dbdbcf80f6e51f71adf2be15740301f5e05cc0f3b2d2c0");
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 15);
         nStakeMinAge = 60 * 60 * 24; // test net min age is 1 day
@@ -3592,7 +3592,7 @@ bool LoadBlockIndex()
         nCoinbaseMaturity = 60;
         bnInitialHashTarget = CBigNum(~uint256(0) >> 29);
         nModifierInterval = 60 * 20; // test net modifier interval is 20 minutes
-#endif
+#endif*/
     }
 
     printf("%s Network: genesis=0x%s nBitsLimit=0x%08x nBitsInitial=0x%08x nStakeMinAge=%d nCoinbaseMaturity=%d nModifierInterval=%d\n",
@@ -3663,19 +3663,29 @@ bool InitBlockIndex() {
         }
 #endif
 
+        block.print();
+        printf("block.GetHash() == %s\n", block.GetHash().ToString().c_str());
+        printf("block.hashMerkleRoot == %s\n", block.hashMerkleRoot.ToString().c_str());
+        printf("block.nTime = %u \n", block.nTime);
+        printf("block.nNonce = %u \n", block.nNonce);
         //// debug print
         uint256 hash = block.GetHash();
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
+        if (fTestNet) {
+            printf("tes\n");
+        }
+        else {printf("main\n");}
+        printf("this_is_before_assertV0\n");
         assert(block.hashMerkleRoot == uint256("0x23900140194a8df32c57b48c1a259e6c39596adf3499030877832cc79d55830a"));
         block.print();
-        printf("this_is_before_assertV1");
+        printf("this_is_before_assertV1\n");
         assert(hash == hashGenesisBlock);
         // ppcoin: check genesis block
         {
             CValidationState state;
-            printf("this_is_before_assertV2");
+            printf("this_is_before_assertV2\n");
             assert(block.CheckBlock(state));
         }
 
