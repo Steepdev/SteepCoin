@@ -30,24 +30,20 @@ const unsigned int nProtocolV06TestSwitchTime = 1508198400; // Tue 17 Oct 00:00:
 unsigned int nModifierInterval = MODIFIER_INTERVAL;
 
 // Hard checkpoints of stake modifiers to ensure they are deterministic
-static std::map<int, unsigned int> mapStakeModifierCheckpoints =
-    boost::assign::map_list_of
-        ( 0, 0xfd11f4e7)
-        ( 1, 0x2dcbe358)
-        ( 2, 0x4da80b60)
-        ( 20, 0xc376c28f)
-        ( 10000, 0xc05b3961)
-        ( 30000, 0xcc120e22)
-        ( 75000, 0x6d74f82d)
-        ( 100000, 0xf9c10444)
-        ( 125000, 0xf12bdec4)
-        ( 147500, 0x0ae61c00)
-        /*( 0, 0x0e00670bu )
-        ( 19080, 0xad4e4d29u )
-        ( 30583, 0xdc7bf136u )
-        ( 99999, 0xf555cfd2u )
-        (219999, 0x91b7444du )*/
-        ;
+static std::map<int, unsigned int> mapStakeModifierCheckpoints;
+
+    // boost::assign::map_list_of
+    //     ( 0, 0xfd11f4e7)
+    //     ( 1, 0x2dcbe358)
+    //     ( 2, 0x4da80b60)
+    //     ( 20, 0xc376c28f)
+    //     ( 10000, 0xc05b3961)
+    //     ( 30000, 0xcc120e22)
+    //     ( 75000, 0x6d74f82d)
+    //     ( 100000, 0xf9c10444)
+    //     ( 125000, 0xf12bdec4)
+    //     ( 147500, 0x0ae61c00)
+    //     ;
 
 // Whether the given coinstake is subject to new v0.3 protocol
 bool IsProtocolV03(unsigned int nTimeCoinStake)
@@ -425,12 +421,14 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlockHeader& blockFrom, uns
     int64 nStakeModifierTime = 0;
     if (IsProtocolV03(nTimeTx))  // v0.3 protocol
     {
+        printf("IsProtocolV03_w");
         if (!GetKernelStakeModifier(blockFrom.GetHash(), nTimeTx, nStakeModifier, nStakeModifierHeight, nStakeModifierTime, fPrintProofOfStake))
             return false;
         ss << nStakeModifier;
     }
     else // v0.2 protocol
     {
+        printf("IsProtocolV03_w2a");
         ss << nBits;
     }
 
@@ -536,7 +534,8 @@ unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex)
     CDataStream ss(SER_GETHASH, 0);
     if (pindex->pprev)
         ss << pindex->pprev->nStakeModifierChecksum;
-    ss << pindex->nFlags << pindex->hashProofOfStake << pindex->nStakeModifier;
+    ss << pindex->nFlags << (pindex->IsProofOfStake() ? pindex->hashProofOfStake : 0) << pindex->nStakeModifier;
+    // ss << pindex->nFlags << pindex->hashProofOfStake << pindex->nStakeModifier;
     uint256 hashChecksum = Hash(ss.begin(), ss.end());
     hashChecksum >>= (256 - 32);
     return hashChecksum.Get64();
