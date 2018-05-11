@@ -1193,7 +1193,11 @@ int64 GetProofOfWorkReward(int nHeight, unsigned int nBits)
 
 int64 GetProofOfStakeReward(int nHeight,int64 nCoinAge/*, int64_t nFees*/)
 {
-    int currentheight_ = nHeight;
+    // int currentheight_ = nHeight;
+    if (pindexBest == NULL) {
+        printf("pindexBest3 is NULL\n");
+    }
+    int currentheight_ = pindexBest->nHeight;
     int64 nSubsidy = 0 * COIN;
     int64 nFees = 0 * CENT;
     
@@ -1862,7 +1866,10 @@ bool CTransaction::CheckInputs(CValidationState &state, CCoinsViewCache &inputs,
             if (!GetCoinAge(state, inputs, nCoinAge))
                 return error("CheckInputs() : %s unable to get coin age for coinstake", GetHash().ToString().c_str());
             int64 nStakeReward = GetValueOut() - nValueIn;
-            if (nStakeReward > GetProofOfStakeReward(nCoinAge) - GetMinFee() + MIN_TX_FEE)
+            if (pindexBest == NULL) {
+                printf("pindexBest_ is NULL\n");
+            }
+            if (nStakeReward > GetProofOfStakeReward(pindexBest->nHeight, nCoinAge) - GetMinFee() + MIN_TX_FEE)
                 return state.DoS(100, error("CheckInputs() : %s stake reward exceeded", GetHash().ToString().c_str()));
         }
         else
