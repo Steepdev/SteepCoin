@@ -2553,8 +2553,8 @@ bool CBlock::AddToBlockIndex(CValidationState &state, const CDiskBlockPos &pos)
         return error("AddToBlockIndex() : ComputeNextStakeModifier() failed");
     pindexNew->SetStakeModifier(nStakeModifier, fGeneratedStakeModifier);
     pindexNew->nStakeModifierChecksum = GetStakeModifierChecksum(pindexNew);
-    if (!CheckStakeModifierCheckpoints(pindexNew->nHeight, pindexNew->nStakeModifierChecksum))
-        return error("AddToBlockIndex() : Rejected by stake modifier checkpoint height=%d, modifier=0x%016" PRI64x, pindexNew->nHeight, nStakeModifier);
+    //if (!CheckStakeModifierCheckpoints(pindexNew->nHeight, pindexNew->nStakeModifierChecksum))
+        // return error("AddToBlockIndex() : Rejected by stake modifier checkpoint height=%d, modifier=0x%016" PRI64x, pindexNew->nHeight, nStakeModifier);
 
     // ppcoin: remember stake
     if (pindexNew->IsProofOfStake())
@@ -3685,7 +3685,7 @@ bool InitBlockIndex() {
         }
 #endif
 
-        block.print();
+        // block.print();
         printf("block.GetHash() == %s\n", block.GetHash().ToString().c_str());
         printf("GenesisBlock == %s\n", hashGenesisBlock.ToString().c_str());
         printf("block.hashMerkleRoot == %s\n", block.hashMerkleRoot.ToString().c_str());
@@ -3700,15 +3700,15 @@ bool InitBlockIndex() {
             printf("tes\n");
         }
         else {printf("main\n");}
-        // printf("this_is_before_assertV0\n");
+
         assert(block.hashMerkleRoot == uint256("0x23900140194a8df32c57b48c1a259e6c39596adf3499030877832cc79d55830a"));
         block.print();
-        // printf("this_is_before_assertV1\n");
+
         assert(hash == hashGenesisBlock);
         // ppcoin: check genesis block
         {
             CValidationState state;
-            printf("this_is_before_assertV2\n");
+
             assert(block.CheckBlock(0,state));
         }
         printf("this_is_beforeV3\n");
