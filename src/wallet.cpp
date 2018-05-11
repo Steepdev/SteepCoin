@@ -1014,13 +1014,19 @@ void CWallet::AvailableCoins(std::vector<COutput>& vCoins, unsigned int nSpendTi
             if ((pcoin->IsCoinBase() || pcoin->IsCoinStake()) && pcoin->GetBlocksToMaturity() > 0)
                 continue;
 
-            int64 nMinimumInputValue =0;
+            // int64 nMinimumInputValue =0;
             for (unsigned int i = 0; i < pcoin->vout.size(); i++) {
                 if (!(pcoin->IsSpent(i)) && IsMine(pcoin->vout[i]) &&
-                    !IsLockedCoin((*it).first, i) && pcoin->vout[i].nValue > nMinimumInputValue &&
+                    !IsLockedCoin((*it).first, i) && pcoin->vout[i].nValue > 0 &&
                     (!coinControl || !coinControl->HasSelected() || coinControl->IsSelected((*it).first, i)))
                     vCoins.push_back(COutput(pcoin, i, pcoin->GetDepthInMainChain()));
             }
+            // for (unsigned int i = 0; i < pcoin->vout.size(); i++) {
+            //     if (!(pcoin->IsSpent(i)) && IsMine(pcoin->vout[i]) &&
+            //         !IsLockedCoin((*it).first, i) && pcoin->vout[i].nValue > nMinimumInputValue &&
+            //         (!coinControl || !coinControl->HasSelected() || coinControl->IsSelected((*it).first, i)))
+            //         vCoins.push_back(COutput(pcoin, i, pcoin->GetDepthInMainChain()));
+            // }
         }
     }
 }
@@ -1275,11 +1281,11 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
 
                 //TO DO: delete it for a while
                 // ppcoin: sub-cent change is moved to fee
-                /*if (nChange > 0 && nChange < MIN_TXOUT_AMOUNT)
+                if (nChange > 0 && nChange < MIN_TXOUT_AMOUNT)
                 {
                     nFeeRet += nChange;
                     nChange = 0;
-                }*/
+                }
 
                 if (nChange > 0)
                 {
@@ -1340,6 +1346,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
                 // Limit size
                 unsigned int nBytes = ::GetSerializeSize(*(CTransaction*)&wtxNew, SER_NETWORK, PROTOCOL_VERSION);
                 // if (nBytes >= MAX_BLOCK_SIZE_GEN/5)
+
                 if (nBytes >= MAX_STANDARD_TX_SIZE)
                 {
                     strFailReason = _("Transaction too large");
@@ -1485,8 +1492,8 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
                 vwtxPrev.push_back(pcoin.first);
                 txNew.vout.push_back(CTxOut(0, scriptPubKeyOut));
                 //TO DO:
-                // if (((nSplitThreshold == 0) && (GetWeight(block.GetBlockTime(), (int64_t)txNew.nTime) < nStakeSplitAge)) || ((nSplitThreshold != 0) && (nCredit >= nSplitThreshold)))
-                    txNew.vout.push_back(CTxOut(0, scriptPubKeyOut)); //split stake
+                // if (((nSplitThreshold == 0) && (GetWeight(block.GetBlockTime(), (int64_t)txNew.nTime) < nStakeSplitAge)) || ((nSplitThreshold != 0) && (nCredit >= nSplitThreshold))) {
+                    // txNew.vout.push_back(CTxOut(0, scriptPubKeyOut));} //split stake 
                 if (header.GetBlockTime() + nStakeSplitAge > txNew.nTime)
                     txNew.vout.push_back(CTxOut(0, scriptPubKeyOut)); //split stake
                 if (fDebug && GetBoolArg("-printcoinstake"))

@@ -1159,7 +1159,7 @@ boost::filesystem::path GetConfigFile()
 
     // Load old config file if present
     if (mapArgs.count("-conf") == 0 && !boost::filesystem::exists(pathConfigFile)) {
-        boost::filesystem::path pathOldConfigFile = GetDataDir(false) / "steep_.conf";
+        boost::filesystem::path pathOldConfigFile = GetDataDir(false) / "steep.conf";
         if (boost::filesystem::exists(pathOldConfigFile))
             pathConfigFile = pathOldConfigFile;
     }

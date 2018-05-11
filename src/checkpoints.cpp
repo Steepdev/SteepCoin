@@ -71,8 +71,8 @@ namespace Checkpoints
         if (!GetBoolArg("-checkpoints", true))
             return true;
 
-        // const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
-        const MapCheckpoints& checkpoints = (fTestNet ? mapCheckpointsTestnet : mapCheckpoints);
+        const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
+        // const MapCheckpoints& checkpoints = (fTestNet ? mapCheckpointsTestnet : mapCheckpoints);
 
         MapCheckpoints::const_iterator i = checkpoints.find(nHeight);
         if (i == checkpoints.end()) return true;
@@ -82,9 +82,6 @@ namespace Checkpoints
     // Guess how far we are in the verification process at the given block index
     double GuessVerificationProgress(CBlockIndex *pindex) {
         if (pindex==NULL) {
-            return 0.0;
-        }
-        else {
             return 0.0;
         }
 
@@ -119,8 +116,8 @@ namespace Checkpoints
         if (!GetBoolArg("-checkpoints", true))
             return 0;
 
-        // const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
-        const MapCheckpoints& checkpoints = (fTestNet ? mapCheckpointsTestnet : mapCheckpoints);
+        const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
+        // const MapCheckpoints& checkpoints = (fTestNet ? mapCheckpointsTestnet : mapCheckpoints);
 
         return checkpoints.rbegin()->first;
     }
@@ -130,8 +127,8 @@ namespace Checkpoints
         if (!GetBoolArg("-checkpoints", true))
             return NULL;
 
-        // const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
-        const MapCheckpoints& checkpoints = (fTestNet ? mapCheckpointsTestnet : mapCheckpoints);
+        const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
+        // const MapCheckpoints& checkpoints = (fTestNet ? mapCheckpointsTestnet : mapCheckpoints);
 
         BOOST_REVERSE_FOREACH(const MapCheckpoints::value_type& i, checkpoints)
         {
@@ -145,8 +142,8 @@ namespace Checkpoints
 
     uint256 GetLatestHardenedCheckpoint()
     {
-        // const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
-        const MapCheckpoints& checkpoints = (fTestNet ? mapCheckpointsTestnet : mapCheckpoints);
+        const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
+        // const MapCheckpoints& checkpoints = (fTestNet ? mapCheckpointsTestnet : mapCheckpoints);
         return (checkpoints.rbegin()->second);
     }
 }
