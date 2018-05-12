@@ -237,6 +237,7 @@ bool AppInit(int argc, char* argv[])
         threadGroup.interrupt_all();
     }
 
+    printf("AppInit_10\n");
     if (detectShutdownThread)
     {
         detectShutdownThread->join();
@@ -245,6 +246,7 @@ bool AppInit(int argc, char* argv[])
     }
     Shutdown();
 
+    printf("AppInit_11\n");
     return fRet;
 }
 
@@ -261,6 +263,7 @@ int main(int argc, char* argv[])
     if (fRet && fDaemon)
         return 0;
 
+    printf("AppInit_13\n");
     return (fRet ? 0 : 1);
 }
 #endif
@@ -1134,17 +1137,13 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     // ********************************************************* Step 12: finished
 
-    printf("AppInit_20\n");
     uiInterface.InitMessage(_("Done loading"));
 
-    printf("AppInit_21\n");
      // Add wallet transactions that aren't already in a block to mapTransactions
     pwalletMain->ReacceptWalletTransactions();
 
-    printf("AppInit_22\n");
     // Run a thread to flush wallet periodically
     threadGroup.create_thread(boost::bind(&ThreadFlushWalletDB, boost::ref(pwalletMain->strWalletFile)));
 
-    printf("AppInit_23\n");
     return !fRequestShutdown;
 }
