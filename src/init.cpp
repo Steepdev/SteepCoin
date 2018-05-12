@@ -941,7 +941,6 @@ bool AppInit2(boost::thread_group& threadGroup)
         return false;
     }
 
-    printf("AppInit_14\n");
     if (mapArgs.count("-printblock"))
     {
         string strMatch = mapArgs["-printblock"];
@@ -965,7 +964,6 @@ bool AppInit2(boost::thread_group& threadGroup)
         return false;
     }
 
-    printf("AppInit_14a\n");
     // ********************************************************* Step 8: load wallet
     if (GetBoolArg("-zapwallettxes", false)) {
         uiInterface.InitMessage(_("Zapping all transactions from wallet..."));
@@ -983,7 +981,6 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     uiInterface.InitMessage(_("Loading wallet..."));
 
-    printf("AppInit_15\n");
     nStart = GetTimeMillis();
     bool fFirstRun = true;
     pwalletMain = new CWallet("wallet.dat");
@@ -1010,7 +1007,6 @@ bool AppInit2(boost::thread_group& threadGroup)
             strErrors << _("Error loading wallet.dat") << "\n";
     }
 
-    printf("AppInit_16\n");
     if (GetBoolArg("-upgradewallet", fFirstRun))
     {
         int nMaxVersion = GetArg("-upgradewallet", 0);
@@ -1042,7 +1038,6 @@ bool AppInit2(boost::thread_group& threadGroup)
         pwalletMain->SetBestChain(CBlockLocator(pindexBest));
     }
 
-    printf("AppInit_17\n");
     printf("%s", strErrors.str().c_str());
     printf(" wallet      %15" PRI64d"ms\n", GetTimeMillis() - nStart);
 
@@ -1073,7 +1068,6 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     // ********************************************************* Step 9: import blocks
 
-    printf("AppInit_18\n");
     // scan for better chains in the block chain database, that are not yet connected in the active best chain
     CValidationState state;
     if (!ConnectBestBlock(state))
@@ -1110,7 +1104,6 @@ bool AppInit2(boost::thread_group& threadGroup)
     if (!strErrors.str().empty())
         return InitError(strErrors.str());
 
-    printf("AppInit_19\n");
     RandAddSeedPerfmon();
 
     //// debug print
@@ -1144,11 +1137,14 @@ bool AppInit2(boost::thread_group& threadGroup)
     printf("AppInit_20\n");
     uiInterface.InitMessage(_("Done loading"));
 
+    printf("AppInit_21\n");
      // Add wallet transactions that aren't already in a block to mapTransactions
     pwalletMain->ReacceptWalletTransactions();
 
+    printf("AppInit_22\n");
     // Run a thread to flush wallet periodically
     threadGroup.create_thread(boost::bind(&ThreadFlushWalletDB, boost::ref(pwalletMain->strWalletFile)));
 
+    printf("AppInit_23\n");
     return !fRequestShutdown;
 }
