@@ -506,6 +506,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     fTestNet = GetBoolArg("-testnet");
 
+    printf("AppInit_1\n");
     if (mapArgs.count("-bind")) {
         // when specifying an explicit binding address, you want to listen on it
         // even when -connect or -proxy is specified
@@ -560,6 +561,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     fDebug = GetBoolArg("-debug");
     fBenchmark = GetBoolArg("-benchmark");
 
+    printf("AppInit_2\n");
     // -par=0 means autodetect, but nScriptCheckThreads==0 means no concurrency
     nScriptCheckThreads = GetArg("-par", 0);
     if (nScriptCheckThreads <= 0)
@@ -611,6 +613,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     // ppcoin: -mintxfee and -minrelaytxfee options of bitcoin disabled
     // fixed min fees defined in MIN_TX_FEE and MIN_RELAY_TX_FEE
 
+    printf("AppInit_3\n");
     if (mapArgs.count("-paytxfee"))
     {
         if (!ParseMoney(mapArgs["-paytxfee"], nTransactionFee) || nTransactionFee < MIN_TX_FEE)
@@ -649,9 +652,11 @@ bool AppInit2(boost::thread_group& threadGroup)
     printf("Using at most %i connections (%i file descriptors available)\n", nMaxConnections, nFD);
     std::ostringstream strErrors;
 
+    printf("AppInit_3a\n");
     if (fDaemon)
         fprintf(stdout, "Steepcoin server starting\n");
 
+    printf("AppInit_3b\n");
     if (nScriptCheckThreads) {
         printf("Using %u threads for script verification\n", nScriptCheckThreads);
         for (int i=0; i<nScriptCheckThreads-1; i++)
@@ -662,6 +667,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     // ********************************************************* Step 5: verify wallet database integrity
 
+    printf("AppInit_4\n");
     uiInterface.InitMessage(_("Verifying wallet..."));
 
     if (!bitdb.Open(GetDataDir()))
@@ -684,6 +690,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 
+    printf("AppInit_5\n");
     if (GetBoolArg("-salvagewallet"))
     {
         // Recover readable keypairs:
@@ -708,6 +715,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     // ********************************************************* Step 6: network initialization
 
+    printf("AppInit_6\n");
     int nSocksVersion = GetArg("-socks", 5);
     if (nSocksVersion != 4 && nSocksVersion != 5)
         return InitError(strprintf(_("Unknown -socks proxy version requested: %i"), nSocksVersion));
@@ -733,6 +741,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 #endif
 #endif
 
+    printf("AppInit_7\n");
     CService addrProxy;
     bool fProxy = false;
     if (mapArgs.count("-proxy")) {
