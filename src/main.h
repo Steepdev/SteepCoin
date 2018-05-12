@@ -36,7 +36,7 @@ static const unsigned int MAX_BLOCK_SIZE = 20000000;
 /** Obsolete: maximum size for mined blocks */
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 /** Default for -blockmaxsize, maximum size for mined blocks **/
-// static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 350000; //done
+static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 350000; //done
 /** Default for -blockprioritysize, maximum space for zero/low-fee transactions **/
 static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 27000; //done
 /** The maximum size for transactions we're willing to relay/mine */

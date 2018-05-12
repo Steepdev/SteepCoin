@@ -38,8 +38,7 @@ set<pair<COutPoint, unsigned int> > setStakeSeen;
 uint256 hashGenesisBlock = hashGenesisBlockOfficial;
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // "standard" scrypt target limit for proof of work, results with 0,000244140625 proof-of-work difficulty
 static CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
-static CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
-static CBigNum bnProofOfStakeLimitTestNet(~uint256(0) >> 20);
+
 
 static CBigNum bnInitialHashTarget(~uint256(0) >> 40);
 unsigned int nStakeMinAge = STAKE_MIN_AGE;
@@ -3704,11 +3703,13 @@ bool InitBlockIndex() {
         assert(block.hashMerkleRoot == uint256("0x23900140194a8df32c57b48c1a259e6c39596adf3499030877832cc79d55830a"));
         block.print();
 
+        printf("this_is_beforeV1\n");
         assert(hash == hashGenesisBlock);
         // ppcoin: check genesis block
         {
             CValidationState state;
 
+            printf("this_is_beforeV2\n");
             assert(block.CheckBlock(0,state));
         }
         printf("this_is_beforeV3\n");
@@ -5254,7 +5255,8 @@ CBlockTemplate* CreateNewBlock(CReserveKey& reservekey, CWallet* pwallet, bool f
         {
             if (pwallet->CreateCoinStake(*pwallet, pblock->nBits, nSearchTime-nLastCoinStakeSearchTime, txCoinStake))
             {
-                if (txCoinStake.nTime >= max(pindexBest->GetMedianTimePast()+1, PastDrift(pindexBest->GetBlockTime())))
+                // if (txCoinStake.nTime >= max(pindexPrev->GetMedianTimePast()+1, pindexPrev->GetBlockTime() - nMaxClockDrift))
+                if (txCoinStake.nTime >= max(pindexPrev->GetMedianTimePast()+1, PastDrift(pindexPrev->GetBlockTime())))
                 {   // make sure coinstake would meet timestamp protocol
                     // as it would be the same as the block timestamp
                     pblock->vtx[0].vout[0].SetEmpty();

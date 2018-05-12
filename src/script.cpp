@@ -292,8 +292,8 @@ bool IsCanonicalSignature(const valtype &vchSig) {
     // complement modulo the order could have been used instead, which is
     // one byte shorter when encoded correctly.
     
-    /*if (!CKey::CheckSignatureElement(S, nLenS, true))
-        return error("Non-canonical signature: S value is unnecessarily high");*/
+    if (!CKey::CheckSignatureElement(S, nLenS, true))
+        return error("Non-canonical signature: S value is unnecessarily high");
 
     return true;
 }

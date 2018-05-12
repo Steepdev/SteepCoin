@@ -36,9 +36,10 @@ void GetMessageStart(unsigned char pchMessageStart[], bool fPersistent)
 {
     if (fTestNet)
         memcpy(pchMessageStart, (fPersistent || GetAdjustedTime() > nMessageStartTestSwitchTime)? pchMessageStartTestNew : pchMessageStartTestOld, sizeof(pchMessageStartTestNew));
-    else
-        // memcpy(pchMessageStart, (fPersistent || GetAdjustedTime() > nMessageStartSwitchTime)? pchMessageStartPeercoin : pchMessageStartBitcoin, sizeof(pchMessageStartPeercoin));
-        memcpy(pchMessageStart, pchMessageStartPeercoin, sizeof(pchMessageStartPeercoin));
+    else {
+        memcpy(pchMessageStart, (fPersistent || GetAdjustedTime() > nMessageStartSwitchTime)? pchMessageStartPeercoin : pchMessageStartBitcoin, sizeof(pchMessageStartPeercoin));
+        // memcpy(pchMessageStart, pchMessageStartPeercoin, sizeof(pchMessageStartPeercoin));
+    }
 }
 
 static const char* ppszTypeName[] =
