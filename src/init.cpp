@@ -1122,7 +1122,8 @@ bool AppInit2(boost::thread_group& threadGroup)
         nTimeShift = GetArg("-timetravel", 0);
 #endif
 
-    StartNode(threadGroup);
+    printf("we are deleting some threads\n");
+    // StartNode(threadGroup);
 
     if (fServer)
         StartRPCThreads();
