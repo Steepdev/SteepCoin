@@ -238,7 +238,7 @@ bool AppInit(int argc, char* argv[])
     }
 
     printf("AppInit_10\n");
-    if (detectShutdownThread)
+    /*if (detectShutdownThread)
     {
         printf("AppInit_10_internal_\n");
         detectShutdownThread->join();
@@ -247,7 +247,7 @@ bool AppInit(int argc, char* argv[])
         printf("AppInit_10_internal_b\n");
         detectShutdownThread = NULL;
         printf("AppInit_10_internal_c\n");
-    }
+    }*/
     printf("AppInit_10a\n");
     Shutdown();
 
