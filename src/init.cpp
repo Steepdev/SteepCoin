@@ -232,13 +232,14 @@ bool AppInit(int argc, char* argv[])
         PrintExceptionContinue(NULL, "AppInit()");
     }
     if (!fRet) {
+         printf("AppInit_9n\n");
         if (detectShutdownThread)
             detectShutdownThread->interrupt();
         threadGroup.interrupt_all();
     }
 
     printf("AppInit_10\n");
-    /*if (detectShutdownThread)
+    if (detectShutdownThread)
     {
         printf("AppInit_10_internal_\n");
         detectShutdownThread->join();
@@ -247,7 +248,7 @@ bool AppInit(int argc, char* argv[])
         printf("AppInit_10_internal_b\n");
         detectShutdownThread = NULL;
         printf("AppInit_10_internal_c\n");
-    }*/
+    }
     printf("AppInit_10a\n");
     Shutdown();
 
@@ -1126,8 +1127,8 @@ bool AppInit2(boost::thread_group& threadGroup)
         nTimeShift = GetArg("-timetravel", 0);
 #endif
 
-    // printf("we are deleting some threads\n");
-    StartNode(threadGroup);
+    printf("we are deleting some threads\n");
+    // StartNode(threadGroup);
 
     if (fServer)
         StartRPCThreads();
