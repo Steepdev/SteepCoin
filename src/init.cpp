@@ -780,7 +780,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     fDiscover = GetBoolArg("-discover", true);
     fNameLookup = GetBoolArg("-dns", true);
 
-    printf("AppInit_9\n");
+    
     bool fBound = false;
     if (!fNoListen) {
         if (mapArgs.count("-bind")) {
@@ -803,7 +803,6 @@ bool AppInit2(boost::thread_group& threadGroup)
             return InitError(_("Failed to listen on any port. Use -listen=0 if you want this."));
     }
 
-    printf("AppInit_10\n");
     if (mapArgs.count("-externalip")) {
         BOOST_FOREACH(string strAddr, mapMultiArgs["-externalip"]) {
             CService addrLocal(strAddr, GetListenPort(), fNameLookup);
@@ -820,7 +819,6 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     fReindex = GetBoolArg("-reindex");
 
-    printf("AppInit_11\n");
     // Upgrading to 0.8; hard-link the old blknnnn.dat files into /blocks/
     filesystem::path blocksDir = GetDataDir() / "blocks";
     if (!filesystem::exists(blocksDir))
@@ -848,7 +846,6 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 
-    printf("AppInit_12\n");
     // cache size calculations
     size_t nTotalCache = GetArg("-dbcache", 25) << 20;
     if (nTotalCache < (1 << 22))
@@ -925,7 +922,6 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 
-    printf("AppInit_13\n");
     if (mapArgs.count("-txindex") && fTxIndex != GetBoolArg("-txindex", false))
         return InitError(_("You need to rebuild the databases using -reindex to change -txindex"));
 
@@ -945,6 +941,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         return false;
     }
 
+    printf("AppInit_14\n");
     if (mapArgs.count("-printblock"))
     {
         string strMatch = mapArgs["-printblock"];
@@ -968,6 +965,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         return false;
     }
 
+    printf("AppInit_14a\n");
     // ********************************************************* Step 8: load wallet
     if (GetBoolArg("-zapwallettxes", false)) {
         uiInterface.InitMessage(_("Zapping all transactions from wallet..."));
@@ -985,6 +983,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     uiInterface.InitMessage(_("Loading wallet..."));
 
+    printf("AppInit_15\n");
     nStart = GetTimeMillis();
     bool fFirstRun = true;
     pwalletMain = new CWallet("wallet.dat");
@@ -1011,6 +1010,7 @@ bool AppInit2(boost::thread_group& threadGroup)
             strErrors << _("Error loading wallet.dat") << "\n";
     }
 
+    printf("AppInit_16\n");
     if (GetBoolArg("-upgradewallet", fFirstRun))
     {
         int nMaxVersion = GetArg("-upgradewallet", 0);
@@ -1042,6 +1042,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         pwalletMain->SetBestChain(CBlockLocator(pindexBest));
     }
 
+    printf("AppInit_17\n");
     printf("%s", strErrors.str().c_str());
     printf(" wallet      %15" PRI64d"ms\n", GetTimeMillis() - nStart);
 
@@ -1072,6 +1073,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     // ********************************************************* Step 9: import blocks
 
+    printf("AppInit_18\n");
     // scan for better chains in the block chain database, that are not yet connected in the active best chain
     CValidationState state;
     if (!ConnectBestBlock(state))
@@ -1108,6 +1110,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     if (!strErrors.str().empty())
         return InitError(strErrors.str());
 
+    printf("AppInit_19\n");
     RandAddSeedPerfmon();
 
     //// debug print
@@ -1138,6 +1141,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     // ********************************************************* Step 12: finished
 
+    printf("AppInit_20\n");
     uiInterface.InitMessage(_("Done loading"));
 
      // Add wallet transactions that aren't already in a block to mapTransactions
