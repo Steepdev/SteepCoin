@@ -240,6 +240,7 @@ bool AppInit(int argc, char* argv[])
     printf("AppInit_10\n");
     if (detectShutdownThread)
     {
+        printf("AppInit_10_internal_\n");
         detectShutdownThread->join();
         delete detectShutdownThread;
         detectShutdownThread = NULL;
@@ -1122,8 +1123,8 @@ bool AppInit2(boost::thread_group& threadGroup)
         nTimeShift = GetArg("-timetravel", 0);
 #endif
 
-    printf("we are deleting some threads\n");
-    // StartNode(threadGroup);
+    // printf("we are deleting some threads\n");
+    StartNode(threadGroup);
 
     if (fServer)
         StartRPCThreads();
