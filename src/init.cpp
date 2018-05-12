@@ -244,6 +244,7 @@ bool AppInit(int argc, char* argv[])
         delete detectShutdownThread;
         detectShutdownThread = NULL;
     }
+    printf("AppInit_10a\n");
     Shutdown();
 
     printf("AppInit_11\n");
