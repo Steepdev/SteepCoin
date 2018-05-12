@@ -506,7 +506,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     fTestNet = GetBoolArg("-testnet");
 
-    printf("AppInit_1\n");
+
     if (mapArgs.count("-bind")) {
         // when specifying an explicit binding address, you want to listen on it
         // even when -connect or -proxy is specified
@@ -561,7 +561,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     fDebug = GetBoolArg("-debug");
     fBenchmark = GetBoolArg("-benchmark");
 
-    printf("AppInit_2\n");
+
     // -par=0 means autodetect, but nScriptCheckThreads==0 means no concurrency
     nScriptCheckThreads = GetArg("-par", 0);
     if (nScriptCheckThreads <= 0)
@@ -613,7 +613,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     // ppcoin: -mintxfee and -minrelaytxfee options of bitcoin disabled
     // fixed min fees defined in MIN_TX_FEE and MIN_RELAY_TX_FEE
 
-    printf("AppInit_3\n");
+
     if (mapArgs.count("-paytxfee"))
     {
         if (!ParseMoney(mapArgs["-paytxfee"], nTransactionFee) || nTransactionFee < MIN_TX_FEE)
@@ -667,7 +667,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     // ********************************************************* Step 5: verify wallet database integrity
 
-    printf("AppInit_4\n");
+
     uiInterface.InitMessage(_("Verifying wallet..."));
 
     if (!bitdb.Open(GetDataDir()))
@@ -690,7 +690,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 
-    printf("AppInit_5\n");
+
     if (GetBoolArg("-salvagewallet"))
     {
         // Recover readable keypairs:
@@ -761,6 +761,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         fProxy = true;
     }
 
+    printf("AppInit_8\n");
     // -tor can override normal proxy, -notor disables tor entirely
     if (!(mapArgs.count("-tor") && mapArgs["-tor"] == "0") && (fProxy || mapArgs.count("-tor"))) {
         CService addrOnion;
@@ -779,6 +780,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     fDiscover = GetBoolArg("-discover", true);
     fNameLookup = GetBoolArg("-dns", true);
 
+    printf("AppInit_9\n");
     bool fBound = false;
     if (!fNoListen) {
         if (mapArgs.count("-bind")) {
@@ -801,6 +803,7 @@ bool AppInit2(boost::thread_group& threadGroup)
             return InitError(_("Failed to listen on any port. Use -listen=0 if you want this."));
     }
 
+    printf("AppInit_10\n");
     if (mapArgs.count("-externalip")) {
         BOOST_FOREACH(string strAddr, mapMultiArgs["-externalip"]) {
             CService addrLocal(strAddr, GetListenPort(), fNameLookup);
@@ -817,6 +820,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     fReindex = GetBoolArg("-reindex");
 
+    printf("AppInit_11\n");
     // Upgrading to 0.8; hard-link the old blknnnn.dat files into /blocks/
     filesystem::path blocksDir = GetDataDir() / "blocks";
     if (!filesystem::exists(blocksDir))
@@ -844,6 +848,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 
+    printf("AppInit_12\n");
     // cache size calculations
     size_t nTotalCache = GetArg("-dbcache", 25) << 20;
     if (nTotalCache < (1 << 22))
@@ -920,6 +925,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 
+    printf("AppInit_13\n");
     if (mapArgs.count("-txindex") && fTxIndex != GetBoolArg("-txindex", false))
         return InitError(_("You need to rebuild the databases using -reindex to change -txindex"));
 
