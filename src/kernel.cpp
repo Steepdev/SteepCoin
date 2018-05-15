@@ -30,7 +30,7 @@ const unsigned int nProtocolV06TestSwitchTime = 1508198400; // Tue 17 Oct 00:00:
 unsigned int nModifierInterval = MODIFIER_INTERVAL;
 
 // Hard checkpoints of stake modifiers to ensure they are deterministic
-static std::map<int, unsigned int> mapStakeModifierCheckpoints;
+static std::map<int, unsigned int> mapStakeModifierCheckpoints =
 
     boost::assign::map_list_of
         ( 0, 0xfd11f4e7)
