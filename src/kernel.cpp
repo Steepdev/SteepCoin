@@ -529,9 +529,9 @@ bool CheckCoinStakeTimestamp(int64 nTimeBlock, int64 nTimeTx)
 // Get stake modifier checksum
 unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex)
 {
-    printf("GetStakeModifierChecksum1\n");
-    assert (pindex->pprev || pindex->GetBlockHash() == hashGenesisBlock);
-    printf("GetStakeModifierChecksum2\n");
+    printf("GetStakeModifierChecksum1a\n");
+    // assert (pindex->pprev || pindex->GetBlockHash() == hashGenesisBlock);
+    printf("GetStakeModifierChecksum2a\n");
     // Hash previous checksum with flags, hashProofOfStake and nStakeModifier
     CDataStream ss(SER_GETHASH, 0);
     if (pindex->pprev)
