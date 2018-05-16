@@ -3171,17 +3171,28 @@ bool CBlock::CheckBlockSignature() const
     return false;
 }
 
-// ppcoin: entropy bit for stake modifier if chosen by modifier
+// entropy bit for stake modifier if chosen by modifier
 unsigned int CBlock::GetStakeEntropyBit() const
 {
+    // Take last bit of block hash as entropy bit
+    unsigned int nEntropyBit = ((GetHash().Get64()) & 1llu);
+    if (fDebug && GetBoolArg("-printstakemodifier"))
+        printf("GetStakeEntropyBit(v0.4+): nTime=%u hashBlock=%s entropybit=%d\n", nTime, GetHash().ToString().c_str(), nEntropyBit);
+        // printf("GetStakeEntropyBit: hashBlock=%s nEntropyBit=%u\n", GetHash().ToString().c_str(), nEntropyBit);
+    return nEntropyBit;
+}
+
+// ppcoin: entropy bit for stake modifier if chosen by modifier
+/*unsigned int CBlock::GetStakeEntropyBit() const
+{
     unsigned int nEntropyBit = 0;
-    /*if (IsProtocolV04(nTime))
+    if (IsProtocolV04(nTime))
     {
         nEntropyBit = ((GetHash().Get64()) & 1llu);// last bit of block hash
         if (fDebug && GetBoolArg("-printstakemodifier"))
             printf("GetStakeEntropyBit(v0.4+): nTime=%u hashBlock=%s entropybit=%d\n", nTime, GetHash().ToString().c_str(), nEntropyBit);
     }
-    else*/
+    else
     if (IsProtocolV03(nTime))
     {
         // old protocol for entropy bit pre v0.4
@@ -3194,7 +3205,7 @@ unsigned int CBlock::GetStakeEntropyBit() const
             printf(" entropybit=%d\n", nEntropyBit);
     }
     return nEntropyBit;
-}
+}*/
 
 
 
