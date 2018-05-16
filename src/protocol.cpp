@@ -1,22 +1,53 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017 The SteepCoin developers
+// Copyright (c) 2011-2017 The Peercoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "protocol.h"
 #include "util.h"
 #include "netbase.h"
+#include "main.h"
 
 #ifndef WIN32
 # include <arpa/inet.h>
 #endif
+
+// The message start string is designed to be unlikely to occur in normal data.
+// The characters are rarely used upper ascii, not valid as UTF-8, and produce
+// a large 4-byte int at any alignment.
+
+// Public testnet message start
+// unsigned char pchMessageStartTestBitcoin[4] = { 0xfa, 0xbf, 0xb5, 0xda };
+static unsigned char pchMessageStartTestOld[4] = { 0xdb, 0xe1, 0xf2, 0xf6 };
+static unsigned char pchMessageStartTestNew[4] = { 0xcb, 0xf2, 0xc0, 0xef };
+static unsigned int nMessageStartTestSwitchTime = 1346200000;
+
+// Peercoin message start (switch from Bitcoin's in v0.2)
+static unsigned char pchMessageStartBitcoin[4] = { 0xf9, 0xbe, 0xb4, 0xd9 };
+// static unsigned char pchMessageStartPeercoin[4] = { 0xe6, 0xe8, 0xe9, 0xe5 };
+static unsigned char pchMessageStartPeercoin[4] = { 0xe1, 0xe5, 0xe2, 0xe8 };
+static unsigned int nMessageStartSwitchTime = 1347300000;
+
+// unsigned char pchMessageStart[4] = { 0xe6, 0xe8, 0xe9, 0xe5 };
+unsigned char pchMessageStart[4] = { 0xe1, 0xe5, 0xe2, 0xe8 };
+
+void GetMessageStart(unsigned char pchMessageStart[], bool fPersistent)
+{
+    if (fTestNet)
+        memcpy(pchMessageStart, (fPersistent || GetAdjustedTime() > nMessageStartTestSwitchTime)? pchMessageStartTestNew : pchMessageStartTestOld, sizeof(pchMessageStartTestNew));
+    else {
+        memcpy(pchMessageStart, (fPersistent || GetAdjustedTime() > nMessageStartSwitchTime)? pchMessageStartPeercoin : pchMessageStartBitcoin, sizeof(pchMessageStartPeercoin));
+        // memcpy(pchMessageStart, pchMessageStartPeercoin, sizeof(pchMessageStartPeercoin));
+    }
+}
 
 static const char* ppszTypeName[] =
 {
     "ERROR",
     "tx",
     "block",
+    "filtered block"
 };
 
 CMessageHeader::CMessageHeader()
@@ -81,7 +112,7 @@ CAddress::CAddress() : CService()
     Init();
 }
 
-CAddress::CAddress(CService ipIn, uint64_t nServicesIn) : CService(ipIn)
+CAddress::CAddress(CService ipIn, uint64 nServicesIn) : CService(ipIn)
 {
     Init();
     nServices = nServicesIn;
@@ -141,7 +172,7 @@ const char* CInv::GetCommand() const
 
 std::string CInv::ToString() const
 {
-    return strprintf("%s %s", GetCommand(), hash.ToString().substr(0,20).c_str());
+    return strprintf("%s %s", GetCommand(), hash.ToString().c_str());
 }
 
 void CInv::print() const

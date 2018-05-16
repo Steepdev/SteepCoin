@@ -10,10 +10,10 @@
 #include "walletmodel.h"
 #include "wallet.h"
 
+#include <QClipboard>
+
 #include <string>
 #include <vector>
-
-#include <QClipboard>
 
 SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
     QDialog(parent),
@@ -24,11 +24,11 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
 
 #if (QT_VERSION >= 0x040700)
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->addressIn_SM->setPlaceholderText(tr("Enter a SteepCoin address (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)"));
+    ui->addressIn_SM->setPlaceholderText(tr("Enter a Peercoin address"));
     ui->signatureOut_SM->setPlaceholderText(tr("Click \"Sign Message\" to generate signature"));
 
-    ui->addressIn_VM->setPlaceholderText(tr("Enter a SteepCoin address (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)"));
-    ui->signatureIn_VM->setPlaceholderText(tr("Enter SteepCoin signature"));
+    ui->addressIn_VM->setPlaceholderText(tr("Enter a Peercoin address"));
+    ui->signatureIn_VM->setPlaceholderText(tr("Enter Peercoin signature"));
 #endif
 
     GUIUtil::setupAddressWidget(ui->addressIn_SM, this);
@@ -55,13 +55,13 @@ void SignVerifyMessageDialog::setModel(WalletModel *model)
     this->model = model;
 }
 
-void SignVerifyMessageDialog::setAddress_SM(QString address)
+void SignVerifyMessageDialog::setAddress_SM(const QString &address)
 {
     ui->addressIn_SM->setText(address);
     ui->messageIn_SM->setFocus();
 }
 
-void SignVerifyMessageDialog::setAddress_VM(QString address)
+void SignVerifyMessageDialog::setAddress_VM(const QString &address)
 {
     ui->addressIn_VM->setText(address);
     ui->messageIn_VM->setFocus();

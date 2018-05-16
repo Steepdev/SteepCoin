@@ -1,6 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017 The SteepCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef _BITCOIN_COMPAT_H
@@ -12,6 +11,7 @@
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
+#define FD_SETSIZE 1024 // max number of fds in fd_set
 #include <winsock2.h>
 #include <mswsock.h>
 #include <ws2tcpip.h>
@@ -24,10 +24,11 @@
 #include <net/if.h>
 #include <netinet/in.h>
 #include <ifaddrs.h>
-
-typedef u_int SOCKET;
 #endif
 
+#ifndef _WIN64
+typedef u_int SOCKET;
+#endif
 
 #ifdef WIN32
 #define MSG_NOSIGNAL        0

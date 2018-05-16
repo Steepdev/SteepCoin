@@ -1,6 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017 The SteepCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,8 +9,7 @@
 using namespace json_spirit;
 using namespace std;
 
-extern void TxToJSON(const CTransaction& tx, const uint256 hashBlock, json_spirit::Object& entry);
-extern enum Checkpoints::CPMode CheckpointsMode;
+void ScriptPubKeyToJSON(const CScript& scriptPubKey, Object& out);
 
 double GetDifficulty(const CBlockIndex* blockindex)
 {
@@ -24,7 +22,7 @@ double GetDifficulty(const CBlockIndex* blockindex)
         else
             blockindex = GetLastBlockIndex(pindexBest, false);
     }
-
+    /*
     int nShift = (blockindex->nBits >> 24) & 0xff;
 
     double dDiff =
@@ -42,6 +40,9 @@ double GetDifficulty(const CBlockIndex* blockindex)
     }
 
     return dDiff;
+    */
+
+    return blockindex->GetBlockDifficulty();
 }
 
 double GetPoWMHashPS(const CBlockIndex* blockindex)
@@ -100,6 +101,7 @@ double GetPoSKernelPS(const CBlockIndex* blockindex)
     return nStakesTime ? dStakeKernelsTriedAvg / nStakesTime : 0;
 }
 
+
 Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool fPrintTransactionDetail)
 {
     Object result;
@@ -111,56 +113,43 @@ Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool fPri
     result.push_back(Pair("height", blockindex->nHeight));
     result.push_back(Pair("version", block.nVersion));
     result.push_back(Pair("merkleroot", block.hashMerkleRoot.GetHex()));
-    result.push_back(Pair("mint", ValueFromAmount(blockindex->nMint)));
-    result.push_back(Pair("time", (boost::int64_t)block.GetBlockTime()));
+    result.push_back(Pair("time", (boost::uint64_t)block.GetBlockTime()));
     result.push_back(Pair("nonce", (boost::uint64_t)block.nNonce));
     result.push_back(Pair("bits", HexBits(block.nBits)));
     result.push_back(Pair("difficulty", GetDifficulty(blockindex)));
-    result.push_back(Pair("blocktrust", leftTrim(blockindex->GetBlockTrust().GetHex(), '0')));
-    result.push_back(Pair("chaintrust", leftTrim(blockindex->nChainTrust.GetHex(), '0')));
+    result.push_back(Pair("mint", ValueFromAmount(blockindex->nMint)));
+
     if (blockindex->pprev)
         result.push_back(Pair("previousblockhash", blockindex->pprev->GetBlockHash().GetHex()));
     if (blockindex->pnext)
         result.push_back(Pair("nextblockhash", blockindex->pnext->GetBlockHash().GetHex()));
 
     result.push_back(Pair("flags", strprintf("%s%s", blockindex->IsProofOfStake()? "proof-of-stake" : "proof-of-work", blockindex->GeneratedStakeModifier()? " stake-modifier": "")));
-    result.push_back(Pair("proofhash", blockindex->hashProof.GetHex()));
+    result.push_back(Pair("proofhash", blockindex->IsProofOfStake()? blockindex->hashProofOfStake.GetHex() : blockindex->GetBlockHash().GetHex()));
     result.push_back(Pair("entropybit", (int)blockindex->GetStakeEntropyBit()));
-    result.push_back(Pair("modifier", strprintf("%016"PRIx64, blockindex->nStakeModifier)));
+    result.push_back(Pair("modifier", strprintf("%016" PRI64x, blockindex->nStakeModifier)));
     result.push_back(Pair("modifierchecksum", strprintf("%08x", blockindex->nStakeModifierChecksum)));
+
     Array txinfo;
     BOOST_FOREACH (const CTransaction& tx, block.vtx)
     {
         if (fPrintTransactionDetail)
         {
-            Object entry;
-
-            entry.push_back(Pair("txid", tx.GetHash().GetHex()));
-            TxToJSON(tx, 0, entry);
-
-            txinfo.push_back(entry);
+            txinfo.push_back(tx.ToStringShort());
+            txinfo.push_back(DateTimeStrFormat(tx.nTime));
+            BOOST_FOREACH(const CTxIn& txin, tx.vin)
+                txinfo.push_back(txin.ToStringShort());
+            BOOST_FOREACH(const CTxOut& txout, tx.vout)
+                txinfo.push_back(txout.ToStringShort());
         }
         else
             txinfo.push_back(tx.GetHash().GetHex());
     }
-
     result.push_back(Pair("tx", txinfo));
-
-    if (block.IsProofOfStake())
-        result.push_back(Pair("signature", HexStr(block.vchBlockSig.begin(), block.vchBlockSig.end())));
 
     return result;
 }
 
-Value getbestblockhash(const Array& params, bool fHelp)
-{
-    if (fHelp || params.size() != 0)
-        throw runtime_error(
-            "getbestblockhash\n"
-            "Returns the hash of the best block in the longest block chain.");
-
-    return hashBestChain.GetHex();
-}
 
 Value getblockcount(const Array& params, bool fHelp)
 {
@@ -178,7 +167,7 @@ Value getdifficulty(const Array& params, bool fHelp)
     if (fHelp || params.size() != 0)
         throw runtime_error(
             "getdifficulty\n"
-            "Returns the difficulty as a multiple of the minimum difficulty.");
+            "Returns difficulty as a multiple of the minimum difficulty.");
 
     Object obj;
     obj.push_back(Pair("proof-of-work",        GetDifficulty()));
@@ -193,11 +182,11 @@ Value settxfee(const Array& params, bool fHelp)
     if (fHelp || params.size() < 1 || params.size() > 1 || AmountFromValue(params[0]) < MIN_TX_FEE)
         throw runtime_error(
             "settxfee <amount>\n"
-            "<amount> is a real and is rounded to the nearest 0.01");
+            "<amount> is a real and is rounded to 0.01 (cent)\n"
+            "Minimum and default transaction fee per KB is 1 cent");
 
     nTransactionFee = AmountFromValue(params[0]);
     nTransactionFee = (nTransactionFee / CENT) * CENT;  // round to cent
-
     return true;
 }
 
@@ -233,11 +222,23 @@ Value getblockhash(const Array& params, bool fHelp)
     return pblockindex->phashBlock->GetHex();
 }
 
+Value getbestblockhash(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 0)
+        throw runtime_error(
+            "getbestblockhash\n"
+            "\nReturns the hash of the best (tip) block in the longest block chain.");
+
+    CBlockIndex* pblockindex = mapBlockIndex[hashBestChain];
+    return pblockindex->phashBlock->GetHex();
+}
+
 Value getblock(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() < 1 || params.size() > 2)
+    if (fHelp || params.size() < 1 || params.size() > 3)
         throw runtime_error(
-            "getblock <hash> [txinfo]\n"
+            "getblock <hash> [verbose] [txinfo]\n"
+            "verbose optional (default true) if false output hash like bitcoin-cli\n"
             "txinfo optional to print more detailed tx info\n"
             "Returns details of a block with given block-hash.");
 
@@ -249,9 +250,26 @@ Value getblock(const Array& params, bool fHelp)
 
     CBlock block;
     CBlockIndex* pblockindex = mapBlockIndex[hash];
-    block.ReadFromDisk(pblockindex, true);
+    block.ReadFromDisk(pblockindex);
 
-    return blockToJSON(block, pblockindex, params.size() > 1 ? params[1].get_bool() : false);
+    bool fTxinfo = false;
+    if (params.size() > 2)
+      fTxinfo = params[2].get_bool();
+
+    // bitcoin-cli verbose=0 support
+    bool fVerbose = true;
+    if (params.size() > 1)
+      fVerbose = params[1].get_bool();
+
+    if (!fVerbose)
+      {
+        CDataStream ssBlock(SER_NETWORK, PROTOCOL_VERSION);
+        ssBlock << block;
+	std::string strHex = HexStr(ssBlock.begin(), ssBlock.end());
+        return strHex;
+      }
+ 
+    return blockToJSON(block, pblockindex, fTxinfo);
 }
 
 Value getblockbynumber(const Array& params, bool fHelp)
@@ -274,39 +292,77 @@ Value getblockbynumber(const Array& params, bool fHelp)
     uint256 hash = *pblockindex->phashBlock;
 
     pblockindex = mapBlockIndex[hash];
-    block.ReadFromDisk(pblockindex, true);
+    // block.ReadFromDisk(pblockindex, true);
+    block.ReadFromDisk(pblockindex);
 
     return blockToJSON(block, pblockindex, params.size() > 1 ? params[1].get_bool() : false);
 }
 
-// ppcoin: get information of sync-checkpoint
-Value getcheckpoint(const Array& params, bool fHelp)
+Value gettxoutsetinfo(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 0)
         throw runtime_error(
-            "getcheckpoint\n"
-            "Show info of synchronized checkpoint.\n");
+            "gettxoutsetinfo\n"
+            "Returns statistics about the unspent transaction output set.");
 
-    Object result;
-    CBlockIndex* pindexCheckpoint;
+    Object ret;
 
-    result.push_back(Pair("synccheckpoint", Checkpoints::hashSyncCheckpoint.ToString().c_str()));
-    pindexCheckpoint = mapBlockIndex[Checkpoints::hashSyncCheckpoint];
-    result.push_back(Pair("height", pindexCheckpoint->nHeight));
-    result.push_back(Pair("timestamp", DateTimeStrFormat(pindexCheckpoint->GetBlockTime()).c_str()));
-
-    // Check that the block satisfies synchronized checkpoint
-    if (CheckpointsMode == Checkpoints::STRICT)
-        result.push_back(Pair("policy", "strict"));
-
-    if (CheckpointsMode == Checkpoints::ADVISORY)
-        result.push_back(Pair("policy", "advisory"));
-
-    if (CheckpointsMode == Checkpoints::PERMISSIVE)
-        result.push_back(Pair("policy", "permissive"));
-
-    if (mapArgs.count("-checkpointkey"))
-        result.push_back(Pair("checkpointmaster", true));
-
-    return result;
+    CCoinsStats stats;
+    if (pcoinsTip->GetStats(stats)) {
+        ret.push_back(Pair("height", (boost::int64_t)stats.nHeight));
+        ret.push_back(Pair("bestblock", stats.hashBlock.GetHex()));
+        ret.push_back(Pair("transactions", (boost::int64_t)stats.nTransactions));
+        ret.push_back(Pair("txouts", (boost::int64_t)stats.nTransactionOutputs));
+        ret.push_back(Pair("bytes_serialized", (boost::int64_t)stats.nSerializedSize));
+        ret.push_back(Pair("hash_serialized", stats.hashSerialized.GetHex()));
+        ret.push_back(Pair("total_amount", ValueFromAmount(stats.nTotalAmount)));
+    }
+    return ret;
 }
+
+Value gettxout(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() < 2 || params.size() > 3)
+        throw runtime_error(
+            "gettxout <txid> <n> [includemempool=true]\n"
+            "Returns details about an unspent transaction output.");
+
+    Object ret;
+
+    std::string strHash = params[0].get_str();
+    uint256 hash(strHash);
+    int n = params[1].get_int();
+    bool fMempool = true;
+    if (params.size() > 2)
+        fMempool = params[2].get_bool();
+
+    CCoins coins;
+    if (fMempool) {
+        LOCK(mempool.cs);
+        CCoinsViewMemPool view(*pcoinsTip, mempool);
+        if (!view.GetCoins(hash, coins))
+            return Value::null;
+        mempool.pruneSpent(hash, coins); // TODO: this should be done by the CCoinsViewMemPool
+    } else {
+        if (!pcoinsTip->GetCoins(hash, coins))
+            return Value::null;
+    }
+    if (n<0 || (unsigned int)n>=coins.vout.size() || coins.vout[n].IsNull())
+        return Value::null;
+
+    ret.push_back(Pair("bestblock", pcoinsTip->GetBestBlock()->GetBlockHash().GetHex()));
+    if ((unsigned int)coins.nHeight == MEMPOOL_HEIGHT)
+        ret.push_back(Pair("confirmations", 0));
+    else
+        ret.push_back(Pair("confirmations", pcoinsTip->GetBestBlock()->nHeight - coins.nHeight + 1));
+    ret.push_back(Pair("value", ValueFromAmount(coins.vout[n].nValue)));
+    Object o;
+    ScriptPubKeyToJSON(coins.vout[n].scriptPubKey, o);
+    ret.push_back(Pair("scriptPubKey", o));
+    ret.push_back(Pair("version", coins.nVersion));
+    ret.push_back(Pair("coinbase", coins.fCoinBase));
+
+    return ret;
+}
+
+

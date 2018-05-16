@@ -1,5 +1,6 @@
 #include "sendcoinsentry.h"
 #include "ui_sendcoinsentry.h"
+
 #include "guiutil.h"
 #include "bitcoinunits.h"
 #include "addressbookpage.h"
@@ -23,7 +24,7 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
-    ui->payTo->setPlaceholderText(tr("Enter a SteepCoin address (e.g. SjMgK3KtzaV9ce467nq5m5Vis1E4hZ)"));
+    ui->payTo->setPlaceholderText(tr("Enter a Peercoin address"));
 #endif
     setFocusPolicy(Qt::TabFocus);
     setFocusProxy(ui->payTo);
@@ -46,26 +47,13 @@ void SendCoinsEntry::on_addressBookButton_clicked()
 {
     if(!model)
         return;
-    if (model->getSplitBlock())
+    AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::SendingTab, this);
+    dlg.setModel(model->getAddressTableModel());
+    if(dlg.exec())
     {
-        AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::ReceivingTab, this); 
-		dlg.setModel(model->getAddressTableModel()); 
-		if(dlg.exec()) 
-		{ 
-			ui->payTo->setText(dlg.getReturnValue()); 
-			ui->payAmount->setFocus(); 
-		}
+        ui->payTo->setText(dlg.getReturnValue());
+        ui->payAmount->setFocus();
     }
-	else 
-	{ 
-		AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::SendingTab, this); 
-		dlg.setModel(model->getAddressTableModel()); 
-		if(dlg.exec()) 
-		{ 
-			ui->payTo->setText(dlg.getReturnValue()); 
-			ui->payAmount->setFocus(); 
-		} 
-	}
 }
 
 void SendCoinsEntry::on_payTo_textChanged(const QString &address)
@@ -165,6 +153,12 @@ void SendCoinsEntry::setValue(const SendCoinsRecipient &value)
     ui->payTo->setText(value.address);
     ui->addAsLabel->setText(value.label);
     ui->payAmount->setValue(value.amount);
+}
+
+void SendCoinsEntry::setAddress(const QString &address)
+{
+    ui->payTo->setText(address);
+    ui->payAmount->setFocus();
 }
 
 bool SendCoinsEntry::isClear()

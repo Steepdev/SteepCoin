@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>SteepCoin - Debug window</string>
+   <string>Peercoin - Debug window</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -36,7 +36,7 @@
           </font>
          </property>
          <property name="text">
-          <string>SteepCoin Core</string>
+          <string>Peercoin Core</string>
          </property>
         </widget>
        </item>
@@ -90,9 +90,6 @@
         <widget class="QLabel" name="label_14">
          <property name="text">
           <string>Using OpenSSL version</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignJustify|Qt::AlignVCenter</set>
          </property>
          <property name="indent">
           <number>10</number>
@@ -325,7 +322,7 @@
        <item row="15" column="0">
         <widget class="QPushButton" name="openDebugLogfileButton">
          <property name="toolTip">
-          <string>Open the SteepCoin debug log file from the current data directory. This can take a few seconds for large log files.</string>
+          <string>Open the Peercoin debug log file from the current data directory. This can take a few seconds for large log files.</string>
          </property>
          <property name="text">
           <string>&amp;Open</string>
@@ -351,7 +348,7 @@
        <item row="17" column="0">
         <widget class="QPushButton" name="showCLOptionsButton">
          <property name="toolTip">
-          <string>Show the SteepCoin-Qt help message to get a list with possible SteepCoin command-line options.</string>
+          <string>Show the Peercoin-Qt help message to get a list with possible Peercoin command-line options.</string>
          </property>
          <property name="text">
           <string>&amp;Show</string>
@@ -433,7 +430,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
+            <iconset resource="../bitcoin.qrc">
              <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
            </property>
            <property name="shortcut">
@@ -452,6 +449,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../bitcoin.qrc"/>
+ </resources>
  <connections/>
 </ui>
