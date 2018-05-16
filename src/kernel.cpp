@@ -34,15 +34,15 @@ static std::map<int, unsigned int> mapStakeModifierCheckpoints =
 
     boost::assign::map_list_of
         ( 0, 0xfd11f4e7)
-    //     ( 1, 0x2dcbe358)
-    //     ( 2, 0x4da80b60)
-    //     ( 20, 0xc376c28f)
-    //     ( 10000, 0xc05b3961)
-    //     ( 30000, 0xcc120e22)
-    //     ( 75000, 0x6d74f82d)
-    //     ( 100000, 0xf9c10444)
-    //     ( 125000, 0xf12bdec4)
-    //     ( 147500, 0x0ae61c00)
+        ( 1, 0x2dcbe358)
+        ( 2, 0x4da80b60)
+        ( 20, 0xc376c28f)
+        ( 10000, 0xc05b3961)
+        ( 30000, 0xcc120e22)
+        ( 75000, 0x6d74f82d)
+        ( 100000, 0xf9c10444)
+        ( 125000, 0xf12bdec4)
+        ( 147500, 0x0ae61c00)
         ;
 
 // Whether the given coinstake is subject to new v0.3 protocol
@@ -530,7 +530,7 @@ bool CheckCoinStakeTimestamp(int64 nTimeBlock, int64 nTimeTx)
 unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex)
 {
     printf("GetStakeModifierChecksum1a\n");
-    // assert (pindex->pprev || pindex->GetBlockHash() == hashGenesisBlock);
+    assert (pindex->pprev || pindex->GetBlockHash() == hashGenesisBlock);
     printf("GetStakeModifierChecksum2a\n");
     // Hash previous checksum with flags, hashProofOfStake and nStakeModifier
     CDataStream ss(SER_GETHASH, 0);
