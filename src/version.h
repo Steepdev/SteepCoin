@@ -48,8 +48,6 @@ static const int MIN_PROTO_VERSION = 209;
 static const int CADDR_TIME_VERSION = 31402;
 
 // only request blocks from nodes outside this range of versions
-// static const int NOBLKS_VERSION_START = 32000;
-// static const int NOBLKS_VERSION_END = 32400;
 static const int NOBLKS_VERSION_START = 60002;
 static const int NOBLKS_VERSION_END = 60006;
 

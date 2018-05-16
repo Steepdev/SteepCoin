@@ -1782,12 +1782,14 @@ void static Discover()
 
 void StartNode(boost::thread_group& threadGroup)
 {
+    printf("StartNode1\n");
     if (semOutbound == NULL) {
         // initialize semaphore
         int nMaxOutbound = min(MAX_OUTBOUND_CONNECTIONS, nMaxConnections);
         semOutbound = new CSemaphore(nMaxOutbound);
     }
 
+    printf("StartNode2\n");
     if (pnodeLocalHost == NULL)
         pnodeLocalHost = new CNode(INVALID_SOCKET, CAddress(CService("127.0.0.1", 0), nLocalServices));
 
@@ -1797,12 +1799,14 @@ void StartNode(boost::thread_group& threadGroup)
     // Start threads
     //
 
+    printf("StartNode3\n");
     if (!GetBoolArg("-dnsseed", true))
         printf("DNS seeding disabled\n");
     else
         threadGroup.create_thread(boost::bind(&TraceThread<boost::function<void()> >, "dnsseed", &ThreadDNSAddressSeed));
 
 #ifdef USE_UPNP
+    printf("StartNode4\n");
     // Map ports with UPnP
     MapPort(GetBoolArg("-upnp", USE_UPNP));
 #endif
@@ -1810,6 +1814,7 @@ void StartNode(boost::thread_group& threadGroup)
     // Send and receive from sockets, accept connections
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "net", &ThreadSocketHandler));
 
+    printf("StartNode4a\n");
     // Initiate outbound connections from -addnode
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "addcon", &ThreadOpenAddedConnections));
 
@@ -1821,6 +1826,7 @@ void StartNode(boost::thread_group& threadGroup)
 
     // Dump network addresses
     threadGroup.create_thread(boost::bind(&LoopForever<void (*)()>, "dumpaddr", &DumpAddresses, DUMP_ADDRESSES_INTERVAL * 1000));
+    printf("StartNode5\n");
 }
 
 bool StopNode()
